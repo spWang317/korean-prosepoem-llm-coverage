@@ -1,6 +1,9 @@
-"""close_reading_provenance.py — 인용작 선별 기록(본문 §2.4.6).
+"""close_reading_provenance.py — the selection record for the quoted works (paper §2.4.7).
 
-생성 전형작: 앵커 모티프 지분으로 가중한 평균 임베딩에 대한 코사인 근접 순위. 는 쪽 이름 집합: 다섯 시스템 모두 유지율>1인 모티프 × 시스템별 전형작. 인간 상위작: 모티프별 지분 순위표와 선택 사유.
+Generated typical works: ranked by cosine proximity to the mean embedding weighted by
+the anchor motif share. The naming set: the motifs with retention > 1 in all five
+systems, crossed with the per-system typical work. Human top-share works: the per-motif
+share ranking and the reason for each selection.
 
 Run: python3 scripts/close_reading_provenance.py -> results/phase2/close_reading_provenance.json
 """
@@ -75,7 +78,8 @@ print(json.dumps(out, ensure_ascii=False, indent=1))
 
 
 def naming_set():
-    """는 쪽 이름 집합(§2.4.6 둘째, 결과는 §4.1): 다섯 시스템 모두 유지율>1인 모티프 × 시스템별 전형작(가중 중심 최근접)."""
+    """The naming set (§2.4.7; the result is in §4.1): the motifs with retention > 1 in
+    all five systems, crossed with each system's typical work (nearest to the weighted centroid)."""
     import re
     lad = pd.read_csv(ROOT / "results/phase2/retention_ladder.csv").set_index("motif")
     core = [t for t in lad.index if all(lad.loc[t, f"retention_{m}"] > 1 for m in S5)]
@@ -92,25 +96,27 @@ def naming_set():
                          "window": bool(WIN.search(texts[i])), "night": bool(NIGHT.search(texts[i]))})
     df = pd.DataFrame(rows)
     df.to_csv(ROOT / "results/phase2/naming_set_typicals.csv", index=False)
-    print("naming set:", core, "| 창/유리", int(df.window.sum()), "/", len(df), "| 저녁·밤·불빛", int(df.night.sum()), "/", len(df))
+    print("naming set:", core, "| window/glass", int(df.window.sum()), "/", len(df), "| evening/night/lamplight", int(df.night.sum()), "/", len(df))
     return df
 
 
 def human_top_works():
-    """인간 상위작 순위표. §2.4.6의 상위작 규칙(지분 상위 다섯 가운데 선택, 사유 공개)에 따라
-    §4.2(회피 넷 + Opus만 남기는 가족·음식), §4.3(비·겨울)이 인용한 인간 작품의
-    순위와 상위 5편을 공개한다. -> results/phase2/human_top_works.csv"""
+    """The ranking of human top-share works. By the rule of §2.4.7 (choose among the five
+    highest shares, publish the reason), this releases the ranking and the top five for the
+    human works quoted in §4.2 (the avoided four, plus the family and food that only Opus
+    retains) and §4.3 (rain, winter). -> results/phase2/human_top_works.csv"""
     import pandas as pd
     h = pd.read_csv(ROOT / "data/atlas/instrument_frozen/human_doc_motif_distribution.csv")
     m = pd.read_csv(ROOT / "data/atlas/metadata.csv")
     h["work_id"] = h.work_id.astype(str); m["work_id"] = m.work_id.astype(str); d = h.merge(m, on="work_id")
-    motifs = {"T18": "상처·술", "T9": "노인·지하", "T22": "병원·질병", "T5": "학교·아이",
-              "T3": "음식·동물", "T2": "가족", "T7": "비", "T6": "겨울"}
-    # 선정 규칙(§2.4.6): 지분 상위 다섯 가운데 인용 상한 안에서 재료의 쓰임을 보일 수 있는 한 편을 연구자가 고르고 사유를 공개
-    chosen = {("T18", 2): "1위 「홍도야」는 171자로 인용 상한(3어구·15%) 안에서 재료를 보일 수 없어 다음 순위",
-              ("T9", 1): "1위", ("T22", 4): "병원 재료와 비 어휘가 한 작품에 있어 §4.3의 비 맞세우기에 재사용",
-              ("T5", 3): "모티프 키워드(학교·교실·선생·학생)가 표면에 있는 작품; 1·2위는 아이는 있으나 학교 장면이 아님",
-              ("T3", 1): "1위", ("T2", 1): "1위", ("T7", 1): "1위", ("T6", 1): "1위"}
+    motifs = {"T18": "wounds/drink", "T9": "old age/underground", "T22": "hospital/illness",
+              "T5": "school/child", "T3": "food/animals", "T2": "family", "T7": "rain", "T6": "winter"}
+    # Selection rule (§2.4.7): among the five highest shares, the researcher takes the one
+    # that can show how the material is used within the quotation limit, and publishes the reason.
+    chosen = {("T18", 2): "the highest-ranked work is 171 characters long, too short to show how the material is used within the quotation limit (3 phrases, 15%), so the next rank was taken",
+              ("T9", 1): "highest share", ("T22", 4): "this work carries both the hospital material and rain vocabulary, so it is reused for the rain comparison in §4.3",
+              ("T5", 3): "the motif's keywords (school, classroom, teacher, student) are on the surface of this work; ranks 1 and 2 have a child but no school scene",
+              ("T3", 1): "highest share", ("T2", 1): "highest share", ("T7", 1): "highest share", ("T6", 1): "highest share"}
     cited = {"T18": "§4.2", "T9": "§4.2", "T22": "§4.2", "T5": "§4.2", "T3": "§4.2", "T2": "§4.2", "T7": "§4.3", "T6": "§4.3"}
     rows = []
     for t, n in motifs.items():

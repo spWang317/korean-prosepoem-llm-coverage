@@ -1,5 +1,6 @@
-"""make_figures.py — 논문 그림 (light/print). 본문 그림 1(25모티프 지분, 유지율 순; fig2_motif_map)·SI 그림 S9-1(형식 히트맵; fig1_form_heatmap),
-SI 그림 S1-1(시스템별 25모티프 지분).
+"""make_figures.py — figures for the paper (light/print). Fig. 1 (25-motif shares, ordered by
+retention; fig2_motif_map), SI Fig. S9-1 (form-compliance heatmap; fig1_form_heatmap), SI Fig. S1-1
+(per-system 25-motif shares).
 Sources: results/ CSVs + generation logs.
 Colors: validated defaults (blue #2a78d6 / orange #eb6834 poles; sequential blue ramp; neutral
 grays). Run: python3 scripts/make_figures.py  → figures/*.png(.pdf)"""
@@ -16,7 +17,7 @@ from matplotlib.colors import LinearSegmentedColormap
 
 ROOT = Path(__file__).resolve().parent.parent
 FIG = ROOT / "figures"; FIG.mkdir(exist_ok=True)
-plt.rcParams.update({"font.family": "Apple SD Gothic Neo", "axes.unicode_minus": False,
+plt.rcParams.update({"font.family": "DejaVu Sans", "axes.unicode_minus": False,
                      "figure.facecolor": "#fcfcfb", "axes.facecolor": "#fcfcfb",
                      "text.color": "#0b0b0b", "axes.edgecolor": "#b9b8b2",
                      "axes.labelcolor": "#0b0b0b", "xtick.color": "#52514e",
@@ -24,9 +25,11 @@ plt.rcParams.update({"font.family": "Apple SD Gothic Neo", "axes.unicode_minus":
 BLUE, ORANGE, AQUA = "#2a78d6", "#eb6834", "#1baf7a"
 GRAY_D, GRAY_M, GRAY_L = "#52514e", "#8a8985", "#d8d7d2"
 
-NAME = {0:"바다",1:"꽃",2:"가족",3:"음식·동물",4:"정서",5:"학교·아이",6:"겨울",7:"비",8:"여인",
-        9:"노인·지하",10:"새·나비",11:"메타시",12:"편지·글",13:"실내",14:"음악",15:"거리",
-        16:"고양이",17:"우주",18:"상처·술",19:"과일",20:"조부모",21:"거울",22:"병원·질병",23:"아파트·벽",24:"버스"}
+NAME = {0:"sea", 1:"flowers", 2:"family", 3:"food/animals", 4:"affect", 5:"school/child",
+        6:"winter", 7:"rain", 8:"woman", 9:"old age/underground", 10:"birds/butterflies",
+        11:"meta-poetic", 12:"letters/writing", 13:"interior", 14:"music", 15:"street",
+        16:"cat", 17:"cosmos", 18:"wounds/drink", 19:"fruit", 20:"grandparents", 21:"mirror",
+        22:"hospital/illness", 23:"apartment/wall", 24:"bus"}
 SYS5 = ["GPT-5.6", "Opus-4.8", "Gemini-2.5", "Solar-Pro3", "EXAONE-4.0"]
 
 
@@ -60,20 +63,20 @@ def fig_main2_motif_map():
     human = d["human_%"].values
     gen = d[[f"{m}_%" for m in SYS5]].values.mean(1)
     ret = gen / human
-    order = np.argsort(ret)  # 유지율 내림차순: 위가 유지율 최고(§2.4.2의 비교 통계 축)
+    order = np.argsort(ret)  # ordered by retention (top = highest), the comparison statistic of §2.4.2
     fig, ax = plt.subplots(figsize=(6.6, 8.2))
     for row, j in enumerate(order):
         over = ret[j] > 1
         ax.plot([human[j], gen[j]], [row, row], color=GRAY_L, lw=1.6, zorder=1)
         ax.scatter(human[j], row, s=32, color=GRAY_D, zorder=3)
         ax.scatter(gen[j], row, s=46, color=(ORANGE if over else BLUE), zorder=3)
-    k_below = int((ret[order] < 1).sum())  # 경계(유지율 1) 아래 모티프 수
+    k_below = int((ret[order] < 1).sum())  # number of motifs below the retention = 1 boundary
     ax.axhline(k_below - 0.5, color=GRAY_M, lw=1.0, ls=(0, (4, 3)), zorder=2)
-    ax.annotate("유지율 1", (12.9, k_below - 0.5), xytext=(0, 4), textcoords="offset points",
+    ax.annotate("retention = 1", (12.9, k_below - 0.5), xytext=(0, 4), textcoords="offset points",
                 ha="right", fontsize=8.5, color=GRAY_M)
     ax.set_yticks(range(25))
     ax.set_yticklabels([f"T{j} {NAME[j]}" for j in order], fontsize=9)
-    ax.set_xlabel("모티프 평균 지분 (%)")
+    ax.set_xlabel("mean motif share (%)")
     ax.set_xlim(-0.3, 13)
     ax.grid(axis="x", color="#eceae6", lw=0.8, zorder=0)
     for s in ("top", "right", "left"): ax.spines[s].set_visible(False)
@@ -84,9 +87,9 @@ def fig_main2_motif_map():
     for j in order[:3]:
         ax.annotate(f"{fmtpct(gen[j])}%", (gen[j], list(order).index(j)), xytext=(6, -3),
                     textcoords="offset points", fontsize=8.5, color="#0b0b0b")
-    handles = [plt.Line2D([], [], marker="o", ls="", color=GRAY_D, label="인간 (N=4,642)"),
-               plt.Line2D([], [], marker="o", ls="", color=ORANGE, label="생성 — 인간보다 과잉"),
-               plt.Line2D([], [], marker="o", ls="", color=BLUE, label="생성 — 인간보다 과소")]
+    handles = [plt.Line2D([], [], marker="o", ls="", color=GRAY_D, label="human (N = 4,642)"),
+               plt.Line2D([], [], marker="o", ls="", color=ORANGE, label="generated \u2014 above human"),
+               plt.Line2D([], [], marker="o", ls="", color=BLUE, label="generated \u2014 below human")]
     ax.legend(handles=handles, loc="lower right", frameon=False, fontsize=9)
     save(fig, "fig2_motif_map")
 
@@ -95,7 +98,7 @@ def fig_main1_form_heatmap():
     frozen = json.loads((ROOT / "docs/prompts_frozen_2026-07-28.json").read_text())
     recs = frozen if isinstance(frozen, list) else frozen.get("prompts", frozen)
     meta = {r["prompt_id"]: r for r in recs}
-    frames = {"instruction": "지시", "completion": "완성", "persona": "페르소나"}
+    frames = {"instruction": "instruction", "completion": "completion", "persona": "persona"}
     order = [pid for f in frames for pid in sorted(meta) if meta[pid]["framing"] == f]
     STEM = {"GPT-5.6": "openai_gpt-5.6", "Gemini 2.5": "google_gemini-2.5-pro",
             "Opus 4.8": "anthropic_opus-4-8", "Solar Pro 3": "upstage_solar-pro3",
@@ -109,7 +112,7 @@ def fig_main1_form_heatmap():
             rs = sorted(raw[pid], key=lambda r: r.get("attempt", r.get("seed_idx", 0)))
             v = a = 0                       # protocol sample: stop at the 25th valid (§2.3)
             for r in rs:
-                if r.get("reason") == "error": continue   # 전송 실패(HTTP 4xx/429)는 호출 미성립: 제외
+                if r.get("reason") == "error": continue   # transport failures (HTTP 4xx/429) are not completed calls: excluded
                 a += 1; v += bool(r.get("is_valid"))
                 if v == 25: break
             M[i, jx] = v / a if a else np.nan
@@ -137,19 +140,19 @@ def fig_main1_form_heatmap():
     for f, c in zip(frames.values(), counts):
         ax.text(start + c / 2 - 0.5, -0.75, f, ha="center", fontsize=9.5, color=GRAY_D)
         start += c
-    ax.set_xlabel("프롬프트 (*: 장르 정의 포함)")
+    ax.set_xlabel("prompt (*: genre definition included)")
     for s in ax.spines.values(): s.set_visible(False)
     save(fig, "fig1_form_heatmap")
 
 
 
 def fig_S6_by_system():
-    """SI 그림 S1-1: 시스템별 25모티프 지분 소분할(정렬·색은 본문 그림 1과 동일)."""
+    """SI Fig. S1-1: per-system small multiples of the 25-motif shares (order and colours as in Fig. 1)."""
     d = pd.read_csv(ROOT / "results/phase2/motif_full_distribution_balanced.csv")
     human = d["human_%"].values
     gen5 = d[[f"{m}_%" for m in SYS5]].values.mean(1)
-    order = np.argsort(gen5 / human)  # 본문 그림 1과 동일: 유지율 내림차순 정렬
-    systems = SYS5  # 형식을 지키는 다섯 시스템(본문 §3 첫머리의 규칙)
+    order = np.argsort(gen5 / human)  # same ordering as Fig. 1: descending retention
+    systems = SYS5  # the five form-compliant systems (§3)
     fig, axes = plt.subplots(3, 2, figsize=(10.5, 16.5), sharey=True)
     for k, (sys, ax) in enumerate(zip(systems, axes.flat)):
         g = d[f"{sys}_%"].values
@@ -169,9 +172,9 @@ def fig_S6_by_system():
         ax.annotate(f"{fmtpct(g[jmax])}%", (g[jmax], list(order).index(jmax)), xytext=(4, -3),
                     textcoords="offset points", fontsize=8, color="#0b0b0b")
     for ax in axes.flat[len(systems):]: ax.set_visible(False)
-    handles = [plt.Line2D([], [], marker="o", ls="", color=GRAY_D, label="인간"),
-               plt.Line2D([], [], marker="o", ls="", color=ORANGE, label="시스템 — 인간보다 과잉"),
-               plt.Line2D([], [], marker="o", ls="", color=BLUE, label="시스템 — 인간보다 과소")]
+    handles = [plt.Line2D([], [], marker="o", ls="", color=GRAY_D, label="human"),
+               plt.Line2D([], [], marker="o", ls="", color=ORANGE, label="system \u2014 above human"),
+               plt.Line2D([], [], marker="o", ls="", color=BLUE, label="system \u2014 below human")]
     fig.legend(handles=handles, loc="lower center", ncol=3, frameon=False, fontsize=9,
                bbox_to_anchor=(0.5, -0.005))
     fig.tight_layout(rect=(0, 0.01, 1, 0.99))

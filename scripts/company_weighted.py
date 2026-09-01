@@ -1,7 +1,9 @@
-"""company_weighted.py — 동행 분석(본문 §2.4.4): 이웃 모티프 지분의 앵커 지분 가중 평균.
+"""company_weighted.py — company analysis (paper §2.4.4): neighbour motif shares averaged with the anchor share as weight.
 
-이웃 모티프 지분의 가중 평균(가중치 = 앵커 모티프 지분). 절단·임계·대상 선택 없음:
-25개 앵커 전수 × (회피 넷 합, 유지율>1 여덟 합, 전 이웃 개별 행렬) × (인간, 생성).
+A weighted mean of the neighbour motif shares, the weight being the anchor motif
+share. No truncation, no threshold, no selection of targets: all 25 anchors x (sum
+over the avoided four, sum over the eight with retention > 1, the full per-neighbour
+matrix) x (human, generated).
 Run: python3 scripts/company_weighted.py -> results/phase2/company_weighted.json
 """
 import json
@@ -9,8 +11,8 @@ from pathlib import Path
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parent.parent
-SOC = ["T5", "T9", "T18", "T22"]  # 회피 넷(본문 §3.2.2의 집합 자격 판정)
-ATM = ["T7", "T15", "T6", "T17", "T13", "T16", "T23", "T12"]  # 유지율>1인 여덟(본문 §3.2.1; 연속체)
+SOC = ["T5", "T9", "T18", "T22"]  # the avoided four (set qualification, paper §3.2.2)
+ATM = ["T7", "T15", "T6", "T17", "T13", "T16", "T23", "T12"]  # the eight with retention > 1 (paper §3.2.1; a continuum)
 
 rec = pd.read_csv(ROOT / "results/phase2/topic_records.csv")
 h = pd.read_csv(ROOT / "data/atlas/instrument_frozen/human_doc_motif_distribution.csv")
@@ -23,7 +25,7 @@ def wmean(df, anchor, targets, pct=False):
     return float((w * tgt).sum() / w.sum())
 
 
-out = {"note": "가중 동행: 이웃 지분을 앵커 지분으로 가중 평균(본문 §2.4.4, 표 4의 원천).",
+out = {"note": "Weighted company: neighbour shares averaged with the anchor share as weight (paper 2.4.4; source of Table 4).",
        "anchors": {}, "rain_family_by_system": {}}
 for i in range(25):
     t = f"T{i}"

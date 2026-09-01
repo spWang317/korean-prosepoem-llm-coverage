@@ -224,11 +224,11 @@ def main():
     }, ensure_ascii=False, indent=2))
 
     # ---- console: over/under motifs ----
-    print("\n=== 모티프 과잉 생산 top6 (생성풀 − 인간, **=인간 CI 벗어남) ===")
+    print("\n=== top 6 over-produced motifs (generated pool - human; ** = outside the human CI) ===")
     for j in np.argsort(diff)[::-1][:6]:
         s = "**" if (pooled[j] < hlo[j] or pooled[j] > hhi[j]) else "  "
         print(f"  {s} {diff[j]:+.3f}  T{j} [{topwords[j][:26]}]  human {human_motif_mean[j]:.3f} → gen {pooled[j]:.3f}")
-    print("=== 모티프 과소(회피) top6 ===")
+    print("=== top 6 under-produced (avoided) motifs ===")
     for j in np.argsort(diff)[:6]:
         s = "**" if (pooled[j] < hlo[j] or pooled[j] > hhi[j]) else "  "
         print(f"  {s} {diff[j]:+.3f}  T{j} [{topwords[j][:26]}]  human {human_motif_mean[j]:.3f} → gen {pooled[j]:.3f}")

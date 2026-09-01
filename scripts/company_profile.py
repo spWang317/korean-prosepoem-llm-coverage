@@ -1,13 +1,15 @@
-"""company_profile.py — 동행 분석의 이웃 프로필 요약(본문 §2.4.4, 표 4).
+"""company_profile.py — summary of the company profiles (paper §2.4.4, Table 4).
 
-company_weighted.json(25앵커 × 24이웃의 가중 평균 지분, 인간·생성)을 앵커마다 이웃 프로필
-(이웃 24개의 지분을 합 1로)로 바꾸고 파라미터 없는 요약 셋을 낸다:
-  - tv          : 인간·생성 이웃 프로필의 총변동 거리(0–1)
-  - eff_h/eff_g : 이웃의 유효 수 1/Σp²(최대 24)
-  - up_h/up_g   : 이웃 가운데 늘어난 쪽(유지율>1, 앵커 자신 제외)의 몫
-  - avoid_h/avoid_g : 이웃 가운데 회피 넷(상처·노인·병원·학교)의 몫
-집합은 §2.4.2가 경계(유지율 1)와 자격 판정으로 정한 것만 쓴다. 앵커 선택 없음(25개 전부).
-실행: python3 scripts/company_profile.py -> results/phase2/company_profile.csv
+Turns company_weighted.json (25 anchors x 24 neighbours, weighted mean shares, human
+and generated) into a company profile per anchor (the 24 neighbour shares renormalized
+to sum to 1) and reports three parameter-free summaries:
+  - tv              : total variation distance between the human and generated profile (0-1)
+  - eff_h/eff_g     : effective number of neighbours, 1/sum(p^2) (maximum 24)
+  - up_h/up_g       : the share of the increased side (retention > 1, the anchor excluded)
+  - avoid_h/avoid_g : the share of the avoided four (wounds, old age, hospital, school)
+The groups are only those fixed by the boundary (retention 1) and the qualification
+judgment of §2.4.2. No anchor is selected; all 25 are reported.
+Run: python3 scripts/company_profile.py -> results/phase2/company_profile.csv
 """
 import json
 from pathlib import Path

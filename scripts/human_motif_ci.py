@@ -1,5 +1,5 @@
-"""human_motif_ci.py — 인간 25모티프 평균 지분의 부트스트랩 95% CI (2,000회, 시드 42).
-SI 표 S1-2(표 2 캡션이 가리키는 인간 평균의 신뢰구간)의 산출 산출물. -> results/phase2/human_motif_ci.json"""
+"""human_motif_ci.py — bootstrap 95% CI of the human mean share for the 25 motifs (2,000 resamples, seed 42).
+Produces SI Table S1-2, the interval on the human mean that the caption of Table 2 refers to. -> results/phase2/human_motif_ci.json"""
 import json
 import numpy as np
 import pandas as pd

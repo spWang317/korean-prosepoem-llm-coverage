@@ -40,11 +40,11 @@ def main():
     human = m["human_%"].values
     checks = {"T3": (2.6, 0.4), "T9": (2.6, 0.2), "T5": (2.0, 0.2), "T22": (1.9, 0.2),
               "T18": (2.0, 0.1), "T7": (2.1, 11.5), "T15": (2.0, 7.6), "T6": (2.4, 7.0), "T17": (1.8, 4.9)}
-    print("== (1) §3.2 수치 검증 (본문값 vs balanced 재계산) ==")
+    print("== (1) check of the §3.2 figures (paper values vs balanced recomputation) ==")
     for t, (h_paper, g_paper) in checks.items():
         j = int(t[1:])
         ok = (abs(human[j] - h_paper) < 0.05) and (abs(pooled[j] - g_paper) < 0.05)
-        print(f"  {t}: 인간 {human[j]:.1f} (본문 {h_paper}) | pooled {pooled[j]:.1f} (본문 {g_paper}) {'✓' if ok else '✗✗'}")
+        print(f"  {t}: human {human[j]:.1f} (paper {h_paper}) | pooled {pooled[j]:.1f} (paper {g_paper}) {'✓' if ok else '✗✗'}")
 
     # ---------- (2) form×topic on protocol samples ----------
     from sentence_transformers import SentenceTransformer
@@ -63,7 +63,7 @@ def main():
         return (W / d[:, None]).mean(0)
 
     fx = {}
-    print("\n== (2) form×topic (프로토콜 표본) ==")
+    print("\n== (2) form x topic (protocol sample) ==")
     for name, stem in STEM.items():
         rows = protocol_rows(stem)
         vt = [(r["response"] or "").strip() for r in rows if r.get("is_valid")]
@@ -75,7 +75,7 @@ def main():
             entry["mad"] = round(float(np.abs(vm - dm).mean()), 4)
             entry["corr"] = round(float(np.corrcoef(vm, dm)[0, 1]), 2)
         else:
-            entry["note"] = "기각 텍스트 <10 (빈 응답뿐이거나 기각 없음) — 주제 비교 비적용"
+            entry["note"] = "fewer than 10 rejected texts (empty responses only, or no rejection) - subject comparison not applied"
         fx[name] = entry
         print(f"  {name:11s} valid {entry['n_valid']:4d} | 기각(텍스트) {entry['n_discard_nonempty']:4d} "
               f"| 기각(빈) {entry['n_discard_empty']:3d} | {entry.get('mad','—')} / {entry.get('corr','—')}")

@@ -1,48 +1,111 @@
-# 결말 감사 — 분류 기준 문서와 판정 결과
+# The ending audit — criteria document and judgments
 
-본문 §2.4.6(절차)·§3.6(결과)·SI S8(부록)의 공개 산출물이다. 표본 추출 코드는 `scripts/closure_audit_sampling.py`, 표 5의 집계는 `scripts/closure_audit_stats.py`로 재현된다.
+This is the public artefact behind §2.4.6 (procedure), §3.6 (results) and SI S8
+(appendix) of the paper. The sample is drawn by `scripts/closure_audit_sampling.py`
+and the totals of Table 5 are computed by `scripts/closure_audit_stats.py`.
 
-## 1. 검증하는 주장
-생성 작품 전반을 훑어 읽는 과정에서 관찰된 경향: 시스템을 가리지 않고 결말이 위안·깨달음·수용으로 완결되며, 같은 소재의 인간 작품에서는 그런 결말을 보기 어렵다. 여기에 두 하위 주장을 더해 검증한다. (i) 다른 시스템이 지우는 가족을 유지하는 Opus에서도 겨울·가족 작품의 결말은 같은 방식으로 닫힌다. (ii) 인간 작품은 회피 넷(상처·노인·병원·학교)의 재료를 위안으로 봉합하지 않는다. (iii) Gemini도 겨울 전형작에 겨울 어휘를 실으므로, (i)과 같은 규칙으로 Gemini 겨울 층과 짝 인간 층을 둔다(§3; (i)·(ii) 뒤에 같은 규칙으로 추가한 층이다).
+## 1. The claim under test
 
-## 2. 분류 기준
-- 판정 단위: 각 작품의 결말 약 170자.
-- 범주: **봉합** = 결말이 위안·깨달음·수용·용서로 완결 / **미해소·열림** = 질문·중단·거부·진행형·긴장 유지로 끝남 / **경계·기타** = 어느 쪽으로도 확정할 수 없음. 경계는 봉합률의 분자에 넣지 않는다.
-- 분류자: 1인. 표본과 판정 전 항목을 아래에 공개한다(재분류 검증용).
+A tendency observed while reading through the generated works: across systems, endings
+close with consolation, insight or acceptance, and such endings are hard to find in
+human works on the same material. Three narrower claims are tested alongside it.
+(i) Opus, which retains the family motif that the other systems erase, closes its
+winter and family works in the same way. (ii) Human works do not seal the material of
+the avoided four (wounds, old age, hospital, school) with consolation. (iii) Gemini
+also carries winter vocabulary in its winter typical work, so a Gemini winter stratum
+and its paired human stratum are placed by the same rule as (i) — added after (i) and
+(ii), under that same rule.
 
-## 3. 모집단과 층
-- 모집단 = 해당 코퍼스에서 그 모티프의 인간 축 지분이 10% 이상인 작품 전수(집약 작품, 본문 §2.4.3). 생성 쪽은 프로토콜 유효물(셀별 유효 25편까지)이다.
-- 층 목록은 주장이 정한다(본문 §2.4.6). 시스템 횡단 주장 → 다섯 시스템이 공통으로 설 수 있는 비 모티프에 시스템별 층 + 인간 비 층. Opus 주장 → Opus 겨울·가족 층 + 인간 겨울·가족 층. Gemini의 겨울 전형작도 겨울 어휘를 실으므로(본문 §4.1) 같은 규칙으로 Gemini 겨울 층 + 인간 겨울 층(시드 53). 인간 코퍼스 주장 → 인간 상처·노인·병원·학교 층(생성 집약 작품이 1–6편뿐이라 생성 짝 없음). HCX는 비-집약 작품이 없어 층이 없다.
-- 추출: 층마다 12편, `층별 고정 시드 `random.Random(42)`–`Random(53)`(같은 코퍼스에서 뽑는 층들이 같은 위치를 재추출하지 않도록), 행 순서는 `results/phase2/topic_records.csv`(인간은 `human_doc_motif_distribution.csv`) 순.
+## 2. Classification criteria
 
-## 3b. 미해소의 하위 판정 — 대상 유무
-미해소로 판정된 결말 각각에 대해 판정 단위(결말 약 170자) 안에 다음 셋 가운데 하나라도 있는가를 적는다: 특정 인물(고유하거나 지시 대상이 정해진 사람; 익명의 '누군가'는 제외), 행위 주체가 있는 사건, 손에 잡히는 사물. 하나라도 있으면 '대상 있음', 화자의 감각·정조와 일반 풍경(비·어둠·빛·바람)만 있으면 '대상 없음'이다. 본문이 '부유'라고 부르는 것은 '미해소 + 대상 없음'이다. 결과: 미해소 80편 가운데 대상 없음은 생성 12편(Gemini 비 5/6, Gemini 겨울 5/6, EXAONE 1/1, Opus 가족 1/2), 인간 0/62. 항목별 판정은 `results/phase2/closure_audit_labels.csv`의 object_present·object_note 열.
+- **Unit of judgment**: roughly the last 170 characters of each work.
+- **Categories**: **sealing** (봉합) — the ending is completed by consolation, insight,
+  acceptance or forgiveness; **unresolved / open** (미해소·열림) — it ends on a
+  question, a break, a refusal, a continuing action, or with tension sustained;
+  **borderline** (경계·기타) — it cannot be settled either way. Borderline items are not
+  counted in the numerator of the sealing rate.
+- **Classifiers**: one person. The sample and every judgment are published below so
+  that the sample can be reclassified.
 
-## 4. 결과 (15층, 180편)
-| 표본 | 봉합 | 미해소·열림 | 경계·기타 | 봉합률 [95% CI] | 짝 인간 층 대비 p |
+## 3. Population and strata
+
+- **Population** = every work in the corpus loading at least 10% of its share on that
+  motif (an intensive work, §2.4.3 of the paper). On the generated side this is the
+  protocol sample (up to 25 valid works per cell).
+- **Which strata** follows from the claim (§2.4.6). A claim spanning systems → one
+  stratum per system on rain, the motif on which all five can stand, plus a human rain
+  stratum. The Opus claim → Opus winter and Opus family strata plus human winter and
+  human family. Gemini's winter typical work also carries winter vocabulary (§4.1), so
+  by the same rule a Gemini winter stratum plus a human winter stratum (seed 53). The
+  claim about the human corpus → human wounds, old age, hospital and school strata,
+  which have no generated counterpart because the generated intensive works number
+  1–6. HCX has no rain-intensive works and so has no stratum.
+- **Drawing**: 12 works per stratum, with a fixed per-stratum seed,
+  `random.Random(42)` through `Random(53)` (so that strata drawn from the same corpus
+  do not re-draw the same positions), over the row order of
+  `results/phase2/topic_records.csv` (for human works,
+  `human_doc_motif_distribution.csv`).
+
+## 3b. The sub-judgment on unresolved items — presence of an object
+
+For every ending judged unresolved, the classifier records whether the judgment unit
+(the last ~170 characters) holds at least one of: a specific person (someone unique or
+with a definite referent; an anonymous 'someone' does not count), an event with an
+agent, or a tangible object. If at least one is present the item is marked **with an
+object**; if only the speaker's sensation and mood and a general scene (rain, darkness,
+light, wind) are present it is marked **with no object**. What the paper calls
+**free-floating** is 'unresolved + with no object'. Result: of the 80 unresolved items,
+12 generated ones have no object (Gemini rain 5/6, Gemini winter 5/6, EXAONE 1/1,
+Opus family 1/2) and 0 of 62 human ones do. The per-item judgment is in the
+`object_present` and `object_note` columns of
+`results/phase2/closure_audit_labels.csv`.
+
+## 4. Results (15 strata, 180 works)
+
+| Stratum | Seal | Unresolved | Borderline | Sealing rate [95% CI] | p vs paired human stratum |
 |---|---|---|---|---|---|
-| GPT 비 (12) | 11 | 0 | 1 | 92% [65, 99] | <0.0001 |
-| Solar 비 (12) | 11 | 0 | 1 | 92% [65, 99] | <0.0001 |
-| EXAONE 비 (12) | 10 | 1 | 1 | 83% [55, 95] | 0.0003 |
-| Opus 겨울 (12) | 8 | 1 | 3 | 67% [39, 86] | 0.0007 |
-| Opus 가족 (12) | 8 | 2 | 2 | 67% [39, 86] | 0.0007 |
-| Opus 비 (12) | 8 | 2 | 2 | 67% [39, 86] | 0.0047 |
-| Gemini 비 (12) | 3 | 6 | 3 | 25% [9, 53] | 0.2950 |
-| Gemini 겨울 (12) | 3 | 6 | 3 | 25% [9, 53] | 0.1087 |
-| 인간 비 (12) | 1 | 10 | 1 | 8% [1, 35] |  |
-| 인간 겨울 (12) | 0 | 10 | 2 | 0% [0, 24] |  |
-| 인간 가족 (12) | 0 | 8 | 4 | 0% [0, 24] |  |
-| 인간 상처 (12) | 1 | 10 | 1 | 8% [1, 35] |  |
-| 인간 노인 (12) | 0 | 8 | 4 | 0% [0, 24] |  |
-| 인간 병원 (12) | 0 | 9 | 3 | 0% [0, 24] |  |
-| 인간 학교 (12) | 0 | 7 | 5 | 0% [0, 24] |  |
+| GPT rain-intensive (12) | 11 | 0 | 1 | 92% [65, 99] | <0.0001 |
+| Solar rain-intensive (12) | 11 | 0 | 1 | 92% [65, 99] | <0.0001 |
+| EXAONE rain-intensive (12) | 10 | 1 | 1 | 83% [55, 95] | 0.0003 |
+| Opus winter (12) | 8 | 1 | 3 | 67% [39, 86] | 0.0007 |
+| Opus family (12) | 8 | 2 | 2 | 67% [39, 86] | 0.0007 |
+| Opus rain-intensive (12) | 8 | 2 | 2 | 67% [39, 86] | 0.0047 |
+| Gemini rain-intensive (12) | 3 | 6 | 3 | 25% [9, 53] | 0.2950 |
+| Gemini winter (12) | 3 | 6 | 3 | 25% [9, 53] | 0.1087 |
+| Human rain-intensive (12) | 1 | 10 | 1 | 8% [1, 35] | |
+| Human winter (12) | 0 | 10 | 2 | 0% [0, 24] | |
+| Human family (12) | 0 | 8 | 4 | 0% [0, 24] | |
+| Human wounds (12) | 1 | 10 | 1 | 8% [1, 35] | |
+| Human old age (12) | 0 | 8 | 4 | 0% [0, 24] | |
+| Human hospital (12) | 0 | 9 | 3 | 0% [0, 24] | |
+| Human school (12) | 0 | 7 | 5 | 0% [0, 24] | |
 
-관찰: 인간 층 일곱의 봉합은 합계 2/84(이시영 「수고」, 천양희 「공어 이야기」). 생성 층 대 짝 인간 층의 Fisher 정확검정(단측, 생성 > 인간)은 Gemini의 두 층(비 p=0.30, 겨울 p=0.11)을 제외한 여섯 층에서 p≤0.005다. Gemini 겨울 3번은 Gemini 비 7번과 같은 작품이다(두 층의 모집단에 모두 속함). 인간 비 층의 4번과 9번은 같은 작품(김선재 「열대야」)의 두 판본으로 코퍼스에 각각 실려 있어 따로 추출되었으며 판정은 동일하다.
+Sealing in the seven human strata totals 2 of 84 (Lee Si-young's 「수고」 'Toil';
+Cheon Yang-hui's 「공어 이야기」 'The Tale of the Kongeo'). A one-sided Fisher exact test
+(generated > human) against the paired human stratum gives p ≤ 0.005 in six of the
+eight generated strata, the exceptions being Gemini's two (rain p = 0.30, winter
+p = 0.11). Item 3 of the Gemini winter stratum is the same work as item 7 of the
+Gemini rain stratum (it belongs to both populations). Items 4 and 9 of the human rain
+stratum are two versions of the same work (Kim Seon-jae's 「열대야」 'Tropical Night'),
+carried separately in the corpus and therefore drawn separately; the judgment is the
+same for both.
 
-## 5. 부록 — 표본 전 항목과 판정
+Under an adverse recoding — every borderline item resolved in the direction least
+favourable to the claim — the human rate rises from 2/84 (2.4%) to 22/84 (26.2%) while
+the generated rate is unchanged at 62/96 (64.6%), and five of the eight generated
+strata remain significant (p ≤ 0.018). Per-stratum values: SI Table S8-1.
+
+## 5. Appendix — every item of the sample, with its judgment
+
+The judgment unit is given in Korean, as it was judged: roughly the last 170 characters
+for the generated works, and bibliography with the single phrase on which the judgment
+rests for the human works. **SI S8 of the paper prints every one of these 180 items with
+an English translation beside the Korean**, using the category names of §2 above.
+The bracketed label after each item is the category and the reason for the judgment;
+`docs/glossary.md` maps those Korean labels to the English terms used in the paper.
 생성 출력은 판정 단위인 결말 약 170자를 싣고, 인간 작품은 서지와 판정 근거가 된 한 구절만 싣는다(본문 §2.5).
 
-### GPT 비 (12) — 봉합11 · 미해소·열림0 · 경계1
+### GPT rain-intensive (12) — seal 11 · unresolved 0 · borderline 1
 1. …주소처럼 돌아갈 곳을 잃었지만, 창문마다 불이 켜질 때마다 마음 한구석에도 작은 방 하나가 생겼다. 그곳에서 너는 여전히 식지 않은 차를 마시고, 나는 끝내 묻지 못한 안부를 접어 네 곁에 놓는다. 밤은 모든 대답을 품은 채 깊어지고, 빗물 위로 흔들리는 별 하나가 우리 사이의 먼 길을 조용히 건너온다. [봉합:위안 이미지]
 2. …듯했지만, 내 그림자는 자꾸만 길어져 닿을 수 없는 계절까지 건너갔다. 그래도 바람은 젖은 나뭇잎을 한 장씩 뒤집어 어둠 속에도 푸른 뒷면이 있음을 보여 주었다. 나는 그 작은 빛을 믿기로 했다. 잊는다는 것은 사라지는 일이 아니라, 아픈 이름 곁에 조용히 의자를 놓고 함께 늙어 가는 일인지도 모르므로. [봉합:믿음+재정의]
 3. …새가 번지자, 세상은 상처 입은 것들을 조용히 집으로 불러들였다. 그러나 돌아갈 곳을 잃은 그리움만은 내 그림자 곁에 남아, 발끝이 닿을 때마다 먼 강물 소리를 냈다. 나는 천천히 걸었다. 잊는다는 것은 지우는 일이 아니라, 어둠 속에서도 그 사람의 자리를 밟지 않도록 오래도록 비켜 걷는 일이라는 듯이. [봉합:재정의]
@@ -56,7 +119,7 @@
 11. …서도 젖은 잎들은 제 빛을 잊지 않았고, 나는 잊는다는 것이 완전히 지우는 일이 아니라 마음 한쪽에 작은 방을 내어 주는 일임을 알았다. 아무도 돌아오지 않는 길 끝에서 바람이 한 번 내 이름을 잘못 불렀다. 나는 모르는 사람처럼 뒤돌아보았고, 그 순간 세상은 잠시 네가 아직 떠나지 않은 곳처럼 환했다. [봉합:깨달음]
 12. …지나갔다. 떠난다는 것은 어쩌면 한 사람의 온도를 천천히 잊는 일, 그러나 찻잔 바닥에 남은 미지근한 빛처럼 마음은 끝내 조금을 남겨 두는 일. 그래서 나는 빈 의자를 치우지 않는다. 언젠가 바람이 네 이름을 모르고 들어와 앉더라도, 그 낯선 무릎 위에 한때 우리의 것이었던 계절을 조용히 올려놓기 위해. [봉합:의례화 수용]
 
-### Solar 비 (12) — 봉합11 · 미해소·열림0 · 경계1
+### Solar rain-intensive (12) — seal 11 · unresolved 0 · borderline 1
 1. …불어왔던 듯합니다. 지금도 그 바람은 끊이지 않고, 도시의 작은 골목마다 같은 이야기를 전하며 흐릅니다. 나는 그 이야기를 따라 걸으며, 내 안의 작은 씨앗이 조금씩 깨어나는 소리를 듣습니다. 이 바람은 우리에게 잠시 멈추어 숨을 고르게 하라고 속삭이고, 또 다시 걸어 나가야 할 길을 조용히 알려줍니다. [봉합:안내 위안]
 2. …늘 아래서 조용히 숨을 쉬는 사람들, 그들의 눈빛은 마치 오래된 시집을 읽는 듯 고요하다. 비가 내리기 시작하면 도심의 소음이 사라지고, 물방울은 창문에 맺혀 작은 별이 되어 반짝인다. 그때마다 나는 시간의 틈바구니에서 잃어버린 꿈을 찾아 헤매며, 그 꿈은 언제나 내 안에 조용히 스며들어 은은히 빛난다. [봉합:위안 이미지]
 3. … 창문 틈새로 스며들어 내 꿈을 흔들고, 발끝에 닿는 차가운 빗방울이 과거와 현재를 잇는다. 어린 시절 놀이터의 그네는 지금도 흔들리며, 바람은 지나간 약속을 되새김질한다. 작은 카페에서 흘러나오는 재즈 선율은 추억을 휘감아, 먼 도시의 불빛이 하늘에 녹아들 때 나는 조용히 내 안의 강을 다시 바라본다. [봉합:회귀 안정]
@@ -70,7 +133,7 @@
 11. … 작은 별처럼 반짝인다. 차가운 물방울이 따뜻한 햇빛을 만나면, 그 순간만큼은 모든 것이 잠시 멈춰 서서 서로의 존재를 확인한다. 물속에 비친 나의 그림자는 조용히 흔들리며, 내가 지나온 길을 돌아보게 만든다. 물은 언제나 흘러가며, 그 흐름 속에서 나는 조용히 숨을 고르고, 또 다른 물방울을 기다린다. [경계:평온한 대기]
 12. …리는 모두 서로에게 젖은 길을 걸어가고 있다는 것. 그 길은 때론 고요하고 때론 울퉁불퉁하지만, 발걸음마다 새로운 이야기를 새겨 넣는다. 비가 다시 내리기 시작하면, 하늘은 우리에게 또다시 새로운 시작을 약속한다. 이제 나는 그 길을 따라, 작은 걸음으로 천천히 나아가며, 눈앞의 풍경을 시처럼 음미한다. [봉합:약속 위안]
 
-### EXAONE 비 (12) — 봉합10 · 미해소·열림1 · 경계1
+### EXAONE rain-intensive (12) — seal 10 · unresolved 1 · borderline 1
 1. …빛이 스민다. 창가에 기대어 앉아 있노라면, 햇살이 살갗을 스치는 게 느껴진다. 바람도 같이 온다. 창문 틈새로 스며들던 바람이 내 어깨를 타고 목 뒤로 흘러내린다. 어느새 옷깃이 젖어 있다. 여름은 이렇게 또 한 번 내게로 와서 몸을 맡기고 간다. [봉합:수용(계절의 안온)]
 2. …뻗는다. 그 사이로 스며드는 빛이 젖은 잎들을 타고 흘러내린다. 사람들도 가끔은 그렇게 서로의 그늘에 기대어 서 있을 때가 있다. 비록 비에 젖어도 함께 서 있는 것만으로 따뜻함을 느낄 수 있다면 그것으로 충분하다. 세상은 언제나 그렇듯이 혼자서 밝게 빛나기보다는 함께 젖어가는 것이 더 아름다운 법이다. [봉합:잠언 위안]
 3. … 스쳐 지나가며 속삭인다. 어디로 가야 할지 모르겠다. 발걸음은 무겁고, 마음은 더욱 무겁다. 길은 보이지 않고, 끝은 보이지 않는다. 나는 그저 서 있을 뿐이다. 시간은 흐르고, 비는 내리고, 세상은 계속된다. 아무도 내게 말해주지 않지만, 아무도 내게 묻지 않는다. 나는 오늘도 비를 맞으며 서 있다. [미해소:긴장 지속(길·끝이 보이지 않음); 대상 없음(비·길·발걸음 등 일반 풍경만)]
@@ -84,7 +147,7 @@
 11. …한 조각의 모래알 같은 존재일지도 모른다. 바람에 날리다 어느 순간 땅에 닿아, 그 위를 지나는 사람들의 발길에 밟히고, 비에 씻겨, 햇빛에 말라간다. 그래도 나는 여기 있다. 작고 미미하지만, 이 땅의 한 부분이고, 하늘 아래 하나의 생명이다. 가끔은 내가 별인지도 모르는 채로, 어둠 속에서 반짝인다. [봉합:자기 긍정]
 12. …문을 스치는 빗줄기에 얼굴을 묻고 서 있노라면 세상은 조금씩 흐려진다 흐릿한 시야 사이로 스쳐 지나가는 빛의 조각들 내 마음도 그처럼 흐르다 멈추다를 반복한다 어둠이 깊어질수록 별은 더 밝게 빛나듯 슬픔이 밀려올 때면 기쁨은 저 멀리서 반짝인다 나는 오늘도 이 빗방울과 함께 흐르며 어딘가에 닿기를 바란다 [경계:위안 어조의 열린 소망(닿기를 바란다)]
 
-### Opus 겨울 (12) — 봉합8 · 미해소·열림1 · 경계3
+### Opus winter (12) — seal 8 · unresolved 1 · borderline 3
 1. …저 멀리 가로등 하나가 마지막 남은 온기처럼 흔들리고 나는 식어가는 찻잔을 두 손으로 감싸며 이 겨울이 내게 무엇을 남기려 이토록 조용한지 오래 생각한다 성에는 곧 녹아 흘러내리겠지만 그것이 지나간 자리마다 남는 희미한 물길처럼 나의 계절도 어딘가로 천천히 스며들어 다른 누군가의 아침을 적시게 될 것이다 [봉합:위안 이미지(순환)]
 2. …만 깊어진다는 것을, 볕이 들지 않는 항아리 속에서 여문 것들이 가장 오래 우리를 먹여 살린다는 것을. 눈은 소리 없이 쌓이고, 나는 어머니가 남기고 간 항아리 앞에 무릎을 꿇는다. 뚜껑을 열자 오래 참아온 냄새가 흰 김처럼 피어오르고, 그 속에서 나는 아직도 나를 기다리고 있는 한 사람의 손을 만난다. [봉합:재회 위안]
 3. … 대었다. 녹은 자리로 바깥이 조금씩 보인다. 흐린 하늘, 마른 감나무, 그 가지 끝에 얼어붙은 붉은 것 하나. 겨울은 그렇게 마지막 단맛을 오래 매달아 둔다. 나는 창에 이마를 대고 눈을 감는다. 성에가 내 체온을 받아 천천히 무너지는 소리, 아주 작아서 아무도 듣지 못하는 그 소리를 나 혼자 듣는다. [경계:감각 지속]
@@ -98,7 +161,7 @@
 11. …나는 소리 속에서 나는 비로소 알게 된다 그 겨울 아침마다 어머니가 쓸어낸 것은 눈만이 아니었음을 어쩌면 어머니는 자식이 걸어갈 길 위에 쌓인 세상의 차가움을 매일 조금씩 치워내고 있었던 것이라고 그렇게 나는 어머니가 그러했듯 마당 끝까지 길을 내고 서서 아직 눈이 내리는 잿빛 하늘을 오래도록 올려다본다 [봉합:깨달음(계승)]
 12. …고 마는 것이어서 나는 다만 창을 열고 차가운 공기를 한껏 들이마신다 저 멀리 산등성이가 눈을 이고 묵묵히 앉아 있고 까치 한 마리가 마른 가지를 흔들며 날아오른다 살아 있다는 것은 어쩌면 이렇게 매일 아침 사라지는 무늬들을 견디는 일인지도 모른다 나는 다시 유리 앞에 앉아 새로 피어나는 성에를 기다린다 [경계:견딤 명명+열린 대기]
 
-### Opus 가족 (12) — 봉합8 · 미해소·열림2 · 경계2
+### Opus family (12) — seal 8 · unresolved 2 · borderline 2
 1. … 바뀌는 그 신비한 연금술의 맛이다. 어머니는 어떻게 알았을까, 기다림이 결국 맛이 된다는 것을. 볕 좋은 날이면 뚜껑을 열어 하늘을 담고 비 오는 날이면 서둘러 덮어 어둠을 지켰던 그 수많은 날들. 나는 이제야 안다. 장독대는 어머니가 세운 작은 사원이었음을, 그 앞에서 나는 오래 기도하듯 서 있었다. [봉합:깨달음]
 2. … 다시 물을 올린다. 빗소리는 여전하고, 끓는 물의 김이 유리창을 뿌옇게 흐린다. 그 흐림 속에서 나는 어머니의 얼굴을 본다. 사라진 것들은 사라지지 않고 다만 김처럼 흩어져 내 폐 속으로 스며든다. 나는 숨을 들이쉰다. 어머니가 몸속으로 들어온다. 비는 그치지 않고, 나는 오래도록 그 자리에 서 있다. [봉합:재정의]
 3. …딛고 창가로 간다 밖에는 아무도 켜지 않은 가로등이 홀로 깨어 있고 나는 그 빛에 대고 오래 묻는다 견딘다는 것은 결국 아침이 올 때까지 서 있는 일인지 아니면 서 있는 동안 조금씩 다른 사람이 되어 가는 일인지 대답 대신 냉장고가 다시 낮게 웅웅거리기 시작하고 나는 그 소리를 어머니의 숨소리처럼 듣는다 [경계:질문+위안 이미지]
@@ -112,7 +175,7 @@
 11. … 들키지 않은 서러움을 흐르는 물에 흘려보내며 다시 아침을 맞을 준비를 했던 것이다 이제 나도 그 나이가 되어 저녁마다 물 앞에 선다 수도꼭지를 틀면 쏟아지는 물소리 속에서 나는 자꾸 어머니의 뒷모습을 씻어 낸다 그러나 아무리 헹구어도 지워지지 않는 것이 있어 그것은 아마도 사랑이라 불리는 얼룩일 것이다 [봉합:재정의(잠언)]
 12. …물지 못해 이렇게 설익은 채로 계절을 흘려보낸다. 뚜껑 위에 내려앉는 눈송이가 녹으며 소리 없이 스미는 저녁, 어머니의 굽은 등이 장독대 위로 겹쳐지고, 나는 그제야 안다. 삭아야 깊어진다는 것을, 무너져야 비로소 누군가의 밥상에 오를 수 있다는 것을. 언 손을 호호 불며 나는 항아리를 오래 쓰다듬는다. [봉합:깨달음]
 
-### Opus 비 (12) — 봉합8 · 미해소·열림2 · 경계2
+### Opus rain-intensive (12) — seal 8 · unresolved 2 · borderline 2
 1. …은 안으로 들어오고 싶다는 뜻이겠지. 나는 창을 열지 않는다. 열면 빗물이 편지를 적실 테고, 그러면 마지막 남은 네 목소리마저 완전히 번져 읽을 수 없게 될 테니까. 대신 나는 유리에 이마를 대고 빗소리를 듣는다. 차가운 유리 너머로 너의 온기가 아주 조금, 아주 오래 전의 온기가 전해지는 것 같아서. [경계:위안 감각+미완 구문]
 2. …에 서서 읽지 못한 문장들을 빗소리로 대신 듣는다 골목 끝 가로등이 젖은 빛을 흘리고 나는 부러진 우산살 사이로 하늘을 올려다보는데 거기 어떤 얼굴이 조금씩 지워지고 있어서 나는 우산을 접지 못하고 비를 다 맞으며 오래 그 자리에 머문다 마르지 않는 것이 있다면 그것은 아마도 뒤늦게 배우는 마음일 것이다 [봉합:잠언]
 3. …아직 도착하지 못한 사람처럼, 혹은 이미 오래전에 떠나온 사람처럼, 빗속에서 자꾸만 뒤를 돌아본다. 거기 아무도 없다는 걸 알면서도. 그래도 비는 내리고, 나는 젖고, 젖은 몸은 무거워지고, 무거워진 만큼 나는 조금 더 이 세계에 붙들린다. 어쩌면 비는 나를 여기 머물게 하려는 누군가의 오랜 방식일지도. [봉합:재정의]
@@ -126,7 +189,7 @@
 11. …가야 한다는 것이 서글프다. 나는 식어버린 찻잔을 두 손으로 감싸 쥔다. 온기는 없지만, 없는 온기라도 붙잡아야 견딜 수 있는 저녁이 있다. 빗물은 여전히 흘러내리고, 그 물줄기 끝에서 나는 오래전 잃어버린 이름을, 이제는 부르지 않기로 한다. 부르지 않아도 그것은 이미 내 안에서 조용히 젖어 있으므로. [봉합:수용]
 12. …남아서 종이의 몸에 새겨진 흉터가 된다. 우리가 나눈 모든 말들도 그렇게 어딘가에 접힌 채로, 펴지지 않는 주름으로 남아 있을 것이다. 밤이 깊어지면 빗소리는 점점 더 또렷해지고 나는 듣는다, 오래전 당신이 문을 닫고 떠나던 그 조용한 소리를. 그것은 지금도 내 안에서 천천히, 아주 천천히 닫히고 있다. [미해소:진행형(상실 지속); 대상 있음(당신이 문을 닫고 떠남(사건))]
 
-### Gemini 비 (12) — 봉합3 · 미해소·열림6 · 경계3
+### Gemini rain-intensive (12) — seal 3 · unresolved 6 · borderline 3
 1. …서성였고, 나는 우리가 마지막으로 건넜던 이 횡단보도 위에서 발을 떼지 못했다. 이윽고 신호가 바뀌고 붉은 미등들이 일제히 어둠 속으로 멀어져간다. 텅 빈 도시의 한가운데, 길 잃은 주파수처럼 나 혼자 서서 당신이라는 잡음이 완전히 사라지기를, 혹은 다시 한번 선명하게 들려오기를 가만히 기다리고 있었다. [미해소:양가 대기; 대상 없음(익명의 흐름·풍경만)]
 2. …는 것은 길 위의 먼지뿐일까, 내 안에 쌓인 희미한 후회들마저 이 빗줄기에 쓸려가는 것일까, 저기 붉은 우산 하나가 홀로 발걸음을 멈추고 웅덩이에 비친 제 모습을 잠시 들여다보는 동안, 커피 잔에 남은 마지막 온기가 손바닥으로 스며들고 빗줄기는 잠시 굵어졌다 가늘어지며 세상의 경계를 부드럽게 지워버린다. [경계:질문 열림+정조 용해]
 3. …상의 끝에 선 것만 같은 막연한 불안감이 뒤섞인 채, 흠뻑 젖은 채로 웃고 있었다. 그때의 나는 이제 어디에도 없지만, 말라붙은 일상의 균열 사이로 문득 스며드는 이 냄새는 마른 강바닥 같던 마음에 잠시 고였다가 흔적 없이 사라지는 짧은 소나기처럼, 여전히 그 순간의 나를 온전히 데려와 내 앞에 세운다. [경계:회상 완결, 위안 아님]
@@ -140,7 +203,7 @@
 11. …같아서, 손에 쥐어본 적 없는 약속들이 발치에서 흥건히 고여 있고 차마 뱉지 못한 말들은 희미한 입김이 되어 사라진다. 정류장을 알리는 기계음이 무심하게 공간을 가르고 누군가 내리고 또 누군가 오르는 동안, 나는 아직 내릴 곳을 정하지 못한 채 그저 흘러가는 불빛의 소용돌이 속에 잠시 나를 흩뿌려 본다. [미해소:미결정; 대상 없음(익명 승객·불빛만)]
 12. …화들이 물안개처럼 피어오른다. 시간의 경계가 녹아내리는 오후, 빗물에 씻겨나간 거리처럼 내 마음의 쌓인 먼지들도 조금은 투명해지는 기분이다. 비가 그치고 나면 세상은 잠시 더 선명한 빛을 띠겠지. 젖은 채로 반짝이는 나뭇잎들처럼, 내 안의 기억들도 그렇게 잠시 맑아졌다가 다시 일상 속으로 스며들 것이다. [봉합:정화 위안]
 
-### Gemini 겨울 (12) — 봉합3 · 미해소·열림6 · 경계3
+### Gemini winter (12) — seal 3 · unresolved 6 · borderline 3
 1. …미한 자동차 소음이 정적을 가르고 지나가는 이 거리에서, 모든 빛나던 것들은 부서져 발밑에 흩어진 유리 조각이 되었으니, 나는 상처 나지 않으려 조심스럽게 한 걸음을 내디딜 뿐이다. 내 발자국 소리만이 나를 따라오는 유일한 온기인 것처럼, 어둠은 소리 없이 더 깊어지고 나는 여전히 그 길 위에 서 있다. [미해소:지속 정체; 대상 없음(자동차 소음·유리 조각 풍경만)]
 2. …앉으며 방 안의 모든 사물들에게 긴 그림자를 나누어주었고, 나는 지워지지 않는 얼룩처럼 그 자리에 오래 서서, 손가락이 새긴 길 위로 느리게 지나가는 시간의 잔상을 바라보았다. 모든 것은 흐르고, 모든 것은 희미해지고, 그럼에도 불구하고 온기는 아주 더디게, 심장의 가장 깊은 곳에서부터 차오르고 있었다. [봉합:위안 차오름]
 3. …흙냄새와 함께 스며든다. 이 비는 어느 기억의 문턱을 넘어 여기까지 흘러왔을까. 어깨를 적시던 누군가의 온기 같기도 하고, 끝내 삼켜야 했던 서러운 말들 같기도 하다. 나는 가만히 눈을 감는다, 세상의 모든 소란이 빗소리에 잠기고 오직 내 안의 고요한 떨림만이 낡은 필름처럼 영사되는 이 밤의 한가운데서. [미해소:한가운데 중단(비 층 7번과 같은 작품); 대상 없음(냄새·고요만)]
@@ -154,7 +217,7 @@
 11. …는 다가올 긴 침묵의 서곡이며, 세상의 모든 색이 바래고 무채색의 풍경만이 남아 비어 있는 것들의 충만함을 가르친다. 나는 외투 주머니에 두 손을 찔러 넣고 가로등 불빛이 희미하게 번지는 길의 끝을 향해, 이 혹독한 계절이 선사하는 선명한 각성을 끌어안고 아직 오지 않은 빛을 향해 조용히 걸어갈 뿐이다. [봉합:각성·희망 결의]
 12. …적부터 그래왔다는 듯 쉼 없이 밀려와 제 몸을 부수고 흩어지는 저 파도 소리 앞에선 한낱 모래알에 불과했다. 나의 시선보다 더 먼 곳으로 검은 점이 되어 사라지는 새 한 마리와, 마지막 빛줄기마저 삼켜버린 바다의 침묵 속에서, 오직 영원처럼 들려오는 물결의 소리만이 나의 존재를 희미하게 증명하고 있었다. [경계:정조 용해(희미한 긍정)]
 
-### 인간 비 (12) — 봉합1 · 미해소·열림10 · 경계1
+### Human rain-intensive (12) — seal 1 · unresolved 10 · borderline 1
 1. 권혁웅 「비와 칼국수가 있는 풍경」 "그렇게 죽음 쪽으로 나는 한발짝 이동했다" [미해소:죽음 쪽 이동; 대상 있음]
 2. 이시영 「수고」 "그들의 땀을 잠시 닦아주시었다" [봉합:위안 이미지(신의 손길)]
 3. 남진우 「실종」 "죽음이 있을 따름입니다……" [미해소:죽음 선고; 대상 있음]
@@ -168,7 +231,7 @@
 11. 정복여 「그리움」 "사랑이 새겨넣은 불도장 같은 것," [미해소:파편; 대상 있음]
 12. 김민정 「하여간에 선수인 것 같은, 끝 —곡두 17」 "완성이 될 시가 아닌가 싶었다" [미해소:메타적 유보; 대상 있음]
 
-### 인간 겨울 (12) — 봉합0 · 미해소·열림10 · 경계2
+### Human winter (12) — seal 0 · unresolved 10 · borderline 2
 1. 정재학 「어느 안과 의사의 폐업 전야」 "저를 보시지요?" [미해소:질문; 대상 있음]
 2. 정우영 「대밭」 "웃음소리만 대밭에 가득하다" [경계:장면 지속(소외)]
 3. 안태운 「원어」 "낙엽을 밟고 있었다." [미해소:진행형; 대상 있음]
@@ -182,7 +245,7 @@
 11. 이장욱 「감자에 싹이 나고-코끼리 군의 엽서」 "불빛은 다시 저렇게 고여 있다" [경계:아이러니 평온]
 12. 김안 「거미의 집」 "그 어떤 것도 걸려들지 않겠지." [미해소:소멸 예감; 대상 있음]
 
-### 인간 가족 (12) — 봉합0 · 미해소·열림8 · 경계4
+### Human family (12) — seal 0 · unresolved 8 · borderline 4
 1. 서효인 「영광」 "엄마의 젖무덤이," [미해소:파편 중단; 대상 있음]
 2. 서상영 「눈과 오이디푸스 - 굳세어라 가족아 3」 "누구도 얘기하지는 않았지만" [미해소:역접 미완; 대상 있음]
 3. 이시영 「조사받다가 남산 수사관들에게서 우연히 들은 말」 "제일 즐거워 어쩔 줄 몰라했다고 한다" [경계:유머 완결]
@@ -196,7 +259,7 @@
 11. 이상국 「달은 아직 그 달이다」 "여기까지밖에 못 왔다. 달은 아직 그 달이다." [미해소:미완의 인정; 대상 있음]
 12. 황성희 「네덜란드식 애국 소녀」 "준비된 스타라는 걸 제발 좀." [미해소:아이러니 호소; 대상 있음]
 
-### 인간 상처 (12) — 봉합1 · 미해소·열림10 · 경계1
+### Human wounds (12) — seal 1 · unresolved 10 · borderline 1
 1. 고창환 「선인장」 "불면의 밤을 지새워야 하는지" [미해소:고통 강조; 대상 있음]
 2. 김박은경 「잎에 대해서는 입에 대해서는」 "어지러워 무거워 어디쯤이니" [미해소:질문; 대상 있음]
 3. 허은실 「폴리」 "죽어지지가 않아 썩을!" [미해소:욕설 긴장; 대상 있음]
@@ -210,7 +273,7 @@
 11. 김상혁 「당신 같은 작품」 "좋아 너무 좋아" [미해소:반복 아이러니; 대상 있음]
 12. 이영주 「엄마의 과일청」 "모든 병이 썩고 있었다" [미해소:부패 진행; 대상 있음]
 
-### 인간 노인 (12) — 봉합0 · 미해소·열림8 · 경계4
+### Human old age (12) — seal 0 · unresolved 8 · borderline 4
 1. 서효인 「마스크 1」 "돌발적 상황이 생길 것이다" [미해소:긴장 예고; 대상 있음]
 2. 김언희 「서 있습니다」 "입술을 떠는 누군가를..." [미해소:파편 지속; 대상 있음]
 3. 진수미 「좀비도 방귀를 뀝니까」 "뛰쳐나가는 수밖에 없었다네" [미해소:긴장; 대상 있음]
@@ -224,7 +287,7 @@
 11. 배영옥 「재활용함」 "재활용되지 않을 저것은," [미해소:중단; 대상 있음]
 12. 이시영 「5호선」 "즐거운 콧김을 내뿜으며 씽씽 달렸다" [경계:아이러니 완결]
 
-### 인간 병원 (12) — 봉합0 · 미해소·열림9 · 경계3
+### Human hospital (12) — seal 0 · unresolved 9 · borderline 3
 1. 성동혁 「식빵」 "뚱뚱한 바람이 불지요" [경계:장면 지속]
 2. 윤지양 「8월 7일」 "마음이 무거워졌어" [미해소:불안 질문; 대상 있음]
 3. 유선혜 「괄호가 사랑하는 구멍」 "우리를 슬퍼지게 만드는 거겠지요" [미해소:슬픔 진술; 대상 있음]
@@ -238,7 +301,7 @@
 11. 장이지 「가랑비 몽몽」 "아프다는 전보도 없이" [미해소:중단; 대상 있음]
 12. 김유림 「안개」 "속지 않는 동생이지" [경계:아이러니 종결]
 
-### 인간 학교 (12) — 봉합0 · 미해소·열림7 · 경계5
+### Human school (12) — seal 0 · unresolved 7 · borderline 5
 1. 서효인 「효창공원」 "사제 폭탄처럼 바드득." [미해소:긴장; 대상 있음]
 2. 남진우 「거울을 들여다보다」 "소년의 모습만이 얼어붙어 있다" [미해소:긴장 이미지; 대상 있음]
 3. 장이지 「커피포트」 "그러게, 그게 뭘까?" [미해소:질문; 대상 있음]
@@ -251,3 +314,4 @@
 10. 정재학 「기면」 "내 등을 두드려주고 있었다" [경계:위안 행위+악몽 지속]
 11. 신경림 「산토끼 (江邑記 4)」 "산토끼들로 가득하다" [경계:아이러니]
 12. 이시영 「5월 어머니회」 "돈으로 모독할 수 없기 때문이다" [경계:선언 완결, 위안 아님]
+

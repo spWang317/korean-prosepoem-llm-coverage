@@ -1,14 +1,55 @@
-# 데이터·코드 공개 범위
+# Scope of the data and code release
 
-## 공개하는 것
-- 생성 로그 전체(`data/generated/arm_ab/*.jsonl`): 시도·기각 포함, 프롬프트 SHA-256 기록. EXAONE은 셀당 200편의 전체 배치를 싣고, 분석 코드(`phase2_topic_full.py`)가 셀마다 25번째 유효작까지의 행을 본문 프로토콜 창으로 잘라 쓴다.
-- 분석 코드(`scripts/`)와 파생 산출물(`results/phase2/`, `results/phase2c/`): 유지율(`retention_ladder.csv`), 동행(`company_weighted.json`, `company_profile.csv`), 생성 축 감사(`bertopic_fresh_topics.csv`, `fresh_soft_projection.csv`), 결말 감사(`closure_audit_samples_public.txt`, `closure_audit_labels.csv`, `closure_audit_table.csv`), 인용작 선별 기록(`close_reading_provenance.json`, `naming_set_typicals.csv`, `naming_set_features.csv`, `human_top_works.csv`), 부트스트랩 CI(`human_motif_ci.json`, `retention_ci.csv`), 강건성 점검(`avoidance_set_stability.json`, `length_check.json`, `human_split_check.json`), 필터 점검(`form_x_topic_protocol.json`).
-- 결말 감사 기준 문서와 판정 전 항목(`docs/closure_audit.md`, `results/phase2/closure_audit_labels.csv`), 표본의 판정 단위(`results/phase2/closure_audit_samples_public.txt`: 생성 96편은 결말 약 170자, 인간 84편은 서지와 판정 근거 구절). `closure_audit_labels.csv`에는 범주·사유·대상 유무만 있고 인간 작품의 구절은 서지와 함께 위 파일에만 있다.
-- 계측기 동결 자산(모티프 중심 벡터, 인간 지분 백분율, 모티프 정보; `data/atlas/instrument_frozen/`). 이 자산은 동반 연구의 산출이며, 그 연구의 출판 절차가 끝나면 이 저장소에서 빼고 동반 연구 저장소를 가리킨다.
+## Released
 
-## 공개하지 않는 것
-- 인간 작품 원문(`data/atlas/metadata.csv`의 원문 열). 저작권상 재배포하지 않으며, 논문과 공개 산출물에는 지분 백분율·서지·짧은 구절, 그리고 결말 감사의 판정 근거 구절만 싣는다.
+- **The complete generation logs** (`data/generated/arm_ab/*.jsonl`): attempts and
+  rejections included, with a SHA-256 record of each prompt. For EXAONE the full batch
+  of 200 works per cell is included; the analysis code (`phase2_topic_full.py`) cuts
+  each cell at the 25th valid work to form the protocol sample used in the paper.
+- **The analysis code** (`scripts/`) **and the derived artefacts**
+  (`results/phase2/`, `results/phase2c/`): retention (`retention_ladder.csv`), company
+  (`company_weighted.json`, `company_profile.csv`), the generated-axis audit
+  (`bertopic_fresh_topics.csv`, `fresh_soft_projection.csv`), the ending audit
+  (`closure_audit_samples_public.txt`, `closure_audit_labels.csv`,
+  `closure_audit_table.csv`), the selection record for the quoted works
+  (`close_reading_provenance.json`, `naming_set_typicals.csv`,
+  `naming_set_features.csv`, `human_top_works.csv`), the bootstrap confidence
+  intervals (`human_motif_ci.json`, `retention_ci.csv`), the robustness checks
+  (`avoidance_set_stability.json`, `length_check.json`, `human_split_check.json`) and
+  the filter check (`form_x_topic_protocol.json`).
+- **The ending audit's criteria document and every judgment**
+  (`docs/closure_audit.md`, `results/phase2/closure_audit_labels.csv`), together with
+  the judgment units of the sample (`results/phase2/closure_audit_samples_public.txt`:
+  roughly the last 170 characters for the 96 generated works, bibliography and the
+  single phrase on which the judgment rests for the 84 human ones).
+  `closure_audit_labels.csv` carries only the category, the reason and the
+  object sub-judgment; the human phrases appear, with their bibliography, in the
+  samples file alone.
+- **The frozen instrument assets** (motif centroid vectors, human share percentages,
+  motif metadata; `data/atlas/instrument_frozen/`). These are the product of a
+  companion study. Once that study's publication process is complete they will be
+  removed from this repository, which will then point to the companion study's own
+  repository.
 
-## 표집 프로토콜(요약)
-셀(시스템×프롬프트)마다 유효 25편에 도달하면 중단한다. 기본 상한 60회(전송 실패 포함), 상한에서 유효가 하나라도 나온 셀만 400회까지 확대한다. 응답이 돌아오지 않은 호출(HTTP 400 사용량 한도, 429 요청 제한)은 로그에 남되 형식 판정과 유효율에서 제외한다. HCX는 시도 1,002회 가운데 224회가 429 전송 실패이고, 완료 호출 778회 = 조기 충족 3셀 88회 + 유효 0인 7셀 321회 + 확대 2셀 369회(SI S9). Opus는 시도 369회 가운데 69회가 400 전송 실패이고 완료 호출 300회가 전부 유효하다.
-- 인간 기준선의 구축(본문 §2.1의 네 규칙과 5,166→4,642 필터)과 계측기(25모티프) 적합은 동반 연구의 공개본에 속하며, 이 패키지는 그 산출(인간 지분·모티프 정보)을 입력으로만 쓴다.
+## Not released
+
+- **The full text of the human poems** (the source-text column of
+  `data/atlas/metadata.csv`). It is not redistributed, for copyright reasons. The
+  paper and the released artefacts carry only share percentages, bibliographic
+  details, short phrases, and the phrases on which the ending-audit judgments rest.
+
+## Sampling protocol (summary)
+
+Generation stops in each cell (system × prompt) once 25 valid works have accumulated.
+The base cap is 60 attempts, transport failures included; only a cell that produced at
+least one valid output at the cap is extended to 400. Calls that returned no response
+(HTTP 400 usage limit, HTTP 429 rate limit) stay in the log but are excluded from the
+form judgment and from the validity rates. HCX made 1,002 attempts, of which 224 were
+429 transport failures; its 778 completed calls are 88 in the three cells that filled
+early, 321 in the seven cells with no valid work, and 369 in the two extended cells
+(SI S9). Opus made 369 attempts, of which 69 were 400 transport failures, and all 300
+completed calls are valid.
+
+The construction of the human baseline (the four rules of §2.1 and the 5,166 → 4,642
+filter) and the fitting of the 25-motif instrument belong to the companion study; this
+package takes their output — the human shares and the motif metadata — as input only.

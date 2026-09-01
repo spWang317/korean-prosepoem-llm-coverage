@@ -1,13 +1,18 @@
-"""closure_audit_sampling.py — 결말 감사(본문 §2.4.6·§3.6)의 표본 추출.
+"""closure_audit_sampling.py — draws the sample for the ending audit (paper §2.4.6, §3.6).
 
-층: 형식을 지키는 다섯 시스템의 비-집약 층, Opus의 겨울·가족 층, Gemini의 겨울 층, 인간의 비·가족·겨울·상처·노인·병원·학교 층(총 15층, 층당 12편).
+Strata: a rain-intensive stratum for each of the five form-compliant systems, Opus
+winter and Opus family, Gemini winter, and human rain, family, winter, wounds, old age,
+hospital and school -- 15 strata, 12 works each.
 
-전 집단 공통 절차:
-  모집단 = 프로토콜 유효물(topic_records.csv; 셀별 유효 25편) 중 해당 모티프-집약(지분>=0.10) / 인간은 T*_pct>=10.
-  순서   = results/phase2/topic_records.csv 행 순서(인간은 human_doc_motif_distribution.csv 행 순서).
-  추출   = random.Random(seed).sample(pop, k)  # 층별 고정 시드(42–53); 같은 코퍼스에서 뽑는 층끼리는 서로 다른 시드
-분류 기준과 판정 결과는 docs/closure_audit.md에 있다.
-실행: python3 scripts/closure_audit_sampling.py  -> results/phase2/closure_audit_samples.txt
+The same procedure in every population:
+  population = among the protocol-valid works (topic_records.csv; 25 valid per cell),
+               those intensive on the motif (share >= 0.10); for human works, T*_pct >= 10.
+  order      = the row order of results/phase2/topic_records.csv
+               (for human works, human_doc_motif_distribution.csv).
+  draw       = random.Random(seed).sample(pop, k)  # a fixed per-stratum seed (42-53);
+               strata drawn from the same corpus use different seeds.
+The criteria and the judgments are in docs/closure_audit.md.
+Run: python3 scripts/closure_audit_sampling.py -> results/phase2/closure_audit_samples.txt
 """
 import json, re, random
 from pathlib import Path
@@ -34,7 +39,8 @@ def gen_sample(model, tcol, thr, k, seed):
 
 def main():
     lines = []
-    # 층마다 다른 시드(같은 코퍼스에서 뽑는 층들이 같은 위치를 재추출하지 않도록).
+    # A different seed per stratum, so that strata drawn from the same corpus do not
+    # re-draw the same positions. Stratum names are the CSV values; see docs/glossary.md.
     groups = [("GPT 비", "GPT-5.6", "T7", 12, 42),
               ("Gemini 비", "Gemini-2.5", "T7", 12, 42),
               ("Solar 비", "Solar-Pro3", "T7", 12, 42),

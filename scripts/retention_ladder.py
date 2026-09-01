@@ -1,16 +1,20 @@
-"""retention_ladder.py — 25개 모티프 유지율 산출(본문 §2.4.2, 표 2, SI 표 S1-1·S1-3).
+"""retention_ladder.py — retention for the 25 motifs (paper §2.4.2, Table 2, SI Tables S1-1 and S1-3).
 
-방향 측정(§2.4.2)의 공시 산출물: 25개 모티프 각각의 인간 평균 지분, 생성 평균 지분
-(형식을 지키는 다섯 시스템 합), 유지율(= 생성 ÷ 인간, 반올림 전 값으로 계산),
-시스템별 유지율과 그 최대. §3.2의 집합 자격 판정(인접 간격·시스템별 분리)과
-SI 표 S1-1의 유지율 열이 이 파일에서 나온다.
-실행: python3 scripts/retention_ladder.py -> results/phase2/retention_ladder.csv
+The published artefact of the direction measurement (§2.4.2): for each of the 25
+motifs, the human mean share, the generated mean share (the five form-compliant
+systems pooled), retention (= generated / human, computed before rounding), the
+per-system retentions and their maximum. The set-qualification judgment of §3.2
+(adjacent gap, per-system separation) and the retention column of SI Table S1-1 come
+from this file.
+Run: python3 scripts/retention_ladder.py -> results/phase2/retention_ladder.csv
 """
 from pathlib import Path
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parent.parent
 FIVE = ["GPT-5.6", "Opus-4.8", "Gemini-2.5", "Solar-Pro3", "EXAONE-4.0"]
+# Motif names are written into the CSV in Korean; see docs/glossary.md for the
+# English terms used in the paper.
 NAMES = {0: "바다", 1: "꽃", 2: "가족", 3: "음식·동물", 4: "정서", 5: "학교·아이",
          6: "겨울", 7: "비", 8: "여인", 9: "노인·지하", 10: "새·나비", 11: "메타시",
          12: "편지·글", 13: "실내", 14: "음악", 15: "거리", 16: "고양이", 17: "우주",

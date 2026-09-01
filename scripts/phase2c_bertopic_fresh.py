@@ -221,9 +221,9 @@ def main():
               open(OUT / "bertopic_fresh_summary.json", "w", encoding="utf-8"), ensure_ascii=False, indent=2)
 
     pd.set_option("display.width", 240, "display.max_colwidth", 48, "display.max_rows", 40)
-    print(f"\n=== BERTopic-fresh + INSTRUMENT 신뢰축 (R1/R2/R3 persist>=0.7, α>=0.7; robust=4/4) ===")
+    print(f"\n=== BERTopic refit + reliability axes (R1/R2/R3 persist>=0.7, alpha>=0.7; robust=4/4) ===")
     print(df.to_string(index=False))
-    print(f"\n축 통과 분포: {Counter(df['n_axes_passed']).most_common()}  | robust(4/4): {(df['n_axes_passed']==4).sum()}")
+    print(f"\naxes passed: {Counter(df['n_axes_passed']).most_common()}  | robust(4/4): {(df['n_axes_passed']==4).sum()}")
     print(f"Saved -> {OUT}/bertopic_fresh_topics.csv , bertopic_fresh_summary.json , indicator_matrices.npz")
     return 0
 

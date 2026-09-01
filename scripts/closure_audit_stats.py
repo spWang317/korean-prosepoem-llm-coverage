@@ -2,10 +2,13 @@
 closure_audit_stats.py — Table 5 from the closure-audit labels (paper §3.6, SI S8).
 
 Reads results/phase2/closure_audit_labels.csv (one row per audited ending: stratum, item
-1–12, category in {봉합, 미해소, 경계}, reason) and prints, per stratum, the counts, the
+1-12, category in {sealing, unresolved, borderline} as the Korean values 봉합/미해소/경계, reason)
+and prints, per stratum, the counts, the
 sealing rate with its Wilson 95% interval, and a one-sided Fisher exact test (generated >
-human) against the paired human stratum (rain strata vs 인간 비; Opus 겨울/가족 vs 인간
-겨울/가족). The labels themselves come from the reading procedure in docs/closure_audit.md.
+human) against the paired human stratum (the rain strata against 인간 비 = human rain;
+Opus 겨울/가족 = winter/family against the human ones). Stratum and category names are
+the CSV values; docs/glossary.md maps them to the English terms used in the paper.
+The labels themselves come from the reading procedure in docs/closure_audit.md.
 Run: python3 scripts/closure_audit_stats.py
 """
 from __future__ import annotations
@@ -42,7 +45,7 @@ def main():
         rows.append([s, b, u, e, f"{round(100 * b / n)}% [{lo}, {hi}]", p])
     if "object_present" in df.columns:
         u = df[df.category == "미해소"]
-        print("\n미해소 결말의 대상 유무(인물·사건·사물이 결말 170자 안에 있는가):")
+        print("\nunresolved endings, presence of an object (a person, an event or a thing within the final 170 characters):")
         print(u.groupby("stratum").object_present.value_counts().unstack(fill_value=0).reindex([s for s in ORDER if s in set(u.stratum)]).to_string())
     out = pd.DataFrame(rows, columns=["stratum", "봉합", "미해소·열림", "경계", "봉합률 [Wilson 95% CI]", "Fisher p (vs paired human)"])
     print(out.to_string(index=False))

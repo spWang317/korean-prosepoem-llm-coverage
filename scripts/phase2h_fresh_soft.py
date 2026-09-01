@@ -1,7 +1,9 @@
-"""phase2h_fresh_soft.py — 생성 축(모티프 15개) 위의 NNLS 투영(본문 §2.4.5·§3.5, SI 표 S3-2).
+"""phase2h_fresh_soft.py — NNLS projection onto the generated axis of 15 motifs (paper §2.4.5, §3.5, SI Table S3-2).
 
-생성 축 모티프 중심(발견 군집의 정규화 평균 임베딩)에 인간 축과 같은 NNLS 투영을 적용한다:
-(i) 생성물 1,625편, (ii) 인간 4,642편. 본문이 쓰는 값은 두 코퍼스의 잔차(두 축의 비대칭 점검)다.
+Applies the same NNLS projection used on the human axis to the centroids of the
+generated axis (the normalized mean embedding of each discovered cluster):
+(i) the 1,625 generated works, (ii) the 4,642 human works. The value the paper uses is
+the residual of each corpus (the asymmetry check between the two axes).
 Run: python3 scripts/phase2h_fresh_soft.py -> results/phase2/fresh_soft_projection.csv
 """
 import json
@@ -41,8 +43,8 @@ si = seeds.index(100)
 A = ind[:, si, :]  # (15, N) binary
 assert A.sum(0).max() <= 1, "doc assigned to >1 topic?"
 doc_topic = np.where(A.sum(0) == 0, -1, A.argmax(0))
-print(f"baseline(seed100) 복원: outlier {(doc_topic == -1).mean():.1%} "
-      f"(요약파일 14.8%와 일치해야 함)")
+print(f"baseline (seed 100) reproduced: outliers {(doc_topic == -1).mean():.1%} "
+      f"(should match the 14.8% in the summary file)")
 
 # ---------- fresh centroids ----------
 K = ind.shape[0]
@@ -77,7 +79,7 @@ else:
     np.save(hemb_path, HE)
 W_hum, R_hum = project(HE)
 
-# ---------- system-level stats (phase2f와 동일: 평균 지분 벡터를 토픽 안에서 재정규화) ----------
+# ---------- system-level stats (as in phase2f: the mean share vector renormalized within topics) ----------
 rows = []
 def stats(name, W, R):
     mean_share = W.mean(0)

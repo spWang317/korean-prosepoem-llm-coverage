@@ -1,74 +1,171 @@
-# 산문시 LLM 커버리지 — 공개 코드·데이터 패키지
+# Korean prose poetry and LLM subject-matter coverage — code and data package
 
-논문 "산문시 LLM 커버리지"(DSH 투고)의 생성 로그, 분석 코드, 파생 산출물이다.
-공개 범위와 저작권 처리는 `docs/data_release_notes.md`, 결말 감사의 기준 문서와 전 항목 판정은 `docs/closure_audit.md`에 있다.
+Generation logs, analysis code and derived artefacts for the manuscript submitted to
+*Digital Scholarship in the Humanities*. The scope of what is and is not released, and
+the copyright handling, are in `docs/data_release_notes.md`; the frozen criteria
+document and all 180 judgments of the ending audit are in `docs/closure_audit.md`.
 
-- 스크립트 파일명에 순서 번호를 붙이지 않은 것은 스크립트 간 import(모듈명) 때문이다. 실행 순서는 아래 단계 번호를 따른다.
-- 계측기 동결 자산(모티프 중심 벡터·인간 지분 분포)은 `data/atlas/instrument_frozen/`에 포함되어 있으므로, 단계 2·5·6·12를 포함한 대부분의 단계가 이 패키지만으로 재실행된다. † 표시 두 단계(10·11)만 인간 작품 원문이 필요해 재실행되지 않는다(저작권상 원문은 재배포하지 않는다). 그 산출물은 함께 공개되어 있으므로 검증은 산출물 대조로 가능하다.
-- 임베딩·BERTopic 단계는 torch가 있는 인터프리터가 필요하다. 형태소 분석기는 python-mecab-ko.
+- Script filenames carry no ordering prefix because the scripts import one another as
+  modules. Run them in the order of the step numbers below.
+- The frozen instrument assets (motif centroid vectors, human share distribution) are
+  included in `data/atlas/instrument_frozen/`, so most steps — including 2, 5, 6 and
+  12 — re-run from this package alone. Only the two steps marked † need the full text
+  of the human poems, which is not redistributed for copyright reasons; their outputs
+  are released here, so those steps can be verified by comparing artefacts.
+- The embedding and BERTopic steps need an interpreter with torch. The morphological
+  analyser is python-mecab-ko.
 
-## 실행 순서
+## What this measures
 
-| 단계 | 스크립트 | 입력 | 산출 | 본문 |
+Six deployed systems were asked for Korean prose poems under twelve prompts. Every
+form-compliant output is projected onto a frozen 25-motif instrument built on the
+complete set of human prose poems published in 2000--2024 by four publishers (4,642
+works), and the two corpora are compared on four measurements.
+
+| Measurement | Statistic | Artefact | Paper |
+|---|---|---|---|
+| Form | per-cell validity rate and failure types; reported per system as the cell-mean validity rate with its cell range | `summary.json`, `form_x_topic_protocol.json` | Table 1, SI S6, S9 |
+| Direction | retention = generated mean share ÷ human mean share, with a cell-cluster bootstrap CI | `retention_ladder.csv`, `retention_ci.csv`, `avoidance_set_stability.json` | Table 2, Fig. 1 |
+| Shape | effective number of motifs (inverse Simpson), largest share, residual; per-work normalized entropy | `concentration_two_axes.csv`, `repetition_check.csv` | Table 3, SI Table S1-4 |
+| Company | share-weighted neighbour profile per anchor: total variation distance, effective neighbours, side shares, ESS | `company_weighted.json`, `company_profile.csv` | Table 4 |
+| Endings | fixed-criteria audit of a 180-work stratified sample, Wilson CI and one-sided Fisher test | `closure_audit_labels.csv`, `closure_audit_table.csv` | Table 5, SI S8 |
+
+A second axis, refitted on the generated corpus alone, is compared with the human axis
+to test whether the generated poems contain subjects the human axis cannot hold
+(`results/phase2c/`, §3.5).
+
+## Run order
+
+| Step | Script | Input | Output | Paper |
 |---|---|---|---|---|
-| 0 | `common.py`, `prompt_set.py` | (모듈: 형식 판정·모델 레지스트리 / 프롬프트 12종) | — | §2.3 |
-| 1 | `gen_full.py`(API 5종), `gen_exaone_full.py`(로컬 vLLM; 셀당 200편 일괄 생성) | 프롬프트 동결본 | `data/generated/arm_ab/*.jsonl` | §2.3 |
-| 2 | `phase2_topic_full.py` | 생성 로그 + 모티프 중심 | `topic_records.csv`, `summary.json`, `motif_map.csv`, `motif_full_distribution_balanced.csv` | §2.2, 표 3·그림 1의 원천 |
-| 3 | `retention_ladder.py` | topic_records + 인간 평균 | `retention_ladder.csv` | 표 2, 표 S1-1·S1-3 |
-| 4 | `company_weighted.py` → `company_profile.py` | topic_records | `company_weighted.json`, `company_profile.csv` | 표 4, §3.4 |
-| 5 | `robustness_checks.py` | topic_records + 인간 분포 | `retention_ci.csv`, `avoidance_set_stability.json`, `length_check.json`, `human_split_check.json`, company_profile의 ESS 열 | 표 2 CI, §3.2.2, S1.1–S1.2 |
-| 6 | `phase2f_concentration.py` | summary + 인간 분포 | `concentration_two_axes.csv` | 표 3 |
-| 7 | `repetition_check.py` | 생성 로그 | `repetition_check.csv` | 표 S1-4 |
-| 8 | `phase2c_bertopic_fresh.py` → `phase2h_fresh_soft.py` | 생성 로그 | `results/phase2c/*`, `fresh_soft_projection.csv` | §3.5, 표 S3-1·S3-2 |
-| 9 | `phase2g_regime_audit.py` | 생성 로그 | `form_x_topic_protocol.json` | 표 S6-1 |
-| 10† | `closure_audit_sampling.py` → (사람 판정: `docs/closure_audit.md`) → `closure_audit_stats.py` | topic_records + 인간 원문(미포함) | `closure_audit_labels.csv`, `closure_audit_table.csv`, `closure_audit_samples_public.txt` | 표 5, SI S8 |
-| 11† | `close_reading_provenance.py` | topic_records, 임베딩 + 인간 원문(미포함) | `close_reading_provenance.json`, `naming_set_typicals.csv`, `human_top_works.csv` | §4.1–§4.3, SI S7 |
-| 12 | `human_motif_ci.py` | 인간 분포 | `human_motif_ci.json` | 표 S1-2 |
-| 13 | `make_figures.py` | 산출물 | `figures/*`(제출명 figure1, figureS1-1, figureS9-1) | 그림 1, S1-1, S9-1 |
+| 0 | `common.py`, `prompt_set.py` | (modules: form judgment and model registry / the twelve prompts) | — | §2.3 |
+| 1 | `gen_full.py` (five APIs), `gen_exaone_full.py` (local vLLM; 200 works per cell in one batch) | frozen prompts | `data/generated/arm_ab/*.jsonl` | §2.3 |
+| 2 | `phase2_topic_full.py` | generation logs + motif centroids | `topic_records.csv`, `summary.json`, `motif_map.csv`, `motif_full_distribution_balanced.csv` | §2.2; source of Table 3 and Fig. 1 |
+| 3 | `retention_ladder.py` | topic_records + human means | `retention_ladder.csv` | Table 2, SI Tables S1-1 and S1-3 |
+| 4 | `company_weighted.py` → `company_profile.py` | topic_records | `company_weighted.json`, `company_profile.csv` | Table 4, §3.4 |
+| 5 | `robustness_checks.py` | topic_records + human distribution | `retention_ci.csv`, `avoidance_set_stability.json`, `length_check.json`, `human_split_check.json`, the ESS column of company_profile | Table 2 CI, §3.2.2, SI S1.1–S1.2 |
+| 6 | `phase2f_concentration.py` | summary + human distribution | `concentration_two_axes.csv` | Table 3 |
+| 7 | `repetition_check.py` | generation logs | `repetition_check.csv` | SI Table S1-4 |
+| 8 | `phase2c_bertopic_fresh.py` → `phase2h_fresh_soft.py` | generation logs | `results/phase2c/*`, `fresh_soft_projection.csv` | §3.5, SI Tables S3-1 and S3-2 |
+| 9 | `phase2g_regime_audit.py` | generation logs | `form_x_topic_protocol.json` | SI Table S6-1 |
+| 10† | `closure_audit_sampling.py` → (human classification: `docs/closure_audit.md`) → `closure_audit_stats.py` | topic_records + human full text (not included) | `closure_audit_labels.csv`, `closure_audit_table.csv`, `closure_audit_samples_public.txt` | Table 5, SI S8 |
+| 11† | `close_reading_provenance.py` | topic_records, embeddings + human full text (not included) | `close_reading_provenance.json`, `naming_set_typicals.csv`, `human_top_works.csv` | §4.1–§4.3, SI S7 |
+| 12 | `human_motif_ci.py` | human distribution | `human_motif_ci.json` | SI Table S1-2 |
+| 13 | `make_figures.py` | artefacts | `figures/*` (submission names figure1, figureS1-1, figureS9-1) | Figs 1, S1-1, S9-1 |
 
-## 파일 인벤토리
+## File inventory
 
 ### data/
-- `generated/arm_ab/*.jsonl` — 여섯 시스템의 생성 로그 전체(시도·기각 포함, 프롬프트 SHA-256 기록). EXAONE은 셀당 200편의 전체 배치(2,400행)이며, 분석 코드가 셀마다 25번째 유효작까지를 프로토콜 표본으로 자른다.
+- `generated/arm_ab/*.jsonl` — the complete generation logs of the six systems
+  (attempts and rejections included, with a SHA-256 record of each prompt). For EXAONE
+  this is the full batch of 200 works per cell (2,400 rows); the analysis code cuts
+  each cell at the 25th valid work to form the protocol sample.
+- `atlas/instrument_frozen/` — the frozen instrument: motif centroids, the human
+  per-work motif distribution, the per-motif corpus summary and motif metadata. See
+  `PROVENANCE.md` in that directory.
 
 ### docs/
-- `closure_audit.md` — 결말 감사 분류 기준 문서(사전 고정본)와 180항목 판정 전부.
-- `data_release_notes.md` — 공개/비공개 범위, 저작권 처리, EXAONE 표집 방식.
-- `prompts_frozen_2026-07-28.json` — 프롬프트 12종 동결본과 SHA-256.
+- `closure_audit.md` — the ending audit's classification criteria (frozen before
+  classification began) and all 180 judgments.
+- `data_release_notes.md` — what is and is not released, copyright handling, and the
+  EXAONE sampling scheme.
+- `prompts_frozen_2026-07-28.json` — the twelve frozen prompts with their SHA-256.
 
-### results/phase2/ (본문·SI 표의 원천)
-- `topic_records.csv` — 생성 1,625편의 작품별 25모티프 지분·잔차·엔트로피·전문.
-- `summary.json` — 투영 단계의 시스템별 요약(유효율·엔트로피·평균 지분).
-- `motif_map.csv` — 25모티프 인간·생성 평균 지분(그림 1의 자료).
-- `motif_full_distribution_balanced.csv` — 시스템별 25모티프 분포(표 S1-1, 그림 S1-1).
-- `retention_ladder.csv` — 25모티프 유지율(전체·시스템별·시스템별 최대).
-- `retention_ci.csv` — 유지율의 셀-군집 부트스트랩 95% CI(표 2).
-- `avoidance_set_stability.json` — 회피 넷 재추출 안정성(§3.2.2).
-- `human_motif_ci.json` — 인간 평균 지분의 부트스트랩 95% CI(표 S1-2).
-- `concentration_two_axes.csv` — 집중도: 유효 모티프 수·최대 지분·잔차(표 3).
-- `repetition_check.csv` — 반복 지표: 전문·서두 종수(표 S1-4).
-- `length_check.json`, `human_split_check.json` — 길이·분할 점검(S1.1, S1.2).
-- `company_weighted.json` — 25앵커 가중 동행의 전 이웃 행렬(§3.4).
-- `company_profile.csv` — 앵커별 이웃 프로필 요약: 총변동 거리·유효 이웃 수·두 쪽 몫·ESS(표 4).
-- `form_x_topic_protocol.json` — 형식 필터 점검: 유효 대 기각 주제분포(표 S6-1).
-- `fresh_soft_projection.csv` — 생성 축 투영 요약(표 S3-2, §3.5).
-- `closure_audit_labels.csv` — 결말 감사 180항목 판정(구절 열 없음).
-- `closure_audit_table.csv` — 표 5 산출(Wilson CI·Fisher p).
-- `closure_audit_samples_public.txt` — 감사 표본 공개판(생성 결말 170자 전문, 인간은 서지+한 구절).
-- `close_reading_provenance.json` — 인용작(전형작) 선별 기록: 가중 중심 순위.
-- `naming_set_typicals.csv` — '창가와 길의 정경' 명명에 읽은 전형작 스무 자리(서로 다른 18편).
-- `naming_set_features.csv` — 그 18편을 연구자가 읽어 코딩한 특징 집계(스크립트 산출 아님).
-- `human_top_works.csv` — 인간 상위작 순위표(서지·지분·선택 사유; 원문 없음).
+### results/phase2/ (the source of the tables in the paper and the SI)
+- `topic_records.csv` — for each of the 1,625 generated works: its 25 motif shares,
+  residual, entropy and full text.
+- `summary.json` — per-system summary of the projection step (validity rate, entropy,
+  mean shares).
+- `motif_map.csv` — human and generated mean shares over the 25 motifs (the data
+  behind Fig. 1).
+- `motif_full_distribution_balanced.csv` — per-system distribution over the 25 motifs
+  (SI Table S1-1, Fig. S1-1).
+- `retention_ladder.csv` — retention for the 25 motifs (pooled, per system, and the
+  per-motif maximum across systems).
+- `retention_ci.csv` — cell-cluster bootstrap 95% CI of retention (Table 2).
+- `avoidance_set_stability.json` — resampling stability of the avoided four (§3.2.2).
+- `human_motif_ci.json` — bootstrap 95% CI of the human mean shares (SI Table S1-2).
+- `concentration_two_axes.csv` — concentration: effective number of motifs, largest
+  share, residual (Table 3).
+- `repetition_check.csv` — repetition measures: distinct full texts and openings
+  (SI Table S1-4).
+- `length_check.json`, `human_split_check.json` — the length and split checks
+  (SI S1.1, S1.2).
+- `company_weighted.json` — the full neighbour matrix for all 25 anchors (§3.4).
+- `company_profile.csv` — per-anchor summary of the company profile: total variation
+  distance, effective number of neighbours, the two side shares, ESS (Table 4).
+- `form_x_topic_protocol.json` — the form-filter check: subject distribution of valid
+  against rejected outputs (SI Table S6-1).
+- `fresh_soft_projection.csv` — summary of the projection onto the generated axis
+  (SI Table S3-2, §3.5).
+- `closure_audit_labels.csv` — the 180 ending-audit judgments (no phrase column).
+- `closure_audit_table.csv` — the computation behind Table 5 (Wilson CI, Fisher p).
+- `closure_audit_samples_public.txt` — the public version of the audit sample: the
+  final 170 characters for generated works, bibliography and one phrase for human ones.
+- `close_reading_provenance.json` — the selection record for the quoted typical works:
+  ranking by weighted centroid similarity.
+- `naming_set_typicals.csv` — the twenty typical-work slots read in naming 'the
+  window-and-street scene' (18 distinct works).
+- `naming_set_features.csv` — the feature tally over those 18 works, coded by the
+  researcher on reading (not a script output).
+- `human_top_works.csv` — the human top-share works: bibliography, share and the
+  reason for selection (no full text).
 
-### results/phase2c/ (생성 축)
-- `bertopic_fresh_topics.csv` — 생성 축 모티프 15개: 키워드·크기·지배 시스템·신뢰성 검사(표 S3-1).
-- `bertopic_fresh_summary.json` — 재적합 요약(파라미터·이상치 비율).
-- `gen_embeddings.npy` — 생성물 통글 임베딩(인간 임베딩은 원문 복원 가능성 때문에 비공개).
-- `indicator_matrices.npz` — 시드 반복의 문서소속 행렬(Cronbach's α 입력).
+### results/phase2c/ (the generated axis)
+- `bertopic_fresh_topics.csv` — the fifteen motifs of the generated axis: keywords,
+  size, dominant system, reliability checks (SI Table S3-1).
+- `bertopic_fresh_summary.json` — summary of the refit (parameters, noise proportion).
+- `gen_embeddings.npy` — whole-work embeddings of the generated poems. The human
+  embeddings are withheld because the source text could be partly reconstructed
+  from them.
+- `indicator_matrices.npz` — document-membership matrices over the seed repetitions
+  (input to Cronbach's α).
 
 ### figures/
-- `figure1.tif`, `figureS1-1.tif`, `figureS9-1.tif` — 제출용 600dpi TIFF(본문 그림 1, SI 그림 S1-1·S9-1).
-- `fig2_motif_map.png`, `figS6_motif_by_system.png`, `fig1_form_heatmap.png` — 같은 그림의 PNG 판.
+- `figure1.tif`, `figureS1-1.tif`, `figureS9-1.tif` — 600 dpi TIFFs as submitted
+  (Fig. 1 of the paper, Figs S1-1 and S9-1 of the SI).
+- `fig2_motif_map.png`, `figS6_motif_by_system.png`, `fig1_form_heatmap.png` — PNG
+  versions of the same figures.
 
-### scripts/ (19개)
-위 실행 순서 표 참조. `common.py`(경로·형식 판정·모델 레지스트리)와 `prompt_set.py`(프롬프트 12종 생성)는 다른 스크립트가 import하는 모듈이다.
+### scripts/ (19 files)
+See the run-order table above. `common.py` (paths, form judgment, model registry) and
+`prompt_set.py` (construction of the twelve prompts) are modules imported by the other
+scripts.
+
+## Not included, and why
+
+| Path | Reason |
+|---|---|
+| `data/atlas/metadata.csv` (source-text column) | full text of the human poems; not redistributed for copyright reasons |
+| `results/phase2/closure_audit_samples.txt` | the working version of the audit sample; contains human full text. The public version is `closure_audit_samples_public.txt` |
+| human sentence/work embeddings | the source text could be partly reconstructed from them |
+
+The two steps marked † in the run order need the excluded human full text. Their
+outputs are released in full, so those steps can be verified by comparing artefacts
+rather than by re-running them.
+
+## Row counts
+
+| File | Rows |
+|---|---|
+| `results/phase2/topic_records.csv` | 1,625 generated works |
+| `results/phase2/retention_ladder.csv` | 25 motifs |
+| `results/phase2/company_profile.csv` | 25 anchors |
+| `results/phase2/closure_audit_labels.csv` | 180 judgments over 15 strata |
+| `results/phase2/human_top_works.csv` | 40 (top five for each of eight motifs) |
+| `results/phase2/naming_set_typicals.csv` | 20 slots (18 distinct works) |
+| `results/phase2c/bertopic_fresh_topics.csv` | 15 generated-axis motifs |
+| `data/atlas/instrument_frozen/human_doc_motif_distribution.csv` | 4,642 human works |
+| `data/generated/arm_ab/*.jsonl` | 300 / 369 / 505 / 1,002 / 2,400 rows by system (all attempts) |
+
+## A note on language
+
+The documentation is in English; the data are in Korean, because Korean prose poetry
+is the object of study. The generation logs, the prompts, the motif keywords and the
+quoted endings are left exactly as they were produced.
+
+**`docs/glossary.md`** maps every Korean label that appears in a released table — the
+three ending categories, the fifteen stratum names, the 25 motif names, the feature
+names — to the English term used in the paper, and gives a file-by-file cross
+reference to the place in the Supplementary Information where the same Korean material
+is printed with an English translation beside it.

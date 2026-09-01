@@ -1,0 +1,29 @@
+{
+  "N": 1625,
+  "n_topics": 15,
+  "outlier_pct": 14.8,
+  "jaccard_match": 0.5,
+  "tau": 0.7,
+  "alpha_tau": 0.7,
+  "tokenizer": "python-mecab-ko (identical to INSTRUMENT; content POS identical)",
+  "params": "INSTRUMENT baseline (mcs=30 etc.), absolute (not scaled to N)",
+  "axes_pass_distribution": [
+    [
+      3,
+      7
+    ],
+    [
+      2,
+      4
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      1,
+      2
+    ]
+  ],
+  "robust_4of4": 2
+}

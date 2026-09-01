@@ -1,0 +1,122 @@
+[
+  {
+    "prompt_id": "P00",
+    "framing": "instruction",
+    "length_stated": true,
+    "gloss": false,
+    "sha256": "a69b078b07c3c141",
+    "n_chars": 110,
+    "text_ko": "다음 조건에 맞는 한국어 산문시 한 편을 써 주세요. 줄바꿈 없이 한 단락의 연속된 산문 형태로 쓰고, 길이는 112자에서 1,014자 사이로 하며, 제목·부제·설명·인사말 없이 시 본문만 씁니다.",
+    "text_en_gloss": "Please write one Korean prose poem meeting the following conditions. The poem must be written as a single continuous paragraph of prose without line breaks, be between 112 and 1,014 characters long, and contain only the poem body, without title, subtitle, explanation, or greeting."
+  },
+  {
+    "prompt_id": "P01",
+    "framing": "instruction",
+    "length_stated": true,
+    "gloss": true,
+    "sha256": "d09d18681f197640",
+    "n_chars": 152,
+    "text_ko": "다음 조건에 맞는 한국어 산문시 한 편을 써 주세요. 산문시는 행을 나누지 않고 산문처럼 이어 쓰되 시적 정서를 담은 시입니다. 줄바꿈 없이 한 단락의 연속된 산문 형태로 쓰고, 길이는 112자에서 1,014자 사이로 하며, 제목·부제·설명·인사말 없이 시 본문만 씁니다.",
+    "text_en_gloss": "Please write one Korean prose poem meeting the following conditions. A prose poem is a poem written continuously like prose without line breaks, yet carrying poetic sentiment. The poem must be written as a single continuous paragraph of prose without line breaks, be between 112 and 1,014 characters long, and contain only the poem body, without title, subtitle, explanation, or greeting."
+  },
+  {
+    "prompt_id": "P02",
+    "framing": "instruction",
+    "length_stated": false,
+    "gloss": false,
+    "sha256": "e7e65bdfba062283",
+    "n_chars": 84,
+    "text_ko": "다음 조건에 맞는 한국어 산문시 한 편을 써 주세요. 줄바꿈 없이 한 단락의 연속된 산문 형태로 쓰고, 제목·부제·설명·인사말 없이 시 본문만 씁니다.",
+    "text_en_gloss": "Please write one Korean prose poem meeting the following conditions. The poem must be written as a single continuous paragraph of prose without line breaks, and contain only the poem body, without title, subtitle, explanation, or greeting."
+  },
+  {
+    "prompt_id": "P03",
+    "framing": "instruction",
+    "length_stated": false,
+    "gloss": true,
+    "sha256": "e0eebe940272f8c2",
+    "n_chars": 126,
+    "text_ko": "다음 조건에 맞는 한국어 산문시 한 편을 써 주세요. 산문시는 행을 나누지 않고 산문처럼 이어 쓰되 시적 정서를 담은 시입니다. 줄바꿈 없이 한 단락의 연속된 산문 형태로 쓰고, 제목·부제·설명·인사말 없이 시 본문만 씁니다.",
+    "text_en_gloss": "Please write one Korean prose poem meeting the following conditions. A prose poem is a poem written continuously like prose without line breaks, yet carrying poetic sentiment. The poem must be written as a single continuous paragraph of prose without line breaks, and contain only the poem body, without title, subtitle, explanation, or greeting."
+  },
+  {
+    "prompt_id": "P04",
+    "framing": "completion",
+    "length_stated": true,
+    "gloss": false,
+    "sha256": "878ed58d9e413461",
+    "n_chars": 105,
+    "text_ko": "다음은 한 편의 한국어 산문시입니다. 줄바꿈 없이 한 단락의 연속된 산문 형태로 쓰고, 길이는 112자에서 1,014자 사이로 하며, 제목·부제·설명·인사말 없이 시 본문만 씁니다. 본문:",
+    "text_en_gloss": "The following is one Korean prose poem. The poem must be written as a single continuous paragraph of prose without line breaks, be between 112 and 1,014 characters long, and contain only the poem body, without title, subtitle, explanation, or greeting. Body:"
+  },
+  {
+    "prompt_id": "P05",
+    "framing": "completion",
+    "length_stated": true,
+    "gloss": true,
+    "sha256": "831919d786c4881a",
+    "n_chars": 147,
+    "text_ko": "다음은 한 편의 한국어 산문시입니다. 산문시는 행을 나누지 않고 산문처럼 이어 쓰되 시적 정서를 담은 시입니다. 줄바꿈 없이 한 단락의 연속된 산문 형태로 쓰고, 길이는 112자에서 1,014자 사이로 하며, 제목·부제·설명·인사말 없이 시 본문만 씁니다. 본문:",
+    "text_en_gloss": "The following is one Korean prose poem. A prose poem is a poem written continuously like prose without line breaks, yet carrying poetic sentiment. The poem must be written as a single continuous paragraph of prose without line breaks, be between 112 and 1,014 characters long, and contain only the poem body, without title, subtitle, explanation, or greeting. Body:"
+  },
+  {
+    "prompt_id": "P06",
+    "framing": "completion",
+    "length_stated": false,
+    "gloss": false,
+    "sha256": "6ea0711995f2edd0",
+    "n_chars": 79,
+    "text_ko": "다음은 한 편의 한국어 산문시입니다. 줄바꿈 없이 한 단락의 연속된 산문 형태로 쓰고, 제목·부제·설명·인사말 없이 시 본문만 씁니다. 본문:",
+    "text_en_gloss": "The following is one Korean prose poem. The poem must be written as a single continuous paragraph of prose without line breaks, and contain only the poem body, without title, subtitle, explanation, or greeting. Body:"
+  },
+  {
+    "prompt_id": "P07",
+    "framing": "completion",
+    "length_stated": false,
+    "gloss": true,
+    "sha256": "729a139ca6b3050d",
+    "n_chars": 121,
+    "text_ko": "다음은 한 편의 한국어 산문시입니다. 산문시는 행을 나누지 않고 산문처럼 이어 쓰되 시적 정서를 담은 시입니다. 줄바꿈 없이 한 단락의 연속된 산문 형태로 쓰고, 제목·부제·설명·인사말 없이 시 본문만 씁니다. 본문:",
+    "text_en_gloss": "The following is one Korean prose poem. A prose poem is a poem written continuously like prose without line breaks, yet carrying poetic sentiment. The poem must be written as a single continuous paragraph of prose without line breaks, and contain only the poem body, without title, subtitle, explanation, or greeting. Body:"
+  },
+  {
+    "prompt_id": "P08",
+    "framing": "persona",
+    "length_stated": true,
+    "gloss": false,
+    "sha256": "f7ffa9be4b9896da",
+    "n_chars": 133,
+    "text_ko": "당신은 한국어 산문시를 쓰는 시인입니다. 아래 조건에 맞는 한국어 산문시 한 편을 써 주세요. 줄바꿈 없이 한 단락의 연속된 산문 형태로 쓰고, 길이는 112자에서 1,014자 사이로 하며, 제목·부제·설명·인사말 없이 시 본문만 씁니다.",
+    "text_en_gloss": "You are a poet who writes Korean prose poems. Please write one Korean prose poem meeting the following conditions. The poem must be written as a single continuous paragraph of prose without line breaks, be between 112 and 1,014 characters long, and contain only the poem body, without title, subtitle, explanation, or greeting."
+  },
+  {
+    "prompt_id": "P09",
+    "framing": "persona",
+    "length_stated": true,
+    "gloss": true,
+    "sha256": "624a435550db34f9",
+    "n_chars": 175,
+    "text_ko": "당신은 한국어 산문시를 쓰는 시인입니다. 산문시는 행을 나누지 않고 산문처럼 이어 쓰되 시적 정서를 담은 시입니다. 아래 조건에 맞는 한국어 산문시 한 편을 써 주세요. 줄바꿈 없이 한 단락의 연속된 산문 형태로 쓰고, 길이는 112자에서 1,014자 사이로 하며, 제목·부제·설명·인사말 없이 시 본문만 씁니다.",
+    "text_en_gloss": "You are a poet who writes Korean prose poems. A prose poem is a poem written continuously like prose without line breaks, yet carrying poetic sentiment. Please write one Korean prose poem meeting the following conditions. The poem must be written as a single continuous paragraph of prose without line breaks, be between 112 and 1,014 characters long, and contain only the poem body, without title, subtitle, explanation, or greeting."
+  },
+  {
+    "prompt_id": "P10",
+    "framing": "persona",
+    "length_stated": false,
+    "gloss": false,
+    "sha256": "7d1d9d58e9876a77",
+    "n_chars": 107,
+    "text_ko": "당신은 한국어 산문시를 쓰는 시인입니다. 아래 조건에 맞는 한국어 산문시 한 편을 써 주세요. 줄바꿈 없이 한 단락의 연속된 산문 형태로 쓰고, 제목·부제·설명·인사말 없이 시 본문만 씁니다.",
+    "text_en_gloss": "You are a poet who writes Korean prose poems. Please write one Korean prose poem meeting the following conditions. The poem must be written as a single continuous paragraph of prose without line breaks, and contain only the poem body, without title, subtitle, explanation, or greeting."
+  },
+  {
+    "prompt_id": "P11",
+    "framing": "persona",
+    "length_stated": false,
+    "gloss": true,
+    "sha256": "1af4cf5e5c24bc61",
+    "n_chars": 149,
+    "text_ko": "당신은 한국어 산문시를 쓰는 시인입니다. 산문시는 행을 나누지 않고 산문처럼 이어 쓰되 시적 정서를 담은 시입니다. 아래 조건에 맞는 한국어 산문시 한 편을 써 주세요. 줄바꿈 없이 한 단락의 연속된 산문 형태로 쓰고, 제목·부제·설명·인사말 없이 시 본문만 씁니다.",
+    "text_en_gloss": "You are a poet who writes Korean prose poems. A prose poem is a poem written continuously like prose without line breaks, yet carrying poetic sentiment. Please write one Korean prose poem meeting the following conditions. The poem must be written as a single continuous paragraph of prose without line breaks, and contain only the poem body, without title, subtitle, explanation, or greeting."
+  }
+]

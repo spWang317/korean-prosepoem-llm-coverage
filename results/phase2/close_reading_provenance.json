@@ -1,0 +1,48 @@
+{
+ "겨울 전형(전체 가중) 상위 3(§4.1)": [
+  {
+   "rank": 1,
+   "system": "GPT-5.6",
+   "opening": "새벽은 아직 이름을 얻지 못한 빛을 창문 가장자리에 가"
+  },
+  {
+   "rank": 2,
+   "system": "GPT-5.6",
+   "opening": "새벽은 아직 이름을 얻지 못한 빛을 창문 틈에 가만히 "
+  },
+  {
+   "rank": 3,
+   "system": "GPT-5.6",
+   "opening": "새벽은 아직 이름을 얻지 못한 빛을 창가에 내려놓고 간"
+  }
+ ],
+ "GPT 비 전형작(§4.1)": {
+  "probe": "주머니 속 열쇠를 만지며",
+  "weighted_centroid_rank": 1,
+  "of": 300
+ },
+ "겨울 전형(전체 가중) 1위(§4.1)": {
+  "probe": "새벽은 아직 이름을 얻지 못한 빛을 창문 가장자리에",
+  "weighted_centroid_rank": 1,
+  "of": 1500,
+  "system": "GPT-5.6"
+ },
+ "Gemini 버스(§4.3)": {
+  "probe": "아직 내릴 곳을 정하지 못한 채",
+  "source": "결말 감사 표본 Gemini 비-11 (SI S8)"
+ },
+ "Gemini 여름 끝(§4.3)": {
+  "probe": "이름 붙일 수 없는 감정의 문턱",
+  "source": "결말 감사 표본 Gemini 비-6 (SI S8)"
+ },
+ "Opus 겨울 전형(§4.5)": {
+  "probe": "성에는 이미 절반쯤 녹아 흘러내리고",
+  "weighted_centroid_rank": 1,
+  "of": 300
+ },
+ "Opus 가족 전형(§4.5)": {
+  "probe": "새벽이 오기 전 부엌에서 어머니는 쌀을 씻었다",
+  "weighted_centroid_rank": 1,
+  "of": 300
+ }
+}

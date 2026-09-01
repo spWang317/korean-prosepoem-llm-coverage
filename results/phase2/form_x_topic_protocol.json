@@ -1,0 +1,43 @@
+{
+  "form_x_topic_protocol": {
+    "GPT-5.6": {
+      "n_valid": 300,
+      "n_discard_nonempty": 0,
+      "n_discard_empty": 0,
+      "note": "기각 텍스트 <10 (빈 응답뿐이거나 기각 없음) — 주제 비교 비적용"
+    },
+    "Opus-4.8": {
+      "n_valid": 300,
+      "n_discard_nonempty": 0,
+      "n_discard_empty": 69,
+      "note": "기각 텍스트 <10 (빈 응답뿐이거나 기각 없음) — 주제 비교 비적용"
+    },
+    "Gemini-2.5": {
+      "n_valid": 300,
+      "n_discard_nonempty": 0,
+      "n_discard_empty": 0,
+      "note": "기각 텍스트 <10 (빈 응답뿐이거나 기각 없음) — 주제 비교 비적용"
+    },
+    "Solar-Pro3": {
+      "n_valid": 300,
+      "n_discard_nonempty": 205,
+      "n_discard_empty": 0,
+      "mad": 0.0027,
+      "corr": 0.99
+    },
+    "EXAONE-4.0": {
+      "n_valid": 300,
+      "n_discard_nonempty": 378,
+      "n_discard_empty": 0,
+      "mad": 0.0084,
+      "corr": 0.73
+    },
+    "HCX-005": {
+      "n_valid": 125,
+      "n_discard_nonempty": 653,
+      "n_discard_empty": 224,
+      "mad": 0.01,
+      "corr": 0.82
+    }
+  }
+}

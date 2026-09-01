@@ -4,19 +4,19 @@
       "n_valid": 300,
       "n_discard_nonempty": 0,
       "n_discard_empty": 0,
-      "note": "기각 텍스트 <10 (빈 응답뿐이거나 기각 없음) — 주제 비교 비적용"
+      "note": "fewer than 10 rejected texts (empty responses only, or no rejection) - subject comparison not applied"
     },
     "Opus-4.8": {
       "n_valid": 300,
       "n_discard_nonempty": 0,
       "n_discard_empty": 69,
-      "note": "기각 텍스트 <10 (빈 응답뿐이거나 기각 없음) — 주제 비교 비적용"
+      "note": "fewer than 10 rejected texts (empty responses only, or no rejection) - subject comparison not applied"
     },
     "Gemini-2.5": {
       "n_valid": 300,
       "n_discard_nonempty": 0,
       "n_discard_empty": 0,
-      "note": "기각 텍스트 <10 (빈 응답뿐이거나 기각 없음) — 주제 비교 비적용"
+      "note": "fewer than 10 rejected texts (empty responses only, or no rejection) - subject comparison not applied"
     },
     "Solar-Pro3": {
       "n_valid": 300,

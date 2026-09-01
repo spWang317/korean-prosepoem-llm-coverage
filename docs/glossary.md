@@ -42,8 +42,11 @@ Full definitions: §2.4.6 of the paper. All 180 items with English translations:
 
 ## 3. Motif names (T0–T24)
 
-Used in `motif_map.csv`, `retention_ladder.csv`, `company_profile.csv`,
-`motif_full_distribution_balanced.csv`, `topic_records.csv` and elsewhere.
+Used wherever a motif is named: `motif_map.csv`, `retention_ladder.csv`,
+`retention_ci.csv`, `company_profile.csv`, `motif_full_distribution_balanced.csv`,
+`concentration_two_axes.csv`, `avoidance_set_stability.json`, `topic_records.csv`, and
+`human_per_motif_summary.csv` in the frozen instrument. Only the name is Korean; every
+value in those files is numeric.
 
 | | | | | |
 |---|---|---|---|---|
@@ -68,6 +71,8 @@ The two groups named in the paper:
 | File in this package | Korean content | English counterpart |
 |---|---|---|
 | `results/phase2/closure_audit_samples_public.txt` | the judgment unit of all 180 audit items: the final ~170 characters of the generated works; bibliography and one phrase for the human works | **SI S8** — every item with an English translation beside the Korean |
+| `results/phase2/closure_audit_labels.csv` | the `reason` column (why each of the 180 endings was judged as it was) and the `object_note` column, both free text in Korean | **SI S8** — the same reason and object note for every item, in English. The `category` and `stratum` values are mapped in §1 and §2 above |
+| `data/generated/arm_ab/*.jsonl` | the generated poems themselves, 4,876 rows across six systems | not translated as a corpus. The works the paper quotes are translated where they are quoted (§3.6, §4.1, §4.3, §4.5); the 180 audited endings are translated in **SI S8** |
 | `docs/closure_audit.md` | the frozen criteria document and all 180 judgments with their reasons | criteria: §2.4.6; per-item categories and reasons in English: **SI S8** |
 | `docs/prompts_frozen_2026-07-28.json` | the twelve prompts as sent, in Korean, with SHA-256 | **SI S5** — each prompt in Korean and English with the same hash |
 | `data/atlas/instrument_frozen/topic_info.csv` | the motif keywords | **SI Table S2-2** — the ten keywords per motif, Korean with English gloss |
@@ -86,6 +91,9 @@ categories and strata above:
 | `motif_map.csv`, `retention_ladder.csv` etc., `topwords` | the ten motif keywords | SI Table S2-2 |
 | `naming_set_features.csv`, feature names | 혼자, 창가, 길, 사건 없음, 부재자 | alone, at a window, on a road, no event, an absent figure (§4.1) |
 | `close_reading_provenance.json` | 전형작 / 상위작 | typical work / top-share work (§2.4.7) |
+
+Free-text notes inside `summary.json`, `form_x_topic_protocol.json` and
+`human_split_check.json` are in English and match the strings the scripts emit.
 
 ## 6. Spelling in code and data
 

@@ -105,7 +105,7 @@ def main():
 
     # B6
     d["yr"] = pd.to_numeric(d["출판년도"], errors="coerce")
-    splits = {"2000–2011": d[d.yr <= 2011], "2012–2024": d[d.yr >= 2012], "민음사 제외": d[~d["출판사"].str.contains("민음")]}
+    splits = {"2000–2011": d[d.yr <= 2011], "2012–2024": d[d.yr >= 2012], "excluding Minumsa": d[~d["출판사"].str.contains("민음")]}
     out = {}
     for k, s in splits.items():
         out[k] = {"n": int(len(s)), "avoid4_human_mean_pct": {t: round(s[f"{t}_pct"].mean(), 2) for t in AV}}

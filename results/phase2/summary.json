@@ -635,6 +635,6 @@
   }
  ],
  "pooled_note": "pooled generated = 5 form-capable models (HCX excluded from Level-2 pooled topic)",
- "_note_exaone": "EXAONE-4.0의 attempts/valid/rate는 프로토콜 절단(유효 25/셀 도달 시 중단) 기준으로 2026-08-11 갱신. 주제·엔트로피 필드는 균형 표본(셀당 첫 25 유효) 기준으로 절단 표본과 동일.",
+ "_note_exaone": "EXAONE-4.0 attempts/valid/rate were updated on 2026-08-11 to the protocol truncation (stop once 25 valid works are reached in a cell). The subject and entropy fields use the balanced sample (the first 25 valid per cell) and are identical to the truncated sample.",
  "_valid_rate_definition": "cell-mean of valid/completed calls (transport failures excluded), 12 cells equal weight; = paper Table 1"
 }

@@ -73,12 +73,12 @@ The two groups named in the paper:
 | `results/phase2/closure_audit_samples_public.txt` | the judgment unit of all 180 audit items: the final ~170 characters of the generated works; bibliography and one phrase for the human works | **SI S8** — every item with an English translation beside the Korean |
 | `results/phase2/closure_audit_labels.csv` | the `reason` column (why each of the 180 endings was judged as it was) and the `object_note` column, both free text in Korean | **SI S8** — the same reason and object note for every item, in English. The `category` and `stratum` values are mapped in §1 and §2 above |
 | `data/generated/arm_ab/*.jsonl` | the generated poems themselves, 4,876 rows across six systems | not translated as a corpus. The works the paper quotes are translated where they are quoted (§3.6, §4.1, §4.3, §4.5); the 180 audited endings are translated in **SI S8** |
-| `docs/closure_audit.md` | the frozen criteria document and all 180 judgments with their reasons | criteria: §2.4.6; per-item categories and reasons in English: **SI S8** |
+| `docs/closure_audit.md` | Part B is the criteria document as it was frozen, in Korean; the appendix holds all 180 judgments with their reasons | Part A of the same file is an English translation of the criteria; the procedure is §2.4.6; per-item categories and reasons in English: **SI S8** |
 | `docs/prompts_frozen_2026-07-28.json` | the twelve prompts as sent, in Korean, with SHA-256 | **SI S5** — each prompt in Korean and English with the same hash |
 | `data/atlas/instrument_frozen/topic_info.csv` | the motif keywords | **SI Table S2-2** — the ten keywords per motif, Korean with English gloss |
 | `results/phase2c/bertopic_fresh_topics.csv` | keywords of the fifteen generated-axis motifs | **SI Table S3-1** (keywords with gloss) and **SI Table S3-3** (their mapping onto the human-axis motifs) |
 | `results/phase2/naming_set_typicals.csv` | the 20 typical-work slots (18 distinct works) read in naming the window-and-street scene | quoted and translated in §4.1; the feature tally in `naming_set_features.csv` is summarized there |
-| `results/phase2/human_top_works.csv` | poet, title and reason for the human top-share works | the six read closely are quoted in §4.2 with the Korean original beside the English translation |
+| `results/phase2/human_top_works.csv` | poet, title, motif name and the `reason` column as recorded | the `reason_en` column carries the English of the same reason; the six works read closely are quoted in §4.2 with the Korean original beside the English translation |
 | `results/phase2/topic_records.csv` | the full text of the 1,625 generated works (column `text_full`) | the generated works quoted in the paper appear in §3.6, §4.1, §4.3 and §4.5 with translations |
 
 ## 5. Column names that appear in Korean

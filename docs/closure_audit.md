@@ -1,5 +1,14 @@
 # The ending audit — criteria document and judgments
 
+> **On this document.** The criteria were fixed and frozen in Korean before
+> classification began, as §2.4.6 of the paper describes. What follows is an English
+> translation for readers of the paper; **the frozen Korean original is reproduced
+> verbatim in Part B below**, and nothing in it has been altered. The 180 judgments in
+> the appendix are given in the language they were made in, with English translations
+> in SI S8.
+
+# Part A — Criteria document (English translation)
+
 This is the public artefact behind §2.4.6 (procedure), §3.6 (results) and SI S8
 (appendix) of the paper. The sample is drawn by `scripts/closure_audit_sampling.py`
 and the totals of Table 5 are computed by `scripts/closure_audit_stats.py`.
@@ -94,6 +103,51 @@ Under an adverse recoding — every borderline item resolved in the direction le
 favourable to the claim — the human rate rises from 2/84 (2.4%) to 22/84 (26.2%) while
 the generated rate is unchanged at 62/96 (64.6%), and five of the eight generated
 strata remain significant (p ≤ 0.018). Per-stratum values: SI Table S8-1.
+
+---
+
+# Part B — Criteria document, frozen Korean original
+
+본문 §2.4.6(절차)·§3.6(결과)·SI S8(부록)의 공개 산출물이다. 표본 추출 코드는 `scripts/closure_audit_sampling.py`, 표 5의 집계는 `scripts/closure_audit_stats.py`로 재현된다.
+
+## 1. 검증하는 주장
+생성 작품 전반을 훑어 읽는 과정에서 관찰된 경향: 시스템을 가리지 않고 결말이 위안·깨달음·수용으로 완결되며, 같은 소재의 인간 작품에서는 그런 결말을 보기 어렵다. 여기에 두 하위 주장을 더해 검증한다. (i) 다른 시스템이 지우는 가족을 유지하는 Opus에서도 겨울·가족 작품의 결말은 같은 방식으로 닫힌다. (ii) 인간 작품은 회피 넷(상처·노인·병원·학교)의 재료를 위안으로 봉합하지 않는다. (iii) Gemini도 겨울 전형작에 겨울 어휘를 실으므로, (i)과 같은 규칙으로 Gemini 겨울 층과 짝 인간 층을 둔다(§3; (i)·(ii) 뒤에 같은 규칙으로 추가한 층이다).
+
+## 2. 분류 기준
+- 판정 단위: 각 작품의 결말 약 170자.
+- 범주: **봉합** = 결말이 위안·깨달음·수용·용서로 완결 / **미해소·열림** = 질문·중단·거부·진행형·긴장 유지로 끝남 / **경계·기타** = 어느 쪽으로도 확정할 수 없음. 경계는 봉합률의 분자에 넣지 않는다.
+- 분류자: 1인. 표본과 판정 전 항목을 아래에 공개한다(재분류 검증용).
+
+## 3. 모집단과 층
+- 모집단 = 해당 코퍼스에서 그 모티프의 인간 축 지분이 10% 이상인 작품 전수(집약 작품, 본문 §2.4.3). 생성 쪽은 프로토콜 유효물(셀별 유효 25편까지)이다.
+- 층 목록은 주장이 정한다(본문 §2.4.6). 시스템 횡단 주장 → 다섯 시스템이 공통으로 설 수 있는 비 모티프에 시스템별 층 + 인간 비 층. Opus 주장 → Opus 겨울·가족 층 + 인간 겨울·가족 층. Gemini의 겨울 전형작도 겨울 어휘를 실으므로(본문 §4.1) 같은 규칙으로 Gemini 겨울 층 + 인간 겨울 층(시드 53). 인간 코퍼스 주장 → 인간 상처·노인·병원·학교 층(생성 집약 작품이 1–6편뿐이라 생성 짝 없음). HCX는 비-집약 작품이 없어 층이 없다.
+- 추출: 층마다 12편, `층별 고정 시드 `random.Random(42)`–`Random(53)`(같은 코퍼스에서 뽑는 층들이 같은 위치를 재추출하지 않도록), 행 순서는 `results/phase2/topic_records.csv`(인간은 `human_doc_motif_distribution.csv`) 순.
+
+## 3b. 미해소의 하위 판정 — 대상 유무
+미해소로 판정된 결말 각각에 대해 판정 단위(결말 약 170자) 안에 다음 셋 가운데 하나라도 있는가를 적는다: 특정 인물(고유하거나 지시 대상이 정해진 사람; 익명의 '누군가'는 제외), 행위 주체가 있는 사건, 손에 잡히는 사물. 하나라도 있으면 '대상 있음', 화자의 감각·정조와 일반 풍경(비·어둠·빛·바람)만 있으면 '대상 없음'이다. 본문이 '부유'라고 부르는 것은 '미해소 + 대상 없음'이다. 결과: 미해소 80편 가운데 대상 없음은 생성 12편(Gemini 비 5/6, Gemini 겨울 5/6, EXAONE 1/1, Opus 가족 1/2), 인간 0/62. 항목별 판정은 `results/phase2/closure_audit_labels.csv`의 object_present·object_note 열.
+
+## 4. 결과 (15층, 180편)
+| 표본 | 봉합 | 미해소·열림 | 경계·기타 | 봉합률 [95% CI] | 짝 인간 층 대비 p |
+|---|---|---|---|---|---|
+| GPT 비 (12) | 11 | 0 | 1 | 92% [65, 99] | <0.0001 |
+| Solar 비 (12) | 11 | 0 | 1 | 92% [65, 99] | <0.0001 |
+| EXAONE 비 (12) | 10 | 1 | 1 | 83% [55, 95] | 0.0003 |
+| Opus 겨울 (12) | 8 | 1 | 3 | 67% [39, 86] | 0.0007 |
+| Opus 가족 (12) | 8 | 2 | 2 | 67% [39, 86] | 0.0007 |
+| Opus 비 (12) | 8 | 2 | 2 | 67% [39, 86] | 0.0047 |
+| Gemini 비 (12) | 3 | 6 | 3 | 25% [9, 53] | 0.2950 |
+| Gemini 겨울 (12) | 3 | 6 | 3 | 25% [9, 53] | 0.1087 |
+| 인간 비 (12) | 1 | 10 | 1 | 8% [1, 35] |  |
+| 인간 겨울 (12) | 0 | 10 | 2 | 0% [0, 24] |  |
+| 인간 가족 (12) | 0 | 8 | 4 | 0% [0, 24] |  |
+| 인간 상처 (12) | 1 | 10 | 1 | 8% [1, 35] |  |
+| 인간 노인 (12) | 0 | 8 | 4 | 0% [0, 24] |  |
+| 인간 병원 (12) | 0 | 9 | 3 | 0% [0, 24] |  |
+| 인간 학교 (12) | 0 | 7 | 5 | 0% [0, 24] |  |
+
+관찰: 인간 층 일곱의 봉합은 합계 2/84(이시영 「수고」, 천양희 「공어 이야기」). 생성 층 대 짝 인간 층의 Fisher 정확검정(단측, 생성 > 인간)은 Gemini의 두 층(비 p=0.30, 겨울 p=0.11)을 제외한 여섯 층에서 p≤0.005다. Gemini 겨울 3번은 Gemini 비 7번과 같은 작품이다(두 층의 모집단에 모두 속함). 인간 비 층의 4번과 9번은 같은 작품(김선재 「열대야」)의 두 판본으로 코퍼스에 각각 실려 있어 따로 추출되었으며 판정은 동일하다.
+
+---
 
 ## 5. Appendix — every item of the sample, with its judgment
 

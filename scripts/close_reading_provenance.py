@@ -109,14 +109,15 @@ def human_top_works():
     h = pd.read_csv(ROOT / "data/atlas/instrument_frozen/human_doc_motif_distribution.csv")
     m = pd.read_csv(ROOT / "data/atlas/metadata.csv")
     h["work_id"] = h.work_id.astype(str); m["work_id"] = m.work_id.astype(str); d = h.merge(m, on="work_id")
-    motifs = {"T18": "wounds/drink", "T9": "old age/underground", "T22": "hospital/illness",
-              "T5": "school/child", "T3": "food/animals", "T2": "family", "T7": "rain", "T6": "winter"}
+    motifs = {"T18": "상처·술", "T9": "노인·지하", "T22": "병원·질병", "T5": "학교·아이",
+              "T3": "음식·동물", "T2": "가족", "T7": "비", "T6": "겨울"}
     # Selection rule (§2.4.7): among the five highest shares, the researcher takes the one
     # that can show how the material is used within the quotation limit, and publishes the reason.
-    chosen = {("T18", 2): "the highest-ranked work is 171 characters long, too short to show how the material is used within the quotation limit (3 phrases, 15%), so the next rank was taken",
-              ("T9", 1): "highest share", ("T22", 4): "this work carries both the hospital material and rain vocabulary, so it is reused for the rain comparison in §4.3",
-              ("T5", 3): "the motif's keywords (school, classroom, teacher, student) are on the surface of this work; ranks 1 and 2 have a child but no school scene",
-              ("T3", 1): "highest share", ("T2", 1): "highest share", ("T7", 1): "highest share", ("T6", 1): "highest share"}
+    # (Korean as recorded, English translation). Written to the reason / reason_en columns.
+    chosen = {("T18", 2): ("1위 「홍도야」는 171자로 인용 상한(3어구·15%) 안에서 재료를 보일 수 없어 다음 순위", "the highest-ranked work is 171 characters long, too short to show how the material is used within the quotation limit (3 phrases, 15%), so the next rank was taken"),
+              ("T9", 1): ("1위", "highest share"), ("T22", 4): ("병원 재료와 비 어휘가 한 작품에 있어 §4.3의 비 맞세우기에 재사용", "this work carries both the hospital material and rain vocabulary, so it is reused for the rain comparison in §4.3"),
+              ("T5", 3): ("모티프 키워드(학교·교실·선생·학생)가 표면에 있는 작품; 1·2위는 아이는 있으나 학교 장면이 아님", "the motif's keywords (school, classroom, teacher, student) are on the surface of this work; ranks 1 and 2 have a child but no school scene"),
+              ("T3", 1): ("1위", "highest share"), ("T2", 1): ("1위", "highest share"), ("T7", 1): ("1위", "highest share"), ("T6", 1): ("1위", "highest share")}
     cited = {"T18": "§4.2", "T9": "§4.2", "T22": "§4.2", "T5": "§4.2", "T3": "§4.2", "T2": "§4.2", "T7": "§4.3", "T6": "§4.3"}
     rows = []
     for t, n in motifs.items():
@@ -124,7 +125,8 @@ def human_top_works():
         for i, r in s.iterrows():
             rows.append({"motif": t, "name": n, "rank": i + 1, "work_id": r["work_id"], "poet": r["작가"],
                          "title": r["작품 제목"], "year": r["출판년도"], "share_pct": round(r[f"{t}_pct"], 2),
-                         "chosen": "Y" if (t, i + 1) in chosen else "", "reason": chosen.get((t, i + 1), ""),
+                         "chosen": "Y" if (t, i + 1) in chosen else "", "reason": chosen.get((t, i + 1), ("", ""))[0],
+                         "reason_en": chosen.get((t, i + 1), ("", ""))[1],
                          "cited": cited[t] if (t, i + 1) in chosen else ""})
     pd.DataFrame(rows).to_csv(ROOT / "results/phase2/human_top_works.csv", index=False)
 

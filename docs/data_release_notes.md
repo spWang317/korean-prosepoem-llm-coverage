@@ -11,7 +11,7 @@
   (`company_weighted.json`, `company_profile.csv`), the generated-axis audit
   (`bertopic_fresh_topics.csv`, `fresh_soft_projection.csv`), the ending audit
   (`closure_audit_samples_public.txt`, `closure_audit_labels.csv`,
-  `closure_audit_table.csv`), the selection record for the quoted works
+  `closure_audit_table.csv`, `closure_audit_power.csv`), the selection record for the quoted works
   (`close_reading_provenance.json`, `naming_set_typicals.csv`,
   `naming_set_features.csv`, `human_top_works.csv`), the bootstrap confidence
   intervals (`human_motif_ci.json`, `retention_ci.csv`), the robustness checks

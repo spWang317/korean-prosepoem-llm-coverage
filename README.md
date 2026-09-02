@@ -101,6 +101,7 @@ to test whether the generated poems contain subjects the human axis cannot hold
   (SI Table S3-2, §3.5).
 - `closure_audit_labels.csv` — the 180 ending-audit judgments (no phrase column).
 - `closure_audit_table.csv` — the computation behind Table 5 (Wilson CI, Fisher p).
+- `closure_audit_power.csv` — the detection threshold of that test: one-sided Fisher p for every generated sealing count against a paired human count of 0, 1 or 2 out of 12 (SI S8). A property of n = 12, not of the data.
 - `closure_audit_samples_public.txt` — the public version of the audit sample: the
   final 170 characters for generated works, bibliography and one phrase for human ones.
 - `close_reading_provenance.json` — the selection record for the quoted typical works:

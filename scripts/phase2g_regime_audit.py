@@ -77,8 +77,8 @@ def main():
         else:
             entry["note"] = "fewer than 10 rejected texts (empty responses only, or no rejection) - subject comparison not applied"
         fx[name] = entry
-        print(f"  {name:11s} valid {entry['n_valid']:4d} | 기각(텍스트) {entry['n_discard_nonempty']:4d} "
-              f"| 기각(빈) {entry['n_discard_empty']:3d} | {entry.get('mad','—')} / {entry.get('corr','—')}")
+        print(f"  {name:11s} valid {entry['n_valid']:4d} | rejected (text) {entry['n_discard_nonempty']:4d} "
+              f"| rejected (empty) {entry['n_discard_empty']:3d} | {entry.get('mad','—')} / {entry.get('corr','—')}")
     json.dump({"form_x_topic_protocol": fx}, open(ROOT / "results/phase2/form_x_topic_protocol.json", "w"),
               ensure_ascii=False, indent=2)
 

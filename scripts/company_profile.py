@@ -25,7 +25,7 @@ for a in sorted(cw, key=lambda m: int(m[1:])):
     h = np.array([nb[m]["human"] for m in ms], float); g = np.array([nb[m]["gen"] for m in ms], float)
     hp, gp = h / h.sum(), g / g.sum()
     up = [i for i, m in enumerate(ms) if m in UP and m != a]; av = [i for i, m in enumerate(ms) if m in AVOID and m != a]
-    rows.append({"anchor": a, "name": lad.loc[a, "name"], "anchor_share_h": round(lad.loc[a, "human_mean_pct"], 2),
+    rows.append({"anchor": a, "name": lad.loc[a, "name"], "name_en": lad.loc[a, "name_en"], "anchor_share_h": round(lad.loc[a, "human_mean_pct"], 2),
                  "anchor_share_g": round(lad.loc[a, "gen_mean_pct"], 2), "retention": round(lad.loc[a, "retention"], 3),
                  "tv": round(0.5 * np.abs(hp - gp).sum(), 3),
                  "eff_h": round(1 / (hp ** 2).sum(), 2), "eff_g": round(1 / (gp ** 2).sum(), 2),

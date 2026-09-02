@@ -53,3 +53,5 @@ completed calls are valid.
 The construction of the human baseline (the four rules of §2.1 and the 5,166 → 4,642
 filter) and the fitting of the 25-motif instrument belong to the companion study; this
 package takes their output — the human shares and the motif metadata — as input only.
+
+Re-running `gen_full.py` also writes `run_manifest.json` (the per-run call log). It is a working file and is not part of this release.

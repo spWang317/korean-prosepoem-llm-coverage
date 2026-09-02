@@ -46,7 +46,7 @@ def main():
     rec = pd.read_csv(R / "topic_records.csv")
     h = pd.read_csv(ROOT / "data/atlas/instrument_frozen/human_doc_motif_distribution.csv")
     meta = pd.read_csv(ROOT / "data/atlas/metadata.csv")
-    names = dict(pd.read_csv(R / "retention_ladder.csv")[["motif", "name"]].values)
+    lad = pd.read_csv(R / "retention_ladder.csv"); names = dict(lad[["motif", "name"]].values); names_en = dict(lad[["motif", "name_en"]].values)
     gen = rec[rec.model.isin(FIVE)].copy()
     hm = np.array([h[f"{t}_pct"].mean() for t in T])
 
@@ -61,7 +61,7 @@ def main():
             acc.append(np.vstack([cells[m][ks[i]] for i in pick]))
         boots[b] = np.vstack(acc).mean(0) / hm
     lo, hi = np.percentile(boots, [2.5, 97.5], axis=0); pt = gen[T].values.mean(0) * 100 / hm
-    ci = pd.DataFrame({"motif": T, "name": [names[t] for t in T], "retention": pt.round(4),
+    ci = pd.DataFrame({"motif": T, "name": [names[t] for t in T], "name_en": [names_en[t] for t in T], "retention": pt.round(4),
                        "ci_lo": lo.round(4), "ci_hi": hi.round(4)}).sort_values("retention", ascending=False)
     ci.to_csv(R / "retention_ci.csv", index=False)
     order = np.argsort(pt)

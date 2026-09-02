@@ -1,181 +1,181 @@
-stratum,item,category,reason,object_present,object_note
-GPT 비,1,봉합,위안 이미지,,
-GPT 비,2,봉합,믿음+재정의,,
-GPT 비,3,봉합,재정의,,
-GPT 비,4,봉합,에피파니,,
-GPT 비,5,봉합,위안,,
-GPT 비,6,봉합,약속 위안,,
-GPT 비,7,경계,재정의+서러움 병치,,
-GPT 비,8,봉합,수용,,
-GPT 비,9,봉합,재정의+갱신,,
-GPT 비,10,봉합,화해,,
-GPT 비,11,봉합,에피파니,,
-GPT 비,12,봉합,의례화 수용,,
-Solar 비,1,봉합,안내 위안,,
-Solar 비,2,봉합,위안 이미지,,
-Solar 비,3,봉합,회귀 안정,,
-Solar 비,4,봉합,갱신,,
-Solar 비,5,봉합,희망,,
-Solar 비,6,봉합,봉인,,
-Solar 비,7,봉합,잠언,,
-Solar 비,8,봉합,수용,,
-Solar 비,9,봉합,희망,,
-Solar 비,10,봉합,발견 완결,,
-Solar 비,11,경계,평온한 대기,,
-Solar 비,12,봉합,약속 위안,,
-EXAONE 비,1,봉합,수용(계절의 안온),,
-EXAONE 비,2,봉합,잠언 위안,,
-EXAONE 비,3,미해소,긴장 지속(길·끝이 보이지 않음),없음,비·길·발걸음 등 일반 풍경만
-EXAONE 비,4,봉합,희망·위안,,
-EXAONE 비,5,봉합,안온 완결,,
-EXAONE 비,6,봉합,새 출발 완결,,
-EXAONE 비,7,봉합,안온 완결,,
-EXAONE 비,8,봉합,낙관 완결,,
-EXAONE 비,9,봉합,안온 완결,,
-EXAONE 비,10,봉합,위안 봉인(치유),,
-EXAONE 비,11,봉합,자기 긍정,,
-EXAONE 비,12,경계,위안 어조의 열린 소망(닿기를 바란다),,
-Opus 겨울,1,봉합,위안 이미지(순환),,
-Opus 겨울,2,봉합,재회 위안,,
-Opus 겨울,3,경계,감각 지속,,
-Opus 겨울,4,봉합,용서,,
-Opus 겨울,5,경계,위안 소망+조건문,,
-Opus 겨울,6,봉합,의례화 수용,,
-Opus 겨울,7,봉합,에피파니+순환 수용,,
-Opus 겨울,8,봉합,고요의 향유,,
-Opus 겨울,9,봉합,갱신 결의,,
-Opus 겨울,10,미해소,미완 지속,있음,그리다 만 얼굴(행위)
-Opus 겨울,11,봉합,에피파니(계승),,
-Opus 겨울,12,경계,견딤 명명+열린 대기,,
-Opus 가족,1,봉합,에피파니,,
-Opus 가족,2,봉합,재정의,,
-Opus 가족,3,경계,질문+위안 이미지,,
-Opus 가족,4,미해소,질문,없음,지워진 이름·빗방울만
-Opus 가족,5,미해소,소망 유예(미완 구문),있음,어머니·우산(인물·행위)
-Opus 가족,6,봉합,포옹 위안,,
-Opus 가족,7,봉합,에피파니,,
-Opus 가족,8,봉합,위무,,
-Opus 가족,9,경계,잠언 구도+응시,,
-Opus 가족,10,봉합,에피파니+온기,,
-Opus 가족,11,봉합,재정의(잠언),,
-Opus 가족,12,봉합,에피파니,,
-Opus 비,1,경계,위안 감각+미완 구문,,
-Opus 비,2,봉합,잠언,,
-Opus 비,3,봉합,재정의,,
-Opus 비,4,미해소,지속 욕망,있음,두고 간 목도리(사물)
-Opus 비,5,봉합,에피파니,,
-Opus 비,6,봉합,수용(지속의 긍정),,
-Opus 비,7,봉합,수용(결의),,
-Opus 비,8,경계,정조 용해,,
-Opus 비,9,봉합,수용·화해,,
-Opus 비,10,봉합,재정의+수용,,
-Opus 비,11,봉합,수용,,
-Opus 비,12,미해소,진행형(상실 지속),있음,당신이 문을 닫고 떠남(사건)
-Gemini 비,1,미해소,양가 대기,없음,익명의 흐름·풍경만
-Gemini 비,2,경계,질문 열림+정조 용해,,
-Gemini 비,3,경계,"회상 완결, 위안 아님",,
-Gemini 비,4,미해소,정화 거부,없음,빗소리·마음의 얼룩만
-Gemini 비,5,경계,양가 사변,,
-Gemini 비,6,미해소,문턱,없음,풍경·감정의 문턱만
-Gemini 비,7,미해소,한가운데 중단,없음,냄새·고요만
-Gemini 비,8,봉합,완결 선언,,
-Gemini 비,9,봉합,역설 완성,,
-Gemini 비,10,미해소,그리움 지속,있음,그 아이(인물)
-Gemini 비,11,미해소,미결정,없음,익명 승객·불빛만
-Gemini 비,12,봉합,정화 위안,,
-인간 비,1,미해소,죽음 쪽 이동,있음,인간(부록 발췌 참조)
-인간 비,2,봉합,위안 이미지(신의 손길),,
-인간 비,3,미해소,죽음 선고,있음,인간(부록 발췌 참조)
-인간 비,4,미해소,열림(전환 명령),있음,인간(부록 발췌 참조)
-인간 비,5,미해소,갇힘 지속,있음,인간(부록 발췌 참조)
-인간 비,6,경계,"잠언, 위안 아님",,
-인간 비,7,미해소,부정 종결,있음,인간(부록 발췌 참조)
-인간 비,8,미해소,그로테스크 지속,있음,인간(부록 발췌 참조)
-인간 비,9,미해소,열림(전환 명령; 4번과 같은 작품의 다른 판본),있음,인간(부록 발췌 참조)
-인간 비,10,미해소,긴장 유지,있음,인간(부록 발췌 참조)
-인간 비,11,미해소,파편,있음,인간(부록 발췌 참조)
-인간 비,12,미해소,메타적 유보,있음,인간(부록 발췌 참조)
-인간 겨울,1,미해소,질문,있음,인간(부록 발췌 참조)
-인간 겨울,2,경계,장면 지속(소외),,
-인간 겨울,3,미해소,진행형,있음,인간(부록 발췌 참조)
-인간 겨울,4,미해소,긴장 지속,있음,인간(부록 발췌 참조)
-인간 겨울,5,미해소,소실 진행,있음,인간(부록 발췌 참조)
-인간 겨울,6,미해소,긴장 지속,있음,인간(부록 발췌 참조)
-인간 겨울,7,미해소,긴장,있음,인간(부록 발췌 참조)
-인간 겨울,8,미해소,불안 이미지,있음,인간(부록 발췌 참조)
-인간 겨울,9,미해소,긴장(굶주림 지속),있음,인간(부록 발췌 참조)
-인간 겨울,10,미해소,모순 반복,있음,인간(부록 발췌 참조)
-인간 겨울,11,경계,아이러니 평온,,
-인간 겨울,12,미해소,소멸 예감,있음,인간(부록 발췌 참조)
-인간 가족,1,미해소,파편 중단,있음,인간(부록 발췌 참조)
-인간 가족,2,미해소,역접 미완,있음,인간(부록 발췌 참조)
-인간 가족,3,경계,유머 완결,,
-인간 가족,4,미해소,질문,있음,인간(부록 발췌 참조)
-인간 가족,5,경계,인용된 위안(화자 유보),,
-인간 가족,6,경계,고백 완결,,
-인간 가족,7,미해소,파편 중단,있음,인간(부록 발췌 참조)
-인간 가족,8,미해소,조건절 중단,있음,인간(부록 발췌 참조)
-인간 가족,9,미해소,긴장 유지(응시),있음,인간(부록 발췌 참조)
-인간 가족,10,경계,위안 이미지+미완 구문,,
-인간 가족,11,미해소,미완의 인정,있음,인간(부록 발췌 참조)
-인간 가족,12,미해소,아이러니 호소,있음,인간(부록 발췌 참조)
-인간 상처,1,미해소,고통 강조,있음,인간(부록 발췌 참조)
-인간 상처,2,미해소,질문,있음,인간(부록 발췌 참조)
-인간 상처,3,미해소,욕설 긴장,있음,인간(부록 발췌 참조)
-인간 상처,4,미해소,위협,있음,인간(부록 발췌 참조)
-인간 상처,5,미해소,중단,있음,인간(부록 발췌 참조)
-인간 상처,6,봉합,수용(자기 긍정),,
-인간 상처,7,미해소,그로테스크 지속,있음,인간(부록 발췌 참조)
-인간 상처,8,미해소,자기 소외 인식,있음,인간(부록 발췌 참조)
-인간 상처,9,미해소,위협 지속,있음,인간(부록 발췌 참조)
-인간 상처,10,경계,"이미지 완결, 위안 아님",,
-인간 상처,11,미해소,반복 아이러니,있음,인간(부록 발췌 참조)
-인간 상처,12,미해소,부패 진행,있음,인간(부록 발췌 참조)
-인간 노인,1,미해소,긴장 예고,있음,인간(부록 발췌 참조)
-인간 노인,2,미해소,파편 지속,있음,인간(부록 발췌 참조)
-인간 노인,3,미해소,긴장,있음,인간(부록 발췌 참조)
-인간 노인,4,경계,장면 전환,,
-인간 노인,5,미해소,긴장 이미지,있음,인간(부록 발췌 참조)
-인간 노인,6,경계,장면 종결,,
-인간 노인,7,미해소,무기력 지속,있음,인간(부록 발췌 참조)
-인간 노인,8,미해소,긴장,있음,인간(부록 발췌 참조)
-인간 노인,9,미해소,역접 중단,있음,인간(부록 발췌 참조)
-인간 노인,10,경계,수용 어조+무감각,,
-인간 노인,11,미해소,중단,있음,인간(부록 발췌 참조)
-인간 노인,12,경계,아이러니 완결,,
-인간 병원,1,경계,장면 지속,,
-인간 병원,2,미해소,불안 질문,있음,인간(부록 발췌 참조)
-인간 병원,3,미해소,슬픔 진술,있음,인간(부록 발췌 참조)
-인간 병원,4,미해소,긴장(결의),있음,인간(부록 발췌 참조)
-인간 병원,5,미해소,긴장 이미지,있음,인간(부록 발췌 참조)
-인간 병원,6,미해소,서사 중단,있음,인간(부록 발췌 참조)
-인간 병원,7,미해소,욕·체념,있음,인간(부록 발췌 참조)
-인간 병원,8,미해소,긴장 지속,있음,인간(부록 발췌 참조)
-인간 병원,9,경계,장면 완결,,
-인간 병원,10,미해소,긴장,있음,인간(부록 발췌 참조)
-인간 병원,11,미해소,중단,있음,인간(부록 발췌 참조)
-인간 병원,12,경계,아이러니 종결,,
-인간 학교,1,미해소,긴장,있음,인간(부록 발췌 참조)
-인간 학교,2,미해소,긴장 이미지,있음,인간(부록 발췌 참조)
-인간 학교,3,미해소,질문,있음,인간(부록 발췌 참조)
-인간 학교,4,미해소,긴장 이미지,있음,인간(부록 발췌 참조)
-인간 학교,5,경계,아이러니 자조,,
-인간 학교,6,미해소,지속,있음,인간(부록 발췌 참조)
-인간 학교,7,경계,회고 완결+질문,,
-인간 학교,8,미해소,질문,있음,인간(부록 발췌 참조)
-인간 학교,9,미해소,진행형,있음,인간(부록 발췌 참조)
-인간 학교,10,경계,위안 행위+악몽 지속,,
-인간 학교,11,경계,아이러니,,
-인간 학교,12,경계,"선언 완결, 위안 아님",,
-Gemini 겨울,1,미해소,지속 정체,없음,자동차 소음·유리 조각 풍경만
-Gemini 겨울,2,봉합,위안 차오름,,
-Gemini 겨울,3,미해소,한가운데 중단(비 층 7번과 같은 작품),없음,냄새·고요만
-Gemini 겨울,4,미해소,얼룩 지속,없음,빗속 풍경·마음만
-Gemini 겨울,5,봉합,수용 결의,,
-Gemini 겨울,6,미해소,긴장 이미지,있음,붉은 열매·당신의 낡은 신발(사물)
-Gemini 겨울,7,미해소,정조 용해,없음,이름 없는 그림자·안개만
-Gemini 겨울,8,경계,잠언 수용+질문,,
-Gemini 겨울,9,미해소,응시 지속,없음,빛의 잔상·윤곽만
-Gemini 겨울,10,경계,정조 용해(수용 기미),,
-Gemini 겨울,11,봉합,각성·희망 결의,,
-Gemini 겨울,12,경계,정조 용해(희미한 긍정),,
+stratum,stratum_en,item,category,category_en,reason,reason_en,object_present,object_note,object_note_en
+GPT 비,GPT rain-intensive,1,봉합,sealing,위안 이미지,image of consolation,,,
+GPT 비,GPT rain-intensive,2,봉합,sealing,믿음+재정의,trust plus redefinition,,,
+GPT 비,GPT rain-intensive,3,봉합,sealing,재정의,redefinition,,,
+GPT 비,GPT rain-intensive,4,봉합,sealing,에피파니,insight,,,
+GPT 비,GPT rain-intensive,5,봉합,sealing,위안,consolation,,,
+GPT 비,GPT rain-intensive,6,봉합,sealing,약속 위안,consolation by promise,,,
+GPT 비,GPT rain-intensive,7,경계,borderline,재정의+서러움 병치,redefinition juxtaposed with sorrow,,,
+GPT 비,GPT rain-intensive,8,봉합,sealing,수용,acceptance,,,
+GPT 비,GPT rain-intensive,9,봉합,sealing,재정의+갱신,redefinition plus renewal,,,
+GPT 비,GPT rain-intensive,10,봉합,sealing,화해,reconciliation,,,
+GPT 비,GPT rain-intensive,11,봉합,sealing,에피파니,insight,,,
+GPT 비,GPT rain-intensive,12,봉합,sealing,의례화 수용,acceptance made ritual,,,
+Solar 비,Solar rain-intensive,1,봉합,sealing,안내 위안,consolation of guidance,,,
+Solar 비,Solar rain-intensive,2,봉합,sealing,위안 이미지,image of consolation,,,
+Solar 비,Solar rain-intensive,3,봉합,sealing,회귀 안정,settling into return,,,
+Solar 비,Solar rain-intensive,4,봉합,sealing,갱신,renewal,,,
+Solar 비,Solar rain-intensive,5,봉합,sealing,희망,hope,,,
+Solar 비,Solar rain-intensive,6,봉합,sealing,봉인,sealed away,,,
+Solar 비,Solar rain-intensive,7,봉합,sealing,잠언,aphorism,,,
+Solar 비,Solar rain-intensive,8,봉합,sealing,수용,acceptance,,,
+Solar 비,Solar rain-intensive,9,봉합,sealing,희망,hope,,,
+Solar 비,Solar rain-intensive,10,봉합,sealing,발견 완결,discovery completed,,,
+Solar 비,Solar rain-intensive,11,경계,borderline,평온한 대기,calm waiting,,,
+Solar 비,Solar rain-intensive,12,봉합,sealing,약속 위안,consolation by promise,,,
+EXAONE 비,EXAONE rain-intensive,1,봉합,sealing,수용(계절의 안온),acceptance (the ease of the season),,,
+EXAONE 비,EXAONE rain-intensive,2,봉합,sealing,잠언 위안,aphoristic consolation,,,
+EXAONE 비,EXAONE rain-intensive,3,미해소,unresolved/open,긴장 지속(길·끝이 보이지 않음),tension continuing (neither the road nor the end is visible),없음,비·길·발걸음 등 일반 풍경만,"only generic scenery — rain, road, footsteps"
+EXAONE 비,EXAONE rain-intensive,4,봉합,sealing,희망·위안,hope and consolation,,,
+EXAONE 비,EXAONE rain-intensive,5,봉합,sealing,안온 완결,completion in ease,,,
+EXAONE 비,EXAONE rain-intensive,6,봉합,sealing,새 출발 완결,completion in a fresh start,,,
+EXAONE 비,EXAONE rain-intensive,7,봉합,sealing,안온 완결,completion in ease,,,
+EXAONE 비,EXAONE rain-intensive,8,봉합,sealing,낙관 완결,completion in optimism,,,
+EXAONE 비,EXAONE rain-intensive,9,봉합,sealing,안온 완결,completion in ease,,,
+EXAONE 비,EXAONE rain-intensive,10,봉합,sealing,위안 봉인(치유),consolation sealed shut (healing),,,
+EXAONE 비,EXAONE rain-intensive,11,봉합,sealing,자기 긍정,self-affirmation,,,
+EXAONE 비,EXAONE rain-intensive,12,경계,borderline,위안 어조의 열린 소망(닿기를 바란다),an open wish in a consoling tone ('I hope to reach somewhere'),,,
+Opus 겨울,Opus winter,1,봉합,sealing,위안 이미지(순환),image of consolation (cyclical),,,
+Opus 겨울,Opus winter,2,봉합,sealing,재회 위안,consolation of reunion,,,
+Opus 겨울,Opus winter,3,경계,borderline,감각 지속,sensation sustained,,,
+Opus 겨울,Opus winter,4,봉합,sealing,용서,forgiveness,,,
+Opus 겨울,Opus winter,5,경계,borderline,위안 소망+조건문,wish for consolation in a conditional,,,
+Opus 겨울,Opus winter,6,봉합,sealing,의례화 수용,acceptance made ritual,,,
+Opus 겨울,Opus winter,7,봉합,sealing,에피파니+순환 수용,insight plus acceptance of the cycle,,,
+Opus 겨울,Opus winter,8,봉합,sealing,고요의 향유,savouring of the quiet,,,
+Opus 겨울,Opus winter,9,봉합,sealing,갱신 결의,resolve to begin again,,,
+Opus 겨울,Opus winter,10,미해소,unresolved/open,미완 지속,unfinished and continuing,있음,그리다 만 얼굴(행위),the half-drawn face (action)
+Opus 겨울,Opus winter,11,봉합,sealing,에피파니(계승),insight (inheritance),,,
+Opus 겨울,Opus winter,12,경계,borderline,견딤 명명+열린 대기,endurance named plus open waiting,,,
+Opus 가족,Opus family,1,봉합,sealing,에피파니,insight,,,
+Opus 가족,Opus family,2,봉합,sealing,재정의,redefinition,,,
+Opus 가족,Opus family,3,경계,borderline,질문+위안 이미지,question plus image of consolation,,,
+Opus 가족,Opus family,4,미해소,unresolved/open,질문,question,없음,지워진 이름·빗방울만,only the erased name and the raindrops
+Opus 가족,Opus family,5,미해소,unresolved/open,소망 유예(미완 구문),wish deferred (unfinished construction),있음,어머니·우산(인물·행위),"mother and umbrella (person, action)"
+Opus 가족,Opus family,6,봉합,sealing,포옹 위안,consolation of embrace,,,
+Opus 가족,Opus family,7,봉합,sealing,에피파니,insight,,,
+Opus 가족,Opus family,8,봉합,sealing,위무,solace,,,
+Opus 가족,Opus family,9,경계,borderline,잠언 구도+응시,aphoristic frame plus gaze,,,
+Opus 가족,Opus family,10,봉합,sealing,에피파니+온기,insight plus warmth,,,
+Opus 가족,Opus family,11,봉합,sealing,재정의(잠언),redefinition (aphorism),,,
+Opus 가족,Opus family,12,봉합,sealing,에피파니,insight,,,
+Opus 비,Opus rain-intensive,1,경계,borderline,위안 감각+미완 구문,sensation of consolation plus unfinished construction,,,
+Opus 비,Opus rain-intensive,2,봉합,sealing,잠언,aphorism,,,
+Opus 비,Opus rain-intensive,3,봉합,sealing,재정의,redefinition,,,
+Opus 비,Opus rain-intensive,4,미해소,unresolved/open,지속 욕망,desire to remain,있음,두고 간 목도리(사물),the scarf left behind (object)
+Opus 비,Opus rain-intensive,5,봉합,sealing,에피파니,insight,,,
+Opus 비,Opus rain-intensive,6,봉합,sealing,수용(지속의 긍정),acceptance (affirmation of continuance),,,
+Opus 비,Opus rain-intensive,7,봉합,sealing,수용(결의),acceptance (resolve),,,
+Opus 비,Opus rain-intensive,8,경계,borderline,정조 용해,dissolution into mood,,,
+Opus 비,Opus rain-intensive,9,봉합,sealing,수용·화해,acceptance and reconciliation,,,
+Opus 비,Opus rain-intensive,10,봉합,sealing,재정의+수용,redefinition plus acceptance,,,
+Opus 비,Opus rain-intensive,11,봉합,sealing,수용,acceptance,,,
+Opus 비,Opus rain-intensive,12,미해소,unresolved/open,진행형(상실 지속),ongoing (loss continuing),있음,당신이 문을 닫고 떠남(사건),you closing the door and leaving (event)
+Gemini 비,Gemini rain-intensive,1,미해소,unresolved/open,양가 대기,ambivalent waiting,없음,익명의 흐름·풍경만,only an anonymous flow and the scenery
+Gemini 비,Gemini rain-intensive,2,경계,borderline,질문 열림+정조 용해,open question plus dissolution into mood,,,
+Gemini 비,Gemini rain-intensive,3,경계,borderline,"회상 완결, 위안 아님","recollection completed, not consolation",,,
+Gemini 비,Gemini rain-intensive,4,미해소,unresolved/open,정화 거부,cleansing refused,없음,빗소리·마음의 얼룩만,only the sound of rain and the stain on the heart
+Gemini 비,Gemini rain-intensive,5,경계,borderline,양가 사변,ambivalent speculation,,,
+Gemini 비,Gemini rain-intensive,6,미해소,unresolved/open,문턱,threshold,없음,풍경·감정의 문턱만,only the scenery and the threshold of a feeling
+Gemini 비,Gemini rain-intensive,7,미해소,unresolved/open,한가운데 중단,broken off in the middle,없음,냄새·고요만,only a smell and the quiet
+Gemini 비,Gemini rain-intensive,8,봉합,sealing,완결 선언,declaration of completeness,,,
+Gemini 비,Gemini rain-intensive,9,봉합,sealing,역설 완성,paradox completed,,,
+Gemini 비,Gemini rain-intensive,10,미해소,unresolved/open,그리움 지속,longing continuing,있음,그 아이(인물),that child (person)
+Gemini 비,Gemini rain-intensive,11,미해소,unresolved/open,미결정,undecided,없음,익명 승객·불빛만,only anonymous passengers and lights
+Gemini 비,Gemini rain-intensive,12,봉합,sealing,정화 위안,consolation of cleansing,,,
+인간 비,Human rain-intensive,1,미해소,unresolved/open,죽음 쪽 이동,a move towards death,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 비,Human rain-intensive,2,봉합,sealing,위안 이미지(신의 손길),image of consolation (the touch of God),,,
+인간 비,Human rain-intensive,3,미해소,unresolved/open,죽음 선고,a pronouncement of death,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 비,Human rain-intensive,4,미해소,unresolved/open,열림(전환 명령),open (a command to change),있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 비,Human rain-intensive,5,미해소,unresolved/open,갇힘 지속,confinement continues,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 비,Human rain-intensive,6,경계,borderline,"잠언, 위안 아님","aphorism, not consolation",,,
+인간 비,Human rain-intensive,7,미해소,unresolved/open,부정 종결,closes on a negation,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 비,Human rain-intensive,8,미해소,unresolved/open,그로테스크 지속,the grotesque continues,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 비,Human rain-intensive,9,미해소,unresolved/open,열림(전환 명령; 4번과 같은 작품의 다른 판본),open (a command to change; a different version of the same work as item 4),있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 비,Human rain-intensive,10,미해소,unresolved/open,긴장 유지,tension sustained,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 비,Human rain-intensive,11,미해소,unresolved/open,파편,a fragment,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 비,Human rain-intensive,12,미해소,unresolved/open,메타적 유보,a meta-poetic reservation,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 겨울,Human winter,1,미해소,unresolved/open,질문,a question,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 겨울,Human winter,2,경계,borderline,장면 지속(소외),the scene continues (estrangement),,,
+인간 겨울,Human winter,3,미해소,unresolved/open,진행형,a continuing action,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 겨울,Human winter,4,미해소,unresolved/open,긴장 지속,tension continues,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 겨울,Human winter,5,미해소,unresolved/open,소실 진행,an effacement in progress,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 겨울,Human winter,6,미해소,unresolved/open,긴장 지속,tension continues,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 겨울,Human winter,7,미해소,unresolved/open,긴장,tension,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 겨울,Human winter,8,미해소,unresolved/open,불안 이미지,an image of unease,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 겨울,Human winter,9,미해소,unresolved/open,긴장(굶주림 지속),tension (hunger continues),있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 겨울,Human winter,10,미해소,unresolved/open,모순 반복,a repeated contradiction,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 겨울,Human winter,11,경계,borderline,아이러니 평온,ironic calm,,,
+인간 겨울,Human winter,12,미해소,unresolved/open,소멸 예감,a premonition of extinction,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 가족,Human family,1,미해소,unresolved/open,파편 중단,breaks off on a fragment,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 가족,Human family,2,미해소,unresolved/open,역접 미완,an unfinished concessive,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 가족,Human family,3,경계,borderline,유머 완결,closes on humour,,,
+인간 가족,Human family,4,미해소,unresolved/open,질문,a question,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 가족,Human family,5,경계,borderline,인용된 위안(화자 유보),quoted consolation (the speaker withholds),,,
+인간 가족,Human family,6,경계,borderline,고백 완결,closes on a confession,,,
+인간 가족,Human family,7,미해소,unresolved/open,파편 중단,breaks off on a fragment,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 가족,Human family,8,미해소,unresolved/open,조건절 중단,breaks off on a conditional clause,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 가족,Human family,9,미해소,unresolved/open,긴장 유지(응시),tension sustained (a gaze),있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 가족,Human family,10,경계,borderline,위안 이미지+미완 구문,image of consolation + unfinished syntax,,,
+인간 가족,Human family,11,미해소,unresolved/open,미완의 인정,an admission of incompletion,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 가족,Human family,12,미해소,unresolved/open,아이러니 호소,an ironic appeal,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 상처,Human wounds,1,미해소,unresolved/open,고통 강조,pain emphasized,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 상처,Human wounds,2,미해소,unresolved/open,질문,a question,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 상처,Human wounds,3,미해소,unresolved/open,욕설 긴장,tension in a curse,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 상처,Human wounds,4,미해소,unresolved/open,위협,a threat,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 상처,Human wounds,5,미해소,unresolved/open,중단,breaks off,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 상처,Human wounds,6,봉합,sealing,수용(자기 긍정),acceptance (self-affirmation),,,
+인간 상처,Human wounds,7,미해소,unresolved/open,그로테스크 지속,the grotesque continues,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 상처,Human wounds,8,미해소,unresolved/open,자기 소외 인식,a recognition of self-estrangement,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 상처,Human wounds,9,미해소,unresolved/open,위협 지속,the threat continues,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 상처,Human wounds,10,경계,borderline,"이미지 완결, 위안 아님","closes on an image, not consolation",,,
+인간 상처,Human wounds,11,미해소,unresolved/open,반복 아이러니,repetition as irony,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 상처,Human wounds,12,미해소,unresolved/open,부패 진행,decay in progress,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 노인,Human old age,1,미해소,unresolved/open,긴장 예고,tension foretold,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 노인,Human old age,2,미해소,unresolved/open,파편 지속,the fragment continues,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 노인,Human old age,3,미해소,unresolved/open,긴장,tension,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 노인,Human old age,4,경계,borderline,장면 전환,a change of scene,,,
+인간 노인,Human old age,5,미해소,unresolved/open,긴장 이미지,an image of tension,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 노인,Human old age,6,경계,borderline,장면 종결,ends on the scene,,,
+인간 노인,Human old age,7,미해소,unresolved/open,무기력 지속,listlessness continues,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 노인,Human old age,8,미해소,unresolved/open,긴장,tension,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 노인,Human old age,9,미해소,unresolved/open,역접 중단,breaks off on a concessive,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 노인,Human old age,10,경계,borderline,수용 어조+무감각,a tone of acceptance + numbness,,,
+인간 노인,Human old age,11,미해소,unresolved/open,중단,breaks off,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 노인,Human old age,12,경계,borderline,아이러니 완결,closes on irony,,,
+인간 병원,Human hospital,1,경계,borderline,장면 지속,the scene continues,,,
+인간 병원,Human hospital,2,미해소,unresolved/open,불안 질문,an anxious question,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 병원,Human hospital,3,미해소,unresolved/open,슬픔 진술,a statement of sorrow,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 병원,Human hospital,4,미해소,unresolved/open,긴장(결의),tension (resolve),있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 병원,Human hospital,5,미해소,unresolved/open,긴장 이미지,an image of tension,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 병원,Human hospital,6,미해소,unresolved/open,서사 중단,the narrative breaks off,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 병원,Human hospital,7,미해소,unresolved/open,욕·체념,a curse and resignation,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 병원,Human hospital,8,미해소,unresolved/open,긴장 지속,tension continues,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 병원,Human hospital,9,경계,borderline,장면 완결,closes on the scene,,,
+인간 병원,Human hospital,10,미해소,unresolved/open,긴장,tension,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 병원,Human hospital,11,미해소,unresolved/open,중단,breaks off,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 병원,Human hospital,12,경계,borderline,아이러니 종결,ends on irony,,,
+인간 학교,Human school,1,미해소,unresolved/open,긴장,tension,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 학교,Human school,2,미해소,unresolved/open,긴장 이미지,an image of tension,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 학교,Human school,3,미해소,unresolved/open,질문,a question,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 학교,Human school,4,미해소,unresolved/open,긴장 이미지,an image of tension,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 학교,Human school,5,경계,borderline,아이러니 자조,ironic self-mockery,,,
+인간 학교,Human school,6,미해소,unresolved/open,지속,continues,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 학교,Human school,7,경계,borderline,회고 완결+질문,closes on retrospection + a question,,,
+인간 학교,Human school,8,미해소,unresolved/open,질문,a question,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 학교,Human school,9,미해소,unresolved/open,진행형,a continuing action,있음,인간(부록 발췌 참조),human work (see the appendix extract)
+인간 학교,Human school,10,경계,borderline,위안 행위+악몽 지속,an act of consolation + the nightmare continues,,,
+인간 학교,Human school,11,경계,borderline,아이러니,irony,,,
+인간 학교,Human school,12,경계,borderline,"선언 완결, 위안 아님","closes on a declaration, not consolation",,,
+Gemini 겨울,Gemini winter,1,미해소,unresolved/open,지속 정체,continuing stasis,없음,자동차 소음·유리 조각 풍경만,only traffic noise and a scene of glass shards
+Gemini 겨울,Gemini winter,2,봉합,sealing,위안 차오름,consolation welling up,,,
+Gemini 겨울,Gemini winter,3,미해소,unresolved/open,한가운데 중단(비 층 7번과 같은 작품),broken off in the middle (the same work as item 7 of the rain stratum),없음,냄새·고요만,only a smell and the quiet
+Gemini 겨울,Gemini winter,4,미해소,unresolved/open,얼룩 지속,stain continuing,없음,빗속 풍경·마음만,only the scene in the rain and the heart
+Gemini 겨울,Gemini winter,5,봉합,sealing,수용 결의,resolve of acceptance,,,
+Gemini 겨울,Gemini winter,6,미해소,unresolved/open,긴장 이미지,image of tension,있음,붉은 열매·당신의 낡은 신발(사물),the red fruit and your worn shoes (objects)
+Gemini 겨울,Gemini winter,7,미해소,unresolved/open,정조 용해,dissolution into mood,없음,이름 없는 그림자·안개만,only nameless shadows and mist
+Gemini 겨울,Gemini winter,8,경계,borderline,잠언 수용+질문,aphoristic acceptance plus question,,,
+Gemini 겨울,Gemini winter,9,미해소,unresolved/open,응시 지속,gaze continuing,없음,빛의 잔상·윤곽만,only afterimages of light and an outline
+Gemini 겨울,Gemini winter,10,경계,borderline,정조 용해(수용 기미),dissolution into mood (a hint of acceptance),,,
+Gemini 겨울,Gemini winter,11,봉합,sealing,각성·희망 결의,resolve of awakening and hope,,,
+Gemini 겨울,Gemini winter,12,경계,borderline,정조 용해(희미한 긍정),dissolution into mood (a faint affirmation),,,

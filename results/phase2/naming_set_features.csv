@@ -1,19 +1,19 @@
-idx,slots,system,chars,speaker_alone,others_in_scene,place,action,time,remembered_absent
-1,비/GPT-5.6; 거리/GPT-5.6,GPT-5.6,366,예,없음(창문 불빛 속 타인은 상상),골목·길,걷기,저녁,예
-2,비/Opus-4.8,Opus-4.8,452,예,없음(어머니·아버지·첫사랑은 회상),창가,서서 바라봄,특정 없음(비 오는 날),예
-3,비/Gemini-2.5,Gemini-2.5,397,예,없음(얼굴들은 회상),창가·실내,앉아 바라봄,밤,예
-4,비/Solar-Pro3,Solar-Pro3,337,예,없음,길,걷기,새벽,아니오
-5,거리/Opus-4.8,Opus-4.8,479,예,"없음(어머니는 회상, '누군가'는 상상)",창가,서서 바라봄,저녁,예
-6,거리/Gemini-2.5,Gemini-2.5,315,예,없음,창가(낯선 도시),기대어 바라봄,저녁·어스름,예(잊었던 말들)
-7,거리/Solar-Pro3,Solar-Pro3,379,예,없음,골목·길,걷기,새벽,아니오
-8,겨울/GPT-5.6; 실내/GPT-5.6,GPT-5.6,320,예,없음(떠난 사람들은 회상),창가·실내,앉아 찻잔을 감쌈,새벽→아침,예
-9,겨울/Opus-4.8,Opus-4.8,393,예,없음(잃어버린 이름들은 회상),창가→부엌,서서 바라봄·물 끓임,아침,예
-10,겨울/Gemini-2.5,Gemini-2.5,335,예,없음(누군가의 목소리는 회상),창가·실내,서서 기다림,특정 없음(첫눈 예감),예
-11,겨울/Solar-Pro3,Solar-Pro3,748,예,없음,길가·도시,걷기,새벽,아니오
-12,실내/Opus-4.8,Opus-4.8,484,예,없음(어머니는 회상),실내(서랍·창),서랍을 열고 바라봄,밤,예
-13,실내/Gemini-2.5,Gemini-2.5,433,예,없음(웃음소리·이름은 회상),방 안,앉아 바라봄,늦은 오후,예
-14,실내/Solar-Pro3,Solar-Pro3,421,예,없음(어린 시절은 회상),창가,서서 바라봄,저녁·밤,예
-15,비/EXAONE-4.0,EXAONE-4.0,301,예,없음,창가,기대어 바라봄,특정 없음(비 오는 날),아니오
-16,거리/EXAONE-4.0,EXAONE-4.0,372,예,없음,길,걷기,밤(어둠·별),아니오
-17,겨울/EXAONE-4.0,EXAONE-4.0,290,예,없음,창가→길,서서 듣기·걷기,밤→아침,아니오
-18,실내/EXAONE-4.0,EXAONE-4.0,181,예,없음,창가,기대어 바라봄,밤,아니오
+idx,slots,system,chars,speaker_alone,others_in_scene,place,action,time,remembered_absent,speaker_alone_en,others_in_scene_en,place_en,action_en,time_en,remembered_absent_en
+1,비/GPT-5.6; 거리/GPT-5.6,GPT-5.6,366,예,없음(창문 불빛 속 타인은 상상),골목·길,걷기,저녁,예,yes,none (others in the window light are imagined),alley/road,walking,evening,yes
+2,비/Opus-4.8,Opus-4.8,452,예,없음(어머니·아버지·첫사랑은 회상),창가,서서 바라봄,특정 없음(비 오는 날),예,yes,"none (mother, father and first love are recalled)",at a window,"standing, looking",unspecified (a rainy day),yes
+3,비/Gemini-2.5,Gemini-2.5,397,예,없음(얼굴들은 회상),창가·실내,앉아 바라봄,밤,예,yes,none (faces are recalled),window/indoors,"sitting, looking",night,yes
+4,비/Solar-Pro3,Solar-Pro3,337,예,없음,길,걷기,새벽,아니오,yes,none,road,walking,dawn,no
+5,거리/Opus-4.8,Opus-4.8,479,예,"없음(어머니는 회상, '누군가'는 상상)",창가,서서 바라봄,저녁,예,yes,"none (mother is recalled, 'someone' is imagined)",at a window,"standing, looking",evening,yes
+6,거리/Gemini-2.5,Gemini-2.5,315,예,없음,창가(낯선 도시),기대어 바라봄,저녁·어스름,예(잊었던 말들),yes,none,at a window (an unfamiliar city),"leaning, looking",evening/dusk,yes (forgotten words)
+7,거리/Solar-Pro3,Solar-Pro3,379,예,없음,골목·길,걷기,새벽,아니오,yes,none,alley/road,walking,dawn,no
+8,겨울/GPT-5.6; 실내/GPT-5.6,GPT-5.6,320,예,없음(떠난 사람들은 회상),창가·실내,앉아 찻잔을 감쌈,새벽→아침,예,yes,none (those who left are recalled),window/indoors,"sitting, cupping a teacup",dawn to morning,yes
+9,겨울/Opus-4.8,Opus-4.8,393,예,없음(잃어버린 이름들은 회상),창가→부엌,서서 바라봄·물 끓임,아침,예,yes,none (lost names are recalled),"window, then kitchen","standing, looking; boiling water",morning,yes
+10,겨울/Gemini-2.5,Gemini-2.5,335,예,없음(누군가의 목소리는 회상),창가·실내,서서 기다림,특정 없음(첫눈 예감),예,yes,none (someone's voice is recalled),window/indoors,"standing, waiting",unspecified (a sense of first snow),yes
+11,겨울/Solar-Pro3,Solar-Pro3,748,예,없음,길가·도시,걷기,새벽,아니오,yes,none,roadside/city,walking,dawn,no
+12,실내/Opus-4.8,Opus-4.8,484,예,없음(어머니는 회상),실내(서랍·창),서랍을 열고 바라봄,밤,예,yes,none (mother is recalled),"indoors (drawer, window)","opening a drawer, looking",night,yes
+13,실내/Gemini-2.5,Gemini-2.5,433,예,없음(웃음소리·이름은 회상),방 안,앉아 바라봄,늦은 오후,예,yes,none (laughter and a name are recalled),inside a room,"sitting, looking",late afternoon,yes
+14,실내/Solar-Pro3,Solar-Pro3,421,예,없음(어린 시절은 회상),창가,서서 바라봄,저녁·밤,예,yes,none (childhood is recalled),at a window,"standing, looking",evening/night,yes
+15,비/EXAONE-4.0,EXAONE-4.0,301,예,없음,창가,기대어 바라봄,특정 없음(비 오는 날),아니오,yes,none,at a window,"leaning, looking",unspecified (a rainy day),no
+16,거리/EXAONE-4.0,EXAONE-4.0,372,예,없음,길,걷기,밤(어둠·별),아니오,yes,none,road,walking,"night (darkness, stars)",no
+17,겨울/EXAONE-4.0,EXAONE-4.0,290,예,없음,창가→길,서서 듣기·걷기,밤→아침,아니오,yes,none,"window, then road","standing, listening; walking",night to morning,no
+18,실내/EXAONE-4.0,EXAONE-4.0,181,예,없음,창가,기대어 바라봄,밤,아니오,yes,none,at a window,"leaning, looking",night,no

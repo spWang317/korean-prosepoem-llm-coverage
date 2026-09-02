@@ -13,13 +13,14 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parent.parent
 FIVE = ["GPT-5.6", "Opus-4.8", "Gemini-2.5", "Solar-Pro3", "EXAONE-4.0"]
-# Motif names are written into the CSV in Korean; see docs/glossary.md for the
-# English terms used in the paper.
+# Motif names are written into the CSV in Korean (`name`) and in the English of the
+# paper (`name_en`); see docs/glossary.md.
 NAMES = {0: "바다", 1: "꽃", 2: "가족", 3: "음식·동물", 4: "정서", 5: "학교·아이",
          6: "겨울", 7: "비", 8: "여인", 9: "노인·지하", 10: "새·나비", 11: "메타시",
          12: "편지·글", 13: "실내", 14: "음악", 15: "거리", 16: "고양이", 17: "우주",
          18: "상처·술", 19: "과일", 20: "조부모", 21: "거울", 22: "병원·질병",
          23: "아파트·벽", 24: "버스"}
+NAMES_EN = {0: "sea", 1: "flowers", 2: "family", 3: "food/animals", 4: "affect", 5: "school/child", 6: "winter", 7: "rain", 8: "woman", 9: "old age/underground", 10: "birds/butterflies", 11: "meta-poetic", 12: "letters/writing", 13: "interior", 14: "music", 15: "street", 16: "cat", 17: "cosmos", 18: "wounds/drink", 19: "fruit", 20: "grandparents", 21: "mirror", 22: "hospital/illness", 23: "apartment/wall", 24: "bus"}
 
 
 def main():
@@ -33,7 +34,7 @@ def main():
         hm = h[f"{c}_pct"].mean()
         gm = gen[c].mean() * 100
         per = {m: (rec[rec["model"] == m][c].mean() * 100) / hm for m in FIVE}
-        rows.append({"motif": c, "name": NAMES[int(c[1:])], "human_mean_pct": round(hm, 6),
+        rows.append({"motif": c, "name": NAMES[int(c[1:])], "name_en": NAMES_EN[int(c[1:])], "human_mean_pct": round(hm, 6),
                      "gen_mean_pct": round(gm, 6), "retention": round(gm / hm, 6),
                      **{f"retention_{m}": round(v, 6) for m, v in per.items()},
                      "retention_system_max": round(max(per.values()), 6)})

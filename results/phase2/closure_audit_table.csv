@@ -1,16 +1,16 @@
-stratum,봉합,미해소·열림,경계,봉합률 [Wilson 95% CI],Fisher p (vs paired human)
-GPT 비,11,0,1,"92% [65, 99]",<0.0001
-Solar 비,11,0,1,"92% [65, 99]",<0.0001
-EXAONE 비,10,1,1,"83% [55, 95]",0.0003
-Opus 겨울,8,1,3,"67% [39, 86]",0.0007
-Opus 가족,8,2,2,"67% [39, 86]",0.0007
-Opus 비,8,2,2,"67% [39, 86]",0.0047
-Gemini 비,3,6,3,"25% [9, 53]",0.2950
-Gemini 겨울,3,6,3,"25% [9, 53]",0.1087
-인간 비,1,10,1,"8% [1, 35]",
-인간 겨울,0,10,2,"0% [0, 24]",
-인간 가족,0,8,4,"0% [0, 24]",
-인간 상처,1,10,1,"8% [1, 35]",
-인간 노인,0,8,4,"0% [0, 24]",
-인간 병원,0,9,3,"0% [0, 24]",
-인간 학교,0,7,5,"0% [0, 24]",
+stratum,stratum_en,sealing,unresolved_open,borderline,sealing_rate [Wilson 95% CI],Fisher p (vs paired human)
+GPT 비,GPT rain-intensive,11,0,1,"92% [65, 99]",<0.0001
+Solar 비,Solar rain-intensive,11,0,1,"92% [65, 99]",<0.0001
+EXAONE 비,EXAONE rain-intensive,10,1,1,"83% [55, 95]",0.0003
+Opus 겨울,Opus winter,8,1,3,"67% [39, 86]",0.0007
+Opus 가족,Opus family,8,2,2,"67% [39, 86]",0.0007
+Opus 비,Opus rain-intensive,8,2,2,"67% [39, 86]",0.0047
+Gemini 비,Gemini rain-intensive,3,6,3,"25% [9, 53]",0.2950
+Gemini 겨울,Gemini winter,3,6,3,"25% [9, 53]",0.1087
+인간 비,Human rain-intensive,1,10,1,"8% [1, 35]",
+인간 겨울,Human winter,0,10,2,"0% [0, 24]",
+인간 가족,Human family,0,8,4,"0% [0, 24]",
+인간 상처,Human wounds,1,10,1,"8% [1, 35]",
+인간 노인,Human old age,0,8,4,"0% [0, 24]",
+인간 병원,Human hospital,0,9,3,"0% [0, 24]",
+인간 학교,Human school,0,7,5,"0% [0, 24]",

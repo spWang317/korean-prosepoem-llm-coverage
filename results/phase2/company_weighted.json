@@ -1,5 +1,6 @@
 {
- "note": "가중 동행: 이웃 지분을 앵커 지분으로 가중 평균(본문 §2.4.4, 표 4의 원천).",
+ "note": "Weighted company: neighbour shares averaged with the anchor share as weight (Section 2.4.4 of the paper; source of Table 4).",
+ "note_ko": "가중 동행: 이웃 지분을 앵커 지분으로 가중 평균(본문 §2.4.4, 표 4의 원천).",
  "anchors": {
   "T0": {
    "soc_sum": {

@@ -6,6 +6,7 @@ motif_full_distribution_balanced.csv for labels; shares are taken unrounded from
 motifs 1/Σp² (inverse Simpson). Writes results/phase2/concentration_two_axes.csv.
 Run: python3 scripts/phase2f_concentration.py
 """
+NAME_EN = {0: "sea", 1: "flowers", 2: "family", 3: "food/animals", 4: "affect", 5: "school/child", 6: "winter", 7: "rain", 8: "woman", 9: "old age/underground", 10: "birds/butterflies", 11: "meta-poetic", 12: "letters/writing", 13: "interior", 14: "music", 15: "street", 16: "cat", 17: "cosmos", 18: "wounds/drink", 19: "fruit", 20: "grandparents", 21: "mirror", 22: "hospital/illness", 23: "apartment/wall", 24: "bus"}  # motif names as used in the paper
 import pandas as pd, numpy as np, json
 from pathlib import Path
 R = Path(__file__).resolve().parent.parent
@@ -30,5 +31,6 @@ for m in ["human"] + mods:
                  "fx25_top1_motif": f.iloc[o[0]]["motif"] + " " + kw[f.iloc[o[0]]["motif"]].split(",")[0].strip(),
                  "fx25_top1_pct": round(p[o[0]] * 100, 2), "fx25_top3_pct": round(p[o[:3]].sum() * 100, 2),
                  "fx25_eff_ntopics": round(1 / np.sum(p ** 2), 2), "residual_pct": round(resid[m], 2)})
-pd.DataFrame(rows).to_csv(R / "results/phase2/concentration_two_axes.csv", index=False)
+_df = pd.DataFrame(rows); _df.insert(2, "fx25_top1_motif_en", _df["fx25_top1_motif"].map(lambda v: v.split(" ")[0] + " " + NAME_EN[int(v.split(" ")[0][1:])]))
+_df.to_csv(R / "results/phase2/concentration_two_axes.csv", index=False)
 print("saved results/phase2/concentration_two_axes.csv")

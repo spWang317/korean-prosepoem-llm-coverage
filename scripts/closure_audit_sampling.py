@@ -28,6 +28,10 @@ rec = pd.read_csv(ROOT / "results/phase2/topic_records.csv")
 
 
 
+# English stratum labels (the row labels of Table 5 of the paper), written beside the Korean
+STRATUM_EN = {"GPT 비": "GPT rain-intensive", "Solar 비": "Solar rain-intensive", "EXAONE 비": "EXAONE rain-intensive", "Opus 겨울": "Opus winter", "Opus 가족": "Opus family", "Opus 비": "Opus rain-intensive", "Gemini 비": "Gemini rain-intensive", "Gemini 겨울": "Gemini winter", "인간 비": "Human rain-intensive", "인간 겨울": "Human winter", "인간 가족": "Human family", "인간 상처": "Human wounds", "인간 노인": "Human old age", "인간 병원": "Human hospital", "인간 학교": "Human school"}
+
+
 def gen_sample(model, tcol, thr, k, seed):
     sub = rec[rec["model"] == model].reset_index(drop=True)
     pop = []
@@ -51,7 +55,7 @@ def main():
               ("Gemini 겨울", "Gemini-2.5", "T6", 12, 53)]
     for name, model, tcol, k, seed in groups:
         pop, sample = gen_sample(model, tcol, 0.10, k, seed)
-        lines.append(f"\n### {name} (모집단 {len(pop)}, 표본 {len(sample)})\n")
+        lines.append(f"\n### {name} / {STRATUM_EN[name]} (population {len(pop)}, sample {len(sample)})\n")
         for i, t in enumerate(sample, 1):
             lines.append(f"[{name}-{i}] …{t[-170:]}\n")
     h = pd.read_csv(ROOT / "data/atlas/instrument_frozen/human_doc_motif_distribution.csv")
@@ -62,7 +66,7 @@ def main():
                                 ("T18_pct", 12, "인간 상처", 49), ("T9_pct", 12, "인간 노인", 50), ("T22_pct", 12, "인간 병원", 51), ("T5_pct", 12, "인간 학교", 52)]:
         sub = d[d[tcol] >= 10]
         idx = random.Random(seed).sample(range(len(sub)), k)
-        lines.append(f"\n### {name} (모집단 {len(sub)}, 표본 {k})\n")
+        lines.append(f"\n### {name} / {STRATUM_EN[name]} (population {len(sub)}, sample {k})\n")
         for i, j in enumerate(idx, 1):
             row = sub.iloc[j]; t = str(row["원문"])
             lines.append(f"[{name}-{i}] {row['작가']} 「{row['작품 제목']}」 …{t[-170:]}\n")

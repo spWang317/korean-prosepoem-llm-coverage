@@ -6,6 +6,12 @@
   "학교·아이",
   "병원·질병"
  ],
+ "system_max_bottom4_en": [
+  "wounds/drink",
+  "old age/underground",
+  "school/child",
+  "hospital/illness"
+ ],
  "system_max_gap_4_5": 0.15214699999999998,
  "system_max_internal_max_gap": 0.10074300000000001,
  "system_max_gap_rule_holds": true,
@@ -56,5 +62,32 @@
   "겨울",
   "거리",
   "비"
+ ],
+ "order_low_to_high_en": [
+  "wounds/drink",
+  "old age/underground",
+  "hospital/illness",
+  "school/child",
+  "food/animals",
+  "music",
+  "affect",
+  "woman",
+  "mirror",
+  "fruit",
+  "meta-poetic",
+  "grandparents",
+  "family",
+  "bus",
+  "birds/butterflies",
+  "flowers",
+  "sea",
+  "letters/writing",
+  "apartment/wall",
+  "cat",
+  "interior",
+  "cosmos",
+  "winter",
+  "street",
+  "rain"
  ]
 }

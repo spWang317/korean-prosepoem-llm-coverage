@@ -59,18 +59,33 @@ def wrank(model_filter, tcol, probe):
     return {"weighted_centroid_rank": None, "of": len(order)}
 
 
+# The keys are English; `label_ko` inside each entry keeps the Korean label the record
+# was written under. The probes stay Korean: they are the works themselves.
+# `poet_en`, `title_en` in human_top_works.csv are added by hand (romanization and the English
+# title used in the paper/SI); they are not produced by this script.
 out = {
-    "겨울 전형(전체 가중) 상위 3(§4.1)": topk(S5, "T6", 3),
-    "GPT 비 전형작(§4.1)": {"probe": "주머니 속 열쇠를 만지며",
+    "winter typical (pooled, weighted) top 3 (Section 4.1)": {
+        "label_ko": "겨울 전형(전체 가중) 상위 3(§4.1)",
+        "top3": topk(S5, "T6", 3)},
+    "GPT rain typical (Section 4.1)": {"label_ko": "GPT 비 전형작(§4.1)",
+                            "probe": "주머니 속 열쇠를 만지며",
                             **wrank(["GPT-5.6"], "T7", "비가 그친 골목에는 아직 돌아가지 못한 저녁")},
-    "겨울 전형(전체 가중) 1위(§4.1)": {"probe": "새벽은 아직 이름을 얻지 못한 빛을 창문 가장자리에",
+    "winter typical (pooled, weighted) rank 1 (Section 4.1)": {
+                                      "label_ko": "겨울 전형(전체 가중) 1위(§4.1)",
+                                      "probe": "새벽은 아직 이름을 얻지 못한 빛을 창문 가장자리에",
                                       **wrank(S5, "T6", "새벽은 아직 이름을 얻지 못한 빛을 창문 가장자리에"),
                                       "system": "GPT-5.6"},
-    "Gemini 버스(§4.3)": {"probe": "아직 내릴 곳을 정하지 못한 채", "source": "결말 감사 표본 Gemini 비-11 (SI S8)"},
-    "Gemini 여름 끝(§4.3)": {"probe": "이름 붙일 수 없는 감정의 문턱", "source": "결말 감사 표본 Gemini 비-6 (SI S8)"},
-    "Opus 겨울 전형(§4.5)": {"probe": "성에는 이미 절반쯤 녹아 흘러내리고",
+    "Gemini bus (Section 4.4)": {"label_ko": "Gemini 버스(§4.4)",
+                                 "probe": "아직 내릴 곳을 정하지 못한 채",
+                                 "source": "ending-audit sample, Gemini rain-11 (SI S8)"},
+    "Gemini end of summer (Section 4.4)": {"label_ko": "Gemini 여름 끝(§4.4)",
+                                 "probe": "이름 붙일 수 없는 감정의 문턱",
+                                 "source": "ending-audit sample, Gemini rain-6 (SI S8)"},
+    "Opus winter typical (Section 4.5)": {"label_ko": "Opus 겨울 전형(§4.5)",
+                              "probe": "성에는 이미 절반쯤 녹아 흘러내리고",
                               **wrank(["Opus-4.8"], "T6", "성에는 이미 절반쯤 녹아 흘러내리고")},
-    "Opus 가족 전형(§4.5)": {"probe": "새벽이 오기 전 부엌에서 어머니는 쌀을 씻었다",
+    "Opus family typical (Section 4.5)": {"label_ko": "Opus 가족 전형(§4.5)",
+                              "probe": "새벽이 오기 전 부엌에서 어머니는 쌀을 씻었다",
                               **wrank(["Opus-4.8"], "T2", "새벽이 오기 전 부엌에서 어머니는 쌀을 씻었다")},
 }
 json.dump(out, open(ROOT / "results/phase2/close_reading_provenance.json", "w"), ensure_ascii=False, indent=1)
@@ -92,7 +107,7 @@ def naming_set():
                 if l == m and t in pref: w[i] = pref[t]
             c = (E * w[:, None]).sum(0) / w.sum(); c /= np.linalg.norm(c); sims = E @ c
             i = max((i for i in range(len(texts)) if labels[i] == m), key=lambda i: sims[i])
-            rows.append({"motif": tcol, "name": lad.loc[tcol, "name"], "system": m, "head": texts[i][:60], "text": texts[i],
+            rows.append({"motif": tcol, "name": lad.loc[tcol, "name"], "name_en": lad.loc[tcol, "name_en"], "system": m, "head": texts[i][:60], "text": texts[i],
                          "window": bool(WIN.search(texts[i])), "night": bool(NIGHT.search(texts[i]))})
     df = pd.DataFrame(rows)
     df.to_csv(ROOT / "results/phase2/naming_set_typicals.csv", index=False)
@@ -104,7 +119,7 @@ def human_top_works():
     """The ranking of human top-share works. By the rule of §2.4.7 (choose among the five
     highest shares, publish the reason), this releases the ranking and the top five for the
     human works quoted in §4.2 (the avoided four, plus the family and food that only Opus
-    retains) and §4.3 (rain, winter). -> results/phase2/human_top_works.csv"""
+    retains) and Section 4.3 (rain, winter). -> results/phase2/human_top_works.csv"""
     import pandas as pd
     h = pd.read_csv(ROOT / "data/atlas/instrument_frozen/human_doc_motif_distribution.csv")
     m = pd.read_csv(ROOT / "data/atlas/metadata.csv")
@@ -114,16 +129,17 @@ def human_top_works():
     # Selection rule (§2.4.7): among the five highest shares, the researcher takes the one
     # that can show how the material is used within the quotation limit, and publishes the reason.
     # (Korean as recorded, English translation). Written to the reason / reason_en columns.
-    chosen = {("T18", 2): ("1위 「홍도야」는 171자로 인용 상한(3어구·15%) 안에서 재료를 보일 수 없어 다음 순위", "the highest-ranked work is 171 characters long, too short to show how the material is used within the quotation limit (3 phrases, 15%), so the next rank was taken"),
-              ("T9", 1): ("1위", "highest share"), ("T22", 4): ("병원 재료와 비 어휘가 한 작품에 있어 §4.3의 비 맞세우기에 재사용", "this work carries both the hospital material and rain vocabulary, so it is reused for the rain comparison in §4.3"),
+    chosen = {("T18", 2): ("1위 「홍도야」는 171자로 인용 상한(3어구·15%) 안에서 재료를 보일 수 없어 다음 순위", "the highest-ranked work, 「홍도야」, is 171 characters long, too short to show how the material is used within the quotation limit (3 phrases, 15%), so the next rank was taken"),
+              ("T9", 1): ("1위", "highest share"), ("T22", 4): ("병원 재료와 비 어휘가 한 작품에 있어 §4.3의 비 맞세우기에 재사용", "this work carries both the hospital material and rain vocabulary, so it is reused for the rain comparison in Section 4.3"),
               ("T5", 3): ("모티프 키워드(학교·교실·선생·학생)가 표면에 있는 작품; 1·2위는 아이는 있으나 학교 장면이 아님", "the motif's keywords (school, classroom, teacher, student) are on the surface of this work; ranks 1 and 2 have a child but no school scene"),
               ("T3", 1): ("1위", "highest share"), ("T2", 1): ("1위", "highest share"), ("T7", 1): ("1위", "highest share"), ("T6", 1): ("1위", "highest share")}
-    cited = {"T18": "§4.2", "T9": "§4.2", "T22": "§4.2", "T5": "§4.2", "T3": "§4.2", "T2": "§4.2", "T7": "§4.3", "T6": "§4.3"}
+    cited = {"T18": "Section 4.2", "T9": "Section 4.2", "T22": "Section 4.2", "T5": "Section 4.2",
+              "T3": "Section 4.2", "T2": "Section 4.2", "T7": "Section 4.3", "T6": "Section 4.3"}
     rows = []
     for t, n in motifs.items():
         s = d.sort_values(f"{t}_pct", ascending=False).head(5).reset_index(drop=True)
         for i, r in s.iterrows():
-            rows.append({"motif": t, "name": n, "rank": i + 1, "work_id": r["work_id"], "poet": r["작가"],
+            rows.append({"motif": t, "name": n, "name_en": lad.loc[t, "name_en"], "rank": i + 1, "work_id": r["work_id"], "poet": r["작가"],
                          "title": r["작품 제목"], "year": r["출판년도"], "share_pct": round(r[f"{t}_pct"], 2),
                          "chosen": "Y" if (t, i + 1) in chosen else "", "reason": chosen.get((t, i + 1), ("", ""))[0],
                          "reason_en": chosen.get((t, i + 1), ("", ""))[1],

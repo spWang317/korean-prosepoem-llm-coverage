@@ -22,6 +22,16 @@ PAIR = {"GPT 비": "인간 비", "Solar 비": "인간 비", "EXAONE 비": "인�
         "Gemini 비": "인간 비", "Gemini 겨울": "인간 겨울", "Opus 겨울": "인간 겨울", "Opus 가족": "인간 가족"}
 ORDER = ["GPT 비", "Solar 비", "EXAONE 비", "Opus 겨울", "Opus 가족", "Opus 비", "Gemini 비", "Gemini 겨울",
          "인간 비", "인간 겨울", "인간 가족", "인간 상처", "인간 노인", "인간 병원", "인간 학교"]
+# English stratum labels, exactly the row labels of Table 5 of the paper. The Korean
+# values stay in the `stratum` column; the English goes to `stratum_en` beside it.
+STRATUM_EN = {"GPT 비": "GPT rain-intensive", "Solar 비": "Solar rain-intensive",
+              "EXAONE 비": "EXAONE rain-intensive", "Opus 겨울": "Opus winter",
+              "Opus 가족": "Opus family", "Opus 비": "Opus rain-intensive",
+              "Gemini 비": "Gemini rain-intensive", "Gemini 겨울": "Gemini winter",
+              "인간 비": "Human rain-intensive", "인간 겨울": "Human winter",
+              "인간 가족": "Human family", "인간 상처": "Human wounds",
+              "인간 노인": "Human old age", "인간 병원": "Human hospital",
+              "인간 학교": "Human school"}
 
 
 def wilson(k, n, z=1.96):
@@ -42,12 +52,13 @@ def main():
             hb = counts[PAIR[s]].get("봉합", 0); hn = sum(counts[PAIR[s]].values())
             pv = fisher_exact([[b, n - b], [hb, hn - hb]], alternative="greater")[1]
             p = "<0.0001" if pv < 1e-4 else f"{pv:.4f}"
-        rows.append([s, b, u, e, f"{round(100 * b / n)}% [{lo}, {hi}]", p])
+        rows.append([s, STRATUM_EN[s], b, u, e, f"{round(100 * b / n)}% [{lo}, {hi}]", p])
     if "object_present" in df.columns:
         u = df[df.category == "미해소"]
         print("\nunresolved endings, presence of an object (a person, an event or a thing within the final 170 characters):")
         print(u.groupby("stratum").object_present.value_counts().unstack(fill_value=0).reindex([s for s in ORDER if s in set(u.stratum)]).to_string())
-    out = pd.DataFrame(rows, columns=["stratum", "봉합", "미해소·열림", "경계", "봉합률 [Wilson 95% CI]", "Fisher p (vs paired human)"])
+    out = pd.DataFrame(rows, columns=["stratum", "stratum_en", "sealing", "unresolved_open", "borderline",
+                                      "sealing_rate [Wilson 95% CI]", "Fisher p (vs paired human)"])
     print(out.to_string(index=False))
     out.to_csv(ROOT / "results/phase2/closure_audit_table.csv", index=False)
 

@@ -7,7 +7,7 @@ hand-picked subset re-introduces a "why these" choice (Sclar et al. 2024; Mizrah
 
 Design constants:
   - prose, single paragraph, no internal line breaks (the object of study is line-break-free);
-  - register held constant (존댓말) so it does not co-vary with framing;
+  - register held constant (jondaenmal, the polite register) so it does not co-vary with framing;
   - the constraint clause is byte-identical across all 12; only the framing differs;
   - persona = instruction + one role sentence.
 """

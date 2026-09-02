@@ -19,6 +19,7 @@ Rejection-sampling note: accept/reject is on FORM, so P(topic | valid) is unbias
 The form x topic caveat is checked (topic of valid vs discarded; topic vs attempt-count).
 """
 from __future__ import annotations
+NAME_EN = {0: "sea", 1: "flowers", 2: "family", 3: "food/animals", 4: "affect", 5: "school/child", 6: "winter", 7: "rain", 8: "woman", 9: "old age/underground", 10: "birds/butterflies", 11: "meta-poetic", 12: "letters/writing", 13: "interior", 14: "music", 15: "street", 16: "cat", 17: "cosmos", 18: "wounds/drink", 19: "fruit", 20: "grandparents", 21: "mirror", 22: "hospital/illness", 23: "apartment/wall", 24: "bus"}  # motif names as used in the paper
 import json, re, sys
 from pathlib import Path
 import numpy as np
@@ -209,6 +210,7 @@ def main():
 
     # ---- save ----
     pd.DataFrame(records).to_csv(OUT / "topic_records.csv", index=False)
+    motif_df.insert(1, "name_en", motif_df["motif"].map(lambda v: NAME_EN[int(str(v)[1:])]))  # English motif name of the paper
     motif_df.to_csv(OUT / "motif_map.csv", index=False)
     bal = pd.DataFrame({"motif": [f"T{j}" for j in range(K)], "topwords": [topwords[j] for j in range(K)],
                         "human_%": (human_motif_mean * 100).round(2)})

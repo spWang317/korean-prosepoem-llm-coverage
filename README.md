@@ -49,7 +49,7 @@ to test whether the generated poems contain subjects the human axis cannot hold
 | 8 | `phase2c_bertopic_fresh.py` → `phase2h_fresh_soft.py` | generation logs | `results/phase2c/*`, `fresh_soft_projection.csv` | §3.5, SI Tables S3-1 and S3-2 |
 | 9 | `phase2g_regime_audit.py` | generation logs | `form_x_topic_protocol.json` | SI Table S6-1 |
 | 10† | `closure_audit_sampling.py` → (human classification: `docs/closure_audit.md`) → `closure_audit_stats.py` | topic_records + human full text (not included) | `closure_audit_labels.csv`, `closure_audit_table.csv`, `closure_audit_samples_public.txt` | Table 5, SI S8 |
-| 11† | `close_reading_provenance.py` | topic_records, embeddings + human full text (not included) | `close_reading_provenance.json`, `naming_set_typicals.csv`, `human_top_works.csv` | §4.1–§4.3, SI S7 |
+| 11† | `close_reading_provenance.py` | topic_records, embeddings + human full text (not included) | `close_reading_provenance.json`, `naming_set_typicals.csv`, `human_top_works.csv` | §4.1–§4.5, SI S7 |
 | 12 | `human_motif_ci.py` | human distribution | `human_motif_ci.json` | SI Table S1-2 |
 | 13 | `make_figures.py` | artefacts | `figures/*` (submission names figure1, figureS1-1, figureS9-1) | Figs 1, S1-1, S9-1 |
 
@@ -156,7 +156,7 @@ rather than by re-running them.
 | `results/phase2/naming_set_typicals.csv` | 20 slots (18 distinct works) |
 | `results/phase2c/bertopic_fresh_topics.csv` | 15 generated-axis motifs |
 | `data/atlas/instrument_frozen/human_doc_motif_distribution.csv` | 4,642 human works |
-| `data/generated/arm_ab/*.jsonl` | 300 / 369 / 505 / 1,002 / 2,400 rows by system (all attempts) |
+| `data/generated/arm_ab/*.jsonl` | rows by system (all attempts): Gemini 300, GPT 300, Opus 369, Solar 505, HCX 1,002, EXAONE 2,400 |
 
 ## A note on language
 

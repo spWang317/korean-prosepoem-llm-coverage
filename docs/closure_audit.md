@@ -17,7 +17,7 @@ and the totals of Table 5 are computed by `scripts/closure_audit_stats.py`.
 
 A tendency observed while reading through the generated works: across systems, endings
 close with consolation, insight or acceptance, and such endings are hard to find in
-human works on the same material. Three narrower claims are tested alongside it.
+human works on the same material. Three narrower claims are tested alongside it [the frozen Korean text below says 'two' and then enumerates three; (iii) was added under the same rule after (i) and (ii)].
 (i) Opus, which retains the family motif that the other systems erase, closes its
 winter and family works in the same way. (ii) Human works do not seal the material of
 the avoided four (wounds, old age, hospital, school) with consolation. (iii) Gemini
@@ -29,7 +29,7 @@ and its paired human stratum are placed by the same rule as (i) — added after 
 
 - **Unit of judgment**: roughly the last 170 characters of each work.
 - **Categories**: **sealing** (봉합) — the ending is completed by consolation, insight,
-  acceptance or forgiveness; **unresolved / open** (미해소·열림) — it ends on a
+  acceptance or forgiveness; **unresolved/open** (미해소·열림) — it ends on a
   question, a break, a refusal, a continuing action, or with tension sustained;
   **borderline** (경계·기타) — it cannot be settled either way. Borderline items are not
   counted in the numerator of the sealing rate.
@@ -90,7 +90,7 @@ Opus family 1/2) and 0 of 62 human ones do. The per-item judgment is in the
 | Human school (12) | 0 | 7 | 5 | 0% [0, 24] | |
 
 Sealing in the seven human strata totals 2 of 84 (Lee Si-young's 「수고」 'Toil';
-Cheon Yang-hui's 「공어 이야기」 'The Tale of the Kongeo'). A one-sided Fisher exact test
+Cheon Yang-hui's 「공어 이야기」 'The Tale of the Gongeo' (空魚, the empty fish)). A one-sided Fisher exact test
 (generated > human) against the paired human stratum gives p ≤ 0.005 in six of the
 eight generated strata, the exceptions being Gemini's two (rain p = 0.30, winter
 p = 0.11). Item 3 of the Gemini winter stratum is the same work as item 7 of the
@@ -107,6 +107,8 @@ strata remain significant (p ≤ 0.018). Per-stratum values: SI Table S8-1.
 ---
 
 # Part B — Criteria document, frozen Korean original
+
+> **Errata (2 September 2026):** two human quotations in the appendix were corrected to the verbatim originals (Lee Yeong-ju, 「엄마의 과일청」; Lee Si-young, 「조사받다가 남산 수사관들에게서 우연히 들은 말」). No judgment, category or reason was changed.
 
 본문 §2.4.6(절차)·§3.6(결과)·SI S8(부록)의 공개 산출물이다. 표본 추출 코드는 `scripts/closure_audit_sampling.py`, 표 5의 집계는 `scripts/closure_audit_stats.py`로 재현된다.
 
@@ -302,7 +304,7 @@ The bracketed label after each item is the category and the reason for the judgm
 ### Human family (12) — seal 0 · unresolved 8 · borderline 4
 1. 서효인 「영광」 "엄마의 젖무덤이," [미해소:파편 중단; 대상 있음]
 2. 서상영 「눈과 오이디푸스 - 굳세어라 가족아 3」 "누구도 얘기하지는 않았지만" [미해소:역접 미완; 대상 있음]
-3. 이시영 「조사받다가 남산 수사관들에게서 우연히 들은 말」 "제일 즐거워 어쩔 줄 몰라했다고 한다" [경계:유머 완결]
+3. 이시영 「조사받다가 남산 수사관들에게서 우연히 들은 말」 "제일 즐거워 어쩔 줄 몰라했다" [경계:유머 완결]
 4. 장철문 「아내가 머리하러 간 사이」 "무엇을 두리번거려 한 생을 건너는가?" [미해소:질문; 대상 있음]
 5. 이시영 「카길중학교에서」 "반드시 우리를 도와주실 것" [경계:인용된 위안(화자 유보)]
 6. 김주대 「아모레 화장품을 기억하십니까」 "다른 여자를 따라간 날들이었습니다" [경계:고백 완결]
@@ -325,7 +327,7 @@ The bracketed label after each item is the category and the reason for the judgm
 9. 김언희 「검은 택시」 "검은 택시가 골목 앞을 떠나지 않는다" [미해소:위협 지속; 대상 있음]
 10. 이정록 「촛불들」 "계수나무 그림자로 누웠다" [경계:이미지 완결, 위안 아님]
 11. 김상혁 「당신 같은 작품」 "좋아 너무 좋아" [미해소:반복 아이러니; 대상 있음]
-12. 이영주 「엄마의 과일청」 "모든 병이 썩고 있었다" [미해소:부패 진행; 대상 있음]
+12. 이영주 「엄마의 과일청」 "나뒹구는 모든 병이 썩고 있었습니다" [미해소:부패 진행; 대상 있음]
 
 ### Human old age (12) — seal 0 · unresolved 8 · borderline 4
 1. 서효인 「마스크 1」 "돌발적 상황이 생길 것이다" [미해소:긴장 예고; 대상 있음]

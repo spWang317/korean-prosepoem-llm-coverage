@@ -23,7 +23,7 @@ INSTRUMENT = ATLAS / "instrument_frozen"                 # frozen instrument (25
 GENERATED = DATA / "generated"               # data/generated/arm_ab/{system}.jsonl
 EMBEDDINGS = DATA / "embeddings"             # generated-poem embeddings (mirror atlas)
 RESULTS = ROOT / "results"
-FIGURES = RESULTS / "figures"
+FIGURES = ROOT / "figures"
 
 # INSTRUMENT frozen instrument
 MOTIF_CENTROIDS_NPZ = INSTRUMENT / "motif_centroids.npz"      # 25 centroids + topic_ids + topwords
@@ -31,7 +31,7 @@ HUMAN_MOTIF_DIST = INSTRUMENT / "human_doc_motif_distribution.csv"
 TOPIC_INFO = INSTRUMENT / "topic_info.csv"
 
 # Human corpus files (metadata holds bibliographic fields and the full text, which is not redistributed)
-ATLAS_META = ATLAS / "metadata.csv"                     # has 원문 (whole-text) + work_id
+ATLAS_META = ATLAS / "metadata.csv"                     # has the full-text column (whole work) + work_id
 ATLAS_EMB = ATLAS / "embeddings"                        # whole-text human embeddings
 
 for _d in (GENERATED, EMBEDDINGS, RESULTS, FIGURES, ATLAS_EMB):

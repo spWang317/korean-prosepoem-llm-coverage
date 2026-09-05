@@ -52,6 +52,8 @@ to test whether the generated poems contain subjects the human axis cannot hold
 | 10b | `closure_audit_power.py` | — (design only: n = 12 per stratum) | `closure_audit_power.csv` | SI S8 (detection threshold of the per-stratum Fisher test) |
 | 10c† | `human_top20_by_motif.py` | human shares + bibliographic columns of the human metadata (not included) | `human_top20_by_motif.csv` | SI Table S2-3 |
 | 10d | `centroid_keyword_alignment.py` | frozen centroids + `motif_map.csv` keywords (needs torch) | `centroid_keyword_alignment.csv` | SI Table S2-4 |
+| 10e | `retention_by_prompt_factor.py` | `topic_records.csv`, `retention_ladder.csv` | `retention_by_prompt_factor.csv` | SI Table S1-8 (retention within each prompt factor) |
+| 10f† | `person_word_density.py` | generated texts in `topic_records.csv` + the human full texts (not included); needs mecab-ko | `person_word_density.json`, `person_word_density_by_motif.csv` | SI Table S1-9 (person words counted directly) |
 | 11† | `close_reading_provenance.py` | topic_records, embeddings + human full text (not included) | `close_reading_provenance.json`, `naming_set_typicals.csv`, `human_top_works.csv` | §4.1–§4.5, SI S7 |
 | 12 | `human_motif_ci.py` | human distribution | `human_motif_ci.json` | SI Table S1-2 |
 | 13 | `make_figures.py` | artefacts | `figures/*` (submission names figure1, figureS1-1, figureS9-1) | Figs 1, S1-1, S9-1 |
@@ -105,6 +107,8 @@ to test whether the generated poems contain subjects the human axis cannot hold
 - `closure_audit_table.csv` — the computation behind Table 5 (Wilson CI, Fisher p).
 - `human_top20_by_motif.csv` — for each of the 25 motifs, the twenty human works with the highest share of it: poet, title, year, publisher, work id, share. Bibliography only; no text. Lets a reader with library access check the motif labels against the poems (SI Table S2-3).
 - `centroid_keyword_alignment.csv` — cosine between each motif's ten keywords (embedded as one string with ko-sroberta-multitask) and the 25 frozen centroids; own-centroid rank first for 24/25 (SI Table S2-4). Re-runs from this package alone.
+- `retention_by_prompt_factor.csv` — retention recomputed on the six cells without a genre definition, the six with one, and each of the three framings; same eight above 1 and same lowest four in every condition (SI Table S1-8).
+- `person_word_density.json`, `person_word_density_by_motif.csv` — words referring to people counted directly on noun morphemes, speaker reference (나/내/우리) kept apart from reference to others; the fixed 116-word lexicon is in the json. Corpus-level and per-motif counts only, no text (SI Table S1-9).
 - `closure_audit_power.csv` — the detection threshold of that test: one-sided Fisher p for every generated sealing count against a paired human count of 0, 1 or 2 out of 12 (SI S8). A property of n = 12, not of the data.
 - `closure_audit_samples_public.txt` — the public version of the audit sample: the
   final 170 characters for generated works, bibliography and one phrase for human ones.

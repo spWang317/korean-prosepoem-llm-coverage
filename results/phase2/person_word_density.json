@@ -8,7 +8,6 @@
   "교사",
   "군인",
   "군중",
-  "그녀",
   "기사",
   "남",
   "남매",
@@ -136,7 +135,7 @@
   "당신들"
  ],
  "summary": {
-  "lexicon_size": 116,
+  "lexicon_size": 115,
   "human": {
    "works": 4642,
    "mean_person_nouns_per_work": 2.894,

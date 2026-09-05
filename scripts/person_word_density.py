@@ -8,8 +8,8 @@ inference about motif labels. This script measures the thing itself: how often a
 person-denoting noun occurs in the works of each corpus.
 
 The lexicon is fixed in advance and printed in full below, so the measurement can
-be re-run or contested. It has three parts: (a) the person words the instrument's
-own keyword table already marks, minus personal names; (b) a closed list of
+be re-run or contested. It has three parts: (a) the person nouns the instrument's
+own keyword table already marks (pronouns and personal names excluded); (b) a closed list of
 kinship terms; (c) a closed list of generic person nouns, age terms and social
 roles. Counting is on morphemes tagged as nouns by Mecab-ko, the analyser the
 instrument uses, so a match is a whole noun and not a substring.
@@ -33,7 +33,7 @@ OUT = ROOT / "results/phase2"
 # ---------------------------------------------------------------- the lexicon
 # (a) marked as person words in SI Table S2-2 (personal names excluded)
 FROM_S2_2 = """아버지 어머니 엄마 아들 고모 형 동생 누나 애인 아이 선생 소녀 학생
-그녀 여인 사내 노인 인간 남자 시인 동무 필자 가수 할머니 할아버지 손주 할망구
+여인 사내 노인 인간 남자 시인 동무 필자 가수 할머니 할아버지 손주 할망구
 환자 오빠 간호사 기사 승객"""
 # (b) kinship
 KINSHIP = """아빠 부모 딸 언니 남매 형제 자매 조부 조모 손자 손녀 삼촌 이모

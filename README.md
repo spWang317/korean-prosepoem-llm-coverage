@@ -20,7 +20,7 @@ document and all 180 judgments of the ending audit are in `docs/closure_audit.md
 Six deployed systems were asked for Korean prose poems under twelve prompts. Every
 form-compliant output is projected onto a frozen 25-motif instrument built on the
 complete set of human prose poems published in 2000--2024 by four publishers (4,642
-works), and the two corpora are compared on four measurements.
+works), and the two corpora are compared on five measurements.
 
 | Measurement | Statistic | Artefact | Paper |
 |---|---|---|---|
@@ -75,6 +75,9 @@ to test whether the generated poems contain subjects the human axis cannot hold
 - `data_release_notes.md` — what is and is not released, copyright handling, and the
   EXAONE sampling scheme.
 - `prompts_frozen_2026-07-28.json` — the twelve frozen prompts with their SHA-256.
+- `glossary.md` — every Korean label in a released table with its English rendering (described below).
+
+`MANIFEST.md` at the repository root lists every released file with its size and role; SI S7 of the paper names the artefacts cited in the text and defers the full inventory to these two files.
 
 ### results/phase2/ (the source of the tables in the paper and the SI)
 - `topic_records.csv` — for each of the 1,625 generated works: its 25 motif shares,
@@ -107,8 +110,8 @@ to test whether the generated poems contain subjects the human axis cannot hold
 - `closure_audit_table.csv` — the computation behind Table 5 (Wilson CI, Fisher p).
 - `human_top20_by_motif.csv` — for each of the 25 motifs, the twenty human works with the highest share of it: poet, title, year, publisher, work id, share. Bibliography only; no text. Lets a reader with library access check the motif labels against the poems (SI Table S2-3).
 - `centroid_keyword_alignment.csv` — cosine between each motif's ten keywords (embedded as one string with ko-sroberta-multitask) and the 25 frozen centroids; own-centroid rank first for 24/25 (SI Table S2-4). Re-runs from this package alone.
-- `retention_by_prompt_factor.csv` — retention recomputed on the six cells without a genre definition, the six with one, and each of the three framings; same eight above 1 and same lowest four in every condition (SI Table S1-8).
-- `person_word_density.json`, `person_word_density_by_motif.csv` — words referring to people counted directly on noun morphemes, speaker reference (나/내/우리) kept apart from reference to others; the fixed 116-word lexicon is in the json. Corpus-level and per-motif counts only, no text (SI Table S1-9).
+- `retention_by_prompt_factor.csv` — retention recomputed on the six cells without a genre definition, the six with one, and each of the three framings; the same four lowest in every condition except persona (affect replaces hospital) and the same eight above 1 in every condition except instruction (sea replaces letters/writing) (SI Table S1-8).
+- `person_word_density.json`, `person_word_density_by_motif.csv` — words referring to people counted directly on noun morphemes, speaker reference (나/내/우리) kept apart from reference to others; the fixed 115-word lexicon is in the json. Corpus-level and per-motif counts only, no text (SI Table S1-9).
 - `closure_audit_power.csv` — the detection threshold of that test: one-sided Fisher p for every generated sealing count against a paired human count of 0, 1 or 2 out of 12 (SI S8). A property of n = 12, not of the data.
 - `closure_audit_samples_public.txt` — the public version of the audit sample: the
   final 170 characters for generated works, bibliography and one phrase for human ones.
@@ -134,10 +137,10 @@ to test whether the generated poems contain subjects the human axis cannot hold
 ### figures/
 - `figure1.tif`, `figureS1-1.tif`, `figureS9-1.tif` — 600 dpi TIFFs as submitted
   (Fig. 1 of the paper, Figs S1-1 and S9-1 of the SI).
-- `fig2_motif_map.png`, `figS6_motif_by_system.png`, `fig1_form_heatmap.png` — PNG
+- `fig2_motif_map.png` (= Fig. 1), `figS6_motif_by_system.png` (= Fig. S1-1), `fig1_form_heatmap.png` (= Fig. S9-1) — PNG
   versions of the same figures.
 
-### scripts/ (19 files)
+### scripts/ (24 files)
 See the run-order table above. `common.py` (paths, form judgment, model registry) and
 `prompt_set.py` (construction of the twelve prompts) are modules imported by the other
 scripts.

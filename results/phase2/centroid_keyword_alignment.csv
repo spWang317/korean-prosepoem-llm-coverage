@@ -1,0 +1,26 @@
+motif,name,name_en,cos_own_centroid,rank_of_own,nearest_other,cos_nearest_other,margin
+T0,바다,sea,0.449,1,T1 flowers,0.257,0.192
+T1,꽃,flowers,0.561,1,T19 fruit,0.392,0.17
+T2,가족,family,0.517,1,T20 grandparents,0.372,0.144
+T3,음식·동물,food/animals,0.482,1,T18 wounds/drink,0.254,0.228
+T4,정서,affect,0.651,1,T18 wounds/drink,0.599,0.051
+T5,학교·아이,school/child,0.451,1,T13 interior,0.252,0.199
+T6,겨울,winter,0.517,1,T7 rain,0.398,0.119
+T7,비,rain,0.676,1,T0 sea,0.44,0.236
+T8,여인,woman,0.614,1,T20 grandparents,0.445,0.169
+T9,노인·지하,old age/underground,0.388,1,T13 interior,0.373,0.015
+T10,새·나비,birds/butterflies,0.656,1,T17 cosmos,0.444,0.213
+T11,메타시,meta-poetic,0.589,1,T12 letters/writing,0.457,0.132
+T12,편지·글,letters/writing,0.576,1,T13 interior,0.39,0.186
+T13,실내,interior,0.503,1,T21 mirror,0.33,0.173
+T14,음악,music,0.706,1,T11 meta-poetic,0.394,0.312
+T15,거리,street,0.411,2,T24 bus,0.474,-0.063
+T16,고양이,cat,0.673,1,T7 rain,0.494,0.179
+T17,우주,cosmos,0.497,1,T10 birds/butterflies,0.266,0.231
+T18,상처·술,wounds/drink,0.58,1,T14 music,0.539,0.041
+T19,과일,fruit,0.611,1,T1 flowers,0.324,0.287
+T20,조부모,grandparents,0.562,1,T2 family,0.443,0.119
+T21,거울,mirror,0.643,1,T13 interior,0.428,0.215
+T22,병원·질병,hospital/illness,0.512,1,T4 affect,0.38,0.132
+T23,아파트·벽,apartment/wall,0.648,1,T13 interior,0.495,0.153
+T24,버스,bus,0.565,1,T8 woman,0.272,0.293

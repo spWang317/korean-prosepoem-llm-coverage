@@ -45,7 +45,8 @@ Full definitions: §2.4.6 of the paper. All 180 items with English translations:
 Used wherever a motif is named: `motif_map.csv`, `retention_ladder.csv`,
 `retention_ci.csv`, `company_profile.csv`, `motif_full_distribution_balanced.csv`,
 `concentration_two_axes.csv`, `avoidance_set_stability.json`, `topic_records.csv`,
-`naming_set_typicals.csv`, `human_top_works.csv`, and `human_per_motif_summary.csv` in
+`naming_set_typicals.csv`, `human_top_works.csv`, `human_top20_by_motif.csv`,
+`centroid_keyword_alignment.csv`, and `human_per_motif_summary.csv` in
 the frozen instrument. Every file that carries a Korean motif name also carries the
 English name of the paper in a parallel column (`name_en`; `fx25_top1_motif_en` in
 `concentration_two_axes.csv`; `*_en` arrays in `avoidance_set_stability.json`). The
@@ -84,6 +85,7 @@ The two groups named in the paper:
 | `data/atlas/instrument_frozen/topic_info.csv` | the motif keywords | **SI Table S2-2** — the ten keywords per motif, Korean with English gloss |
 | `results/phase2c/bertopic_fresh_topics.csv` | keywords of the fifteen generated-axis motifs | **SI Table S3-1** (keywords with gloss) and **SI Table S3-3** (their mapping onto the human-axis motifs) |
 | `results/phase2/naming_set_typicals.csv` | the 20 typical-work slots (18 distinct works) read in naming the window-and-street scene | quoted and translated in §4.1; the feature tally in `naming_set_features.csv` is summarized there |
+| `results/phase2/human_top20_by_motif.csv` | `poet` and `title` in Hangul (bibliographic data), `name` | `name_en` beside the motif name; poet and title are the works' bibliographic identifiers and are left in the original script, as in SI Table S2-3 |
 | `results/phase2/human_top_works.csv` | poet, title, motif name and the `reason` column as recorded | the parallel columns `poet_en` (romanization), `title_en`, `name_en` and `reason_en`; the six works read closely are quoted in §4.2 with the Korean original beside the English translation |
 | `results/phase2/topic_records.csv` | the full text of the 1,625 generated works (column `text_full`) | the generated works quoted in the paper appear in §3.6, §4.1, §4.4 and §4.5 with translations |
 

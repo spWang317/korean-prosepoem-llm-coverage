@@ -50,6 +50,8 @@ to test whether the generated poems contain subjects the human axis cannot hold
 | 9 | `phase2g_regime_audit.py` | generation logs | `form_x_topic_protocol.json` | SI Table S6-1 |
 | 10† | `closure_audit_sampling.py` → (human classification: `docs/closure_audit.md`) → `closure_audit_stats.py` | topic_records + human full text (not included) | `closure_audit_labels.csv`, `closure_audit_table.csv`, `closure_audit_samples_public.txt` | Table 5, SI S8 |
 | 10b | `closure_audit_power.py` | — (design only: n = 12 per stratum) | `closure_audit_power.csv` | SI S8 (detection threshold of the per-stratum Fisher test) |
+| 10c† | `human_top20_by_motif.py` | human shares + bibliographic columns of the human metadata (not included) | `human_top20_by_motif.csv` | SI Table S2-3 |
+| 10d | `centroid_keyword_alignment.py` | frozen centroids + `motif_map.csv` keywords (needs torch) | `centroid_keyword_alignment.csv` | SI Table S2-4 |
 | 11† | `close_reading_provenance.py` | topic_records, embeddings + human full text (not included) | `close_reading_provenance.json`, `naming_set_typicals.csv`, `human_top_works.csv` | §4.1–§4.5, SI S7 |
 | 12 | `human_motif_ci.py` | human distribution | `human_motif_ci.json` | SI Table S1-2 |
 | 13 | `make_figures.py` | artefacts | `figures/*` (submission names figure1, figureS1-1, figureS9-1) | Figs 1, S1-1, S9-1 |
@@ -101,6 +103,8 @@ to test whether the generated poems contain subjects the human axis cannot hold
   (SI Table S3-2, §3.5).
 - `closure_audit_labels.csv` — the 180 ending-audit judgments (no phrase column).
 - `closure_audit_table.csv` — the computation behind Table 5 (Wilson CI, Fisher p).
+- `human_top20_by_motif.csv` — for each of the 25 motifs, the twenty human works with the highest share of it: poet, title, year, publisher, work id, share. Bibliography only; no text. Lets a reader with library access check the motif labels against the poems (SI Table S2-3).
+- `centroid_keyword_alignment.csv` — cosine between each motif's ten keywords (embedded as one string with ko-sroberta-multitask) and the 25 frozen centroids; own-centroid rank first for 24/25 (SI Table S2-4). Re-runs from this package alone.
 - `closure_audit_power.csv` — the detection threshold of that test: one-sided Fisher p for every generated sealing count against a paired human count of 0, 1 or 2 out of 12 (SI S8). A property of n = 12, not of the data.
 - `closure_audit_samples_public.txt` — the public version of the audit sample: the
   final 170 characters for generated works, bibliography and one phrase for human ones.
@@ -155,6 +159,7 @@ rather than by re-running them.
 | `results/phase2/company_profile.csv` | 25 anchors |
 | `results/phase2/closure_audit_labels.csv` | 180 judgments over 15 strata |
 | `results/phase2/human_top_works.csv` | 40 (top five for each of eight motifs) |
+| `results/phase2/human_top20_by_motif.csv` | 500 (top twenty for each of 25 motifs) |
 | `results/phase2/naming_set_typicals.csv` | 20 slots (18 distinct works) |
 | `results/phase2c/bertopic_fresh_topics.csv` | 15 generated-axis motifs |
 | `data/atlas/instrument_frozen/human_doc_motif_distribution.csv` | 4,642 human works |
